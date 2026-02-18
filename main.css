@@ -47,7 +47,7 @@ main {
     color: var(--green);
   }
 
-  p {
+  p, pre {
     color: var(--white);
   }
 
@@ -65,7 +65,9 @@ main {
   }
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+.ascii {
+  white-space: pre;      /* preserve spaces + newlines */
+  line-height: 1;        /* often helps alignment */
+  font-size: 14px;       /* optional */
+  margin: 0;             /* optional */
 }
