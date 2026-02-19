@@ -65,6 +65,14 @@ main {
   background-color: var(--medium-gray);
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: scroll;
+
+  /* Hide scrollbar */
+  &::-webkit-scrollbar { /* Chrome */
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .pane-chunk {
