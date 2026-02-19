@@ -1,6 +1,3 @@
-// inspired by https://css-tricks.com/snippets/css/typewriter-effect/
-// import { panesContent } from './panesContent.js'; imported by html
-
 // UTILS
 
 function getRandomInt(min, max) {
@@ -22,14 +19,40 @@ function wait(milis) {
 
 // PROMPT STUFFS
 
+function getPromptResponse(userText) {
+  let args = userText.split(" ");
+
+  if (args.length == 0) {
+    throw "You must provide at least 1 arg to get prompt response."
+  }
+
+  let func = RESPONSES.commands[args[0]];
+  if (!func) {
+    return RESPONSES.errors.unknownCmd(args[0]);
+  }
+
+  let actualArgs = args.slice(1);
+
+  try {
+    return func(actualArgs);
+  } catch (err) {
+    console.log(err);
+    return RESPONSES.errors.unknownErr(err);
+  }
+}
+
 async function typeOutTextContent(element, content, delayRange) {
   return new Promise((resolve) => {
     let textLength = 0;
+
+    let pane = element.closest(".terminal-pane");
 
     let tick = () => {
       textLength ++;
       newText = content.slice(0, textLength);
       element.innerHTML = newText;
+
+      pane.scrollTop = pane.scrollHeight;
 
       if (textLength != content.length) {
         setTimeout(tick, getRandomInt(delayRange[0], delayRange[1]));
@@ -43,23 +66,59 @@ async function typeOutTextContent(element, content, delayRange) {
   })
 }
 
-async function populatePaneChunk(chunk, paneContent, speed) {
+function getPromptDiv() {
+  let promptDiv = document.createElement("h1");
+  promptDiv.classList.add("prompt");
 
-  const {promptText, result, resultTag} = paneContent;
+  return promptDiv
+}
 
-  // PROMPT STUFF
+function focusLatestInput() {
+  console.log("focusing latest input");
+  let newInput = document.getElementById("promptInput");
+  newInput.focus();
+}
 
-  let prompt = document.createElement("h1");
-  chunk.appendChild(prompt);
+async function handlePromptSubmit(e) {
+  if (e.key != "Enter") { return };
 
+  // check if there is any content
+  // replace the input with the text in the input, and then populateResult
+
+  let inputElem = e.target;
+  let paneChunk = inputElem.closest(".pane-chunk");
+  let promptInputSpan = paneChunk.querySelector(".prompt-input-span");
+
+  // replace input with regular text
+  let userText = inputElem.value;
+  promptInputSpan.innerHTML = userText;
+
+  let response = getPromptResponse(userText);
+  let resultDiv = paneChunk.querySelector(".result");
+  await populateResult(resultDiv, response, "p", 2);
+
+  // add empty pane
+  let chunk = document.createElement("div");
+  chunk.classList.add("pane-chunk");
+
+  paneChunk.appendChild(chunk);
+
+  await populatePaneChunk(
+    chunk, EMPTY_PANE, 2
+  ); //TODO figure out how to specify speed
+  
+  focusLatestInput();
+}
+
+async function populatePrompt(promptDiv, promptText, speed) {
   let ps1 = document.createElement("span");
   ps1.classList.add("prompt-ps1");
   ps1.innerHTML = "<name>ethan_kremer</name><at>@</at><host>site: </host>";
-  prompt.appendChild(ps1);
+  promptDiv.appendChild(ps1);
 
   let promptInputSpan = document.createElement("span");
   promptInputSpan.classList.add("prompt-input-span");
-  prompt.appendChild(promptInputSpan);
+  promptDiv.appendChild(promptInputSpan);
 
   await wait(1000 / speed);
 
@@ -70,40 +129,53 @@ async function populatePaneChunk(chunk, paneContent, speed) {
     await typeOutTextContent(promptInputSpan, promptText, [50 / speed, 250 / speed]);
   } else {
     promptInput = document.createElement("input");
+    promptInput.id = "promptInput";
     promptInput.classList.add("prompt-input");
+
+    promptInput.addEventListener("keydown", handlePromptSubmit);
     promptInputSpan.appendChild(promptInput);
   };
+}
 
-
-  await wait(2000 / speed);
-
-  // RESULT ROWS
-
+function getResultDiv() {
   let resultDiv = document.createElement("div");
-  chunk.appendChild(resultDiv);
-
   resultDiv.classList.add("result");
 
-  for (var resultLine of result) {
+  return resultDiv
+}
+
+async function populateResult(resultDiv, resultLines, resultTag, speed) {
+   for (var resultLine of resultLines) {
     let resultElem = document.createElement(resultTag);
     resultDiv.appendChild(resultElem);
 
     await typeOutTextContent(resultElem, resultLine, [5 / speed, 50 / speed]);
   }
- 
-  // select the input when generated 
-  if (!promptText) {
-    promptInput.focus();
-  }
+}
+
+async function populatePaneChunk(chunk, paneContent, speed) {
+  const {promptText, result, resultTag} = paneContent;
+
+  const promptDiv = getPromptDiv();
+  chunk.appendChild(promptDiv);
+  await populatePrompt(promptDiv, promptText, speed);
+
+  let pane = chunk.closest(".terminal-pane");
+  pane.scrollTop = pane.scrollHeight;
+
+  await wait(1000 / speed);
+  
+  let resultDiv = getResultDiv();
+  chunk.appendChild(resultDiv);
+  await populateResult(resultDiv, result, resultTag, speed);
 }
 
 // END PROMPT STUFFS
 
-
 async function loadTerminalPane(paneId, contentId, speed) {
   const terminalPane = document.getElementById(paneId);
 
-  let paneContents = panesContent[contentId];
+  let paneContents = PANES_CONTENT[contentId];
 
   for (var paneContent of paneContents) {
     let chunk = document.createElement("div");
@@ -114,13 +186,15 @@ async function loadTerminalPane(paneId, contentId, speed) {
       chunk, paneContent, speed
     );
 
-    await wait(500 / speed);
+    await wait(250 / speed);
   }
 }
 
-function load() {
-  loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
+async function load() {
   loadTerminalPane("ascii-art-pane", 'artPaneContents', 4);
+  await loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
+  focusLatestInput();
+  
 }
 
 load();

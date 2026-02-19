@@ -63,6 +63,8 @@ main {
 .terminal-pane {
   border: var(--white-border);
   background-color: var(--medium-gray);
+  max-height: calc(100vh - (var(--spacing) * 2));
+  overflow-y: scroll;
 }
 
 .pane-chunk {
@@ -101,7 +103,15 @@ main {
   }
 
   .result {
-    padding: var(--half-spacing);
+    p, pre {
+      padding-left: var(--half-spacing);
+      padding-right: var(--half-spacing);
+      padding-bottom: var(--half-spacing);
+
+      &:first-child {
+        padding-top: var(--half-spacing);
+      }
+    }
   }
 
   /* the 'PS1' before the prompt */
