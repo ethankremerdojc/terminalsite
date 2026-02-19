@@ -1,4 +1,7 @@
 // inspired by https://css-tricks.com/snippets/css/typewriter-effect/
+// import { panesContent } from './panesContent.js'; imported by html
+
+// UTILS
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -12,17 +15,23 @@ function wait(milis) {
   })
 }
 
-async function typeOutTextContent(element, delayRange) {
+// END UTILS
+
+
+
+
+// PROMPT STUFFS
+
+async function typeOutTextContent(element, content, delayRange) {
   return new Promise((resolve) => {
-    let currentContent = element.innerHTML;
     let textLength = 0;
 
     let tick = () => {
       textLength ++;
-      newText = currentContent.slice(0, textLength);
+      newText = content.slice(0, textLength);
       element.innerHTML = newText;
 
-      if (textLength != currentContent.length) {
+      if (textLength != content.length) {
         setTimeout(tick, getRandomInt(delayRange[0], delayRange[1]));
       } else {
         resolve();
@@ -31,59 +40,87 @@ async function typeOutTextContent(element, delayRange) {
 
     element.innerHTML = "";
     tick()
-
   })
 }
 
-function hideTerminalPaneContents(elem) {
-  let terminalPrompts = elem.getElementsByClassName("terminal-prompt");
+async function populatePaneChunk(chunk, paneContent, speed) {
 
-  for (var terminalPrompt of terminalPrompts) {
-    let promptH1 = terminalPrompt.querySelector("h1");
-    let promptText = terminalPrompt.querySelector(".prompt-text");
+  const {promptText, result, resultTag} = paneContent;
 
-    promptH1.style.opacity = "0";
-    promptText.style.opacity = "0";
+  // PROMPT STUFF
 
-    let resultDiv = terminalPrompt.querySelector(".result");
-    let pTags = resultDiv.querySelectorAll("p");
+  let prompt = document.createElement("h1");
+  chunk.appendChild(prompt);
 
-    for (var pTag of pTags) {
-      pTag.style.opacity = "0";
-    }
+  let ps1 = document.createElement("span");
+  ps1.classList.add("prompt-ps1");
+  ps1.innerHTML = "<name>ethan_kremer</name><at>@</at><host>site: </host>";
+  prompt.appendChild(ps1);
+
+  let promptInputSpan = document.createElement("span");
+  promptInputSpan.classList.add("prompt-input-span");
+  prompt.appendChild(promptInputSpan);
+
+  await wait(1000 / speed);
+
+  let promptInput;
+
+  if (promptText) {
+    //promptInputSpan.innerHTML = promptText;
+    await typeOutTextContent(promptInputSpan, promptText, [50 / speed, 250 / speed]);
+  } else {
+    promptInput = document.createElement("input");
+    promptInput.classList.add("prompt-input");
+    promptInputSpan.appendChild(promptInput);
+  };
+
+
+  await wait(2000 / speed);
+
+  // RESULT ROWS
+
+  let resultDiv = document.createElement("div");
+  chunk.appendChild(resultDiv);
+
+  resultDiv.classList.add("result");
+
+  for (var resultLine of result) {
+    let resultElem = document.createElement(resultTag);
+    resultDiv.appendChild(resultElem);
+
+    await typeOutTextContent(resultElem, resultLine, [5 / speed, 50 / speed]);
+  }
+ 
+  // select the input when generated 
+  if (!promptText) {
+    promptInput.focus();
   }
 }
 
-async function makePromptVisible(prompt) {
-  let promptH1 = prompt.querySelector("h1");
-  promptH1.style.opacity = "1";
+// END PROMPT STUFFS
 
-  await wait(600);
 
-  let promptText = prompt.getElementsByClassName("prompt-text")[0];
-  promptText.style.opacity = "1";
+async function loadTerminalPane(paneId, contentId, speed) {
+  const terminalPane = document.getElementById(paneId);
 
-  await typeOutTextContent(promptText, [60, 180]);
+  let paneContents = panesContent[contentId];
 
-  await wait(300);
+  for (var paneContent of paneContents) {
+    let chunk = document.createElement("div");
+    chunk.classList.add("pane-chunk");
+    terminalPane.appendChild(chunk);
 
-  let pTags = prompt.querySelectorAll("p");
-  for (var pTag of pTags) {
-    pTag.style.opacity = "1";
-    await typeOutTextContent(pTag, [2, 18]);
+    await populatePaneChunk(
+      chunk, paneContent, speed
+    );
+
+    await wait(500 / speed);
   }
 }
 
-async function loadMainTerminalPane() {
-  const mainTerminalPane = document.getElementById("main-terminal-pane");
-  const terminalPrompts = mainTerminalPane.getElementsByClassName("terminal-prompt");
-
-  for (var terminalPrompt of terminalPrompts) {
-    await makePromptVisible(terminalPrompt);
-  }
+function load() {
+  loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
+  loadTerminalPane("ascii-art-pane", 'artPaneContents', 4);
 }
 
-const mainTerminalPane = document.getElementById("main-terminal-pane");
-hideTerminalPaneContents(mainTerminalPane);
-
-loadMainTerminalPane();
+load();

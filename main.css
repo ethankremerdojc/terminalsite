@@ -3,13 +3,41 @@
   --black: #000000;
   --green: #58E032;
   --blue: #328CE0;
-  --dark-grey: #373737;
+  --light-gray: #585858;
+  --medium-gray: #404040;
+  --dark-gray: #2c2c2c;
 
   --spacing: 30px;
+  --half-spacing: 15px;
+
+  --white-border: solid white 3px;
+
+  --font-family: "Fira Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  font-family: var(--font-family);
 }
 
 body {
-  background: var(--dark-grey);
+  background: var(--light-gray);
+}
+
+h1 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 400;
+}
+
+input {
+  font-weight: 500;
+}
+
+p, pre {
+  color: var(--white);
 }
 
 main {
@@ -33,36 +61,71 @@ main {
 }
 
 .terminal-pane {
-  padding: var(--spacing);
-  border: solid white 2px;
-  border-radius: 5px;
+  border: var(--white-border);
+  background-color: var(--medium-gray);
+}
 
-  /* color: var(--white); */
+.pane-chunk {
 
-  h1, p {
+  h1, p, input, pre {
     font-size: 20px;
   }
-  
+
+  input {
+    height: 20px;
+  }
+
+  pre {
+    letter-spacing: 2px;
+    line-height: 22px;
+    font-weight: 300;
+    text-align: center;
+  }
+
   h1 {
+    background-color: var(--dark-gray);
+    padding: var(--half-spacing);
+    border-bottom: var(--white-border);
+  }
+
+  .prompt-input-span {
     color: var(--green);
+
+    input {
+      color: var(--green);
+    }
   }
 
-  p, pre {
-    color: var(--white);
+  &:not(:first-child) h1 {
+    border-top: var(--white-border);
   }
 
-  /* the chunk before the prompt, will be populated by js at some point */
-  a {
-    color: var(--green);
+  .result {
+    padding: var(--half-spacing);
   }
 
-  b {
-    color: var(--white);
-  }
+  /* the 'PS1' before the prompt */
 
-  c {
-    color: var(--blue);
+  name { color: var(--green); }
+  at { color: var(--white); margin: 0 4px; }
+  host { color: var(--blue); }
+
+  input {
+    background: none;
+    border: none;
+    border-bottom: solid var(--medium-gray) 1px;
+    min-width: 80px;
+    field-sizing: content;
+    max-width: calc(100% - var(--half-spacing));
+
+    &:focus-visible, &:active {
+      outline: none;
+    }
   }
+}
+
+#main-terminal-pane {
+  min-height: max(70vh, 600px);
 }
 
 .ascii {

@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page info -->
     <meta name="description" content="Ethan Kremer's website, based on linux terminals!">
     <title>Ethan Kremer | TerminalSite</title>
+
+    <!-- Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="main.css">
+
+
+
   </head>
   <body>
   
@@ -22,78 +33,15 @@
       <!-- Top 2 sections -->
 
       <section class="terminal-pane first-two-thirds-pane" id="main-terminal-pane">
-        <div class="terminal-prompt">
-          <h1>
-            <span class="prompt-ps1"></span><a>ethan_kremer</a><b>@</b><c>site : </c>
-            <span class="prompt-text">intro</span>
-          </h1>
-
-          <div class="result">
-            <p>Hello. My name is Ethan Kremer. I am a software developer who loves to build stuff, code things and learn things.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          </div>
-        </div>
-
-
-        <div class="terminal-prompt">
-          <h1>
-            <span class="prompt-ps1"></span><a>ethan_kremer</a><b>@</b><c>site : </c>
-            <span class="prompt-text">tips</span>
-          </h1>
-
-          <div class="result">
-            <p>Try out commands like ‘stack’, ‘info’, ‘interests’...</p>
-          </div>
-        </div>
-
-        <div class="terminal-prompt">
-          <h1>
-            <span class="prompt-ps1"></span><a>ethan_kremer</a><b>@</b><c>site : </c>
-            <span class="prompt-text">_</span>
-          </h1>
-
-          <div class="result">
-          </div>
-        </div>
-
       </section>
 
       <section class="terminal-pane last-third-pane" id="ascii-art-pane">
-        <div class="terminal-prompt">
-          <h1>
-            <span class="prompt-ps1"></span><a>ethan_kremer</a><b>@</b><c>site : </c>
-            <span class="prompt-text">art</span>
-          </h1>
-
-          <div class="result">
-
-<pre class="ascii">
-         _nnnn_
-        dGGGGMMb
-       @p~qp~~qMb
-       M|@||@) M|
-       @,----.JM|
-      JS^\__/  qKL
-    dZP        qKRb
-   dZP          qKKb
-  fZP            SMMb
-  HZM            MMMM
-  FqM            MMMM
-__| ".        |\dS"qML
-|    `.       | `' \Zq
-_)      \.___.,|     .'
-\____)MMMMMP|   .'
-   `-'       `--'
-</pre>
-
-          </div>
-        </div>
       </section>
 
       <!-- Stack section -->
 
       <!-- <section class="terminal-pane all-three-panes" id="stack-pane"> -->
-      <!--   <h1 class="terminal-prompt"><a>ethan_kremer</a><b>@</b><c>site : </c>stack</h1> -->
+      <!--   <h1 class="pane-chunk"><a>ethan_kremer</a><b>@</b><c>site : </c>stack</h1> -->
       <!---->
       <!--   <!-- will need to have a seperate note for mobile -->
       <!--   <p id="stack-help-text">Hover over the icons for more info</p> -->
@@ -111,12 +59,13 @@ _)      \.___.,|     .'
       <!-- <!-- Toys section -->
       <!---->
       <!-- <section class="terminal-pane all-three-panes" id="toys-pane"> -->
-      <!--   <h1 class="terminal-prompt"><a>ethan_kremer</a><b>@</b><c>site : </c>toys</h1> -->
+      <!--   <h1 class="pane-chunk"><a>ethan_kremer</a><b>@</b><c>site : </c>toys</h1> -->
       <!--   <p>some toys </p> -->
       <!-- </section> -->
 
     </main>
 
+    <script src="/variables.js"></script>
     <script src="/index.js"></script>
   </body>
 </html>
