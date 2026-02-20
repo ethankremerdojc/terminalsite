@@ -6,34 +6,55 @@ const INITIAL_SNAKE_SEGMENTS = [
 
 const SNAKE_SEGMENT_CHAR = "⊙";
 const SNAKE_HEAD_CHAR = "⊗";
+const FRUIT_CHAR = "●";
 
 const SQUARE_SIZE = 20;
+
+const STARTING_FRUIT = 3;
 
 // GLOBAL VARS
 
 var DIRECTION = "-x";
 
+// collision and placement
+
+function elemIntersects(elem, segment) {
+  return segment[0] == elem[0] && segment[1] == elem[1];
+}
+
+function elemIntersectsArray(elem, segments) {
+  for (var segment of segments) {
+    if (segment[0] == elem[0] && segment[1] == elem[1]) {
+      return true
+    }
+  }
+
+  return false;
+}
+
+function placeElem(position, fieldElem, char) {
+  const [x, y] = position;
+  let segmentElem = document.createElement("p");
+
+  segmentElem.style.top = `${SQUARE_SIZE * y}px`;
+  segmentElem.style.left = `${SQUARE_SIZE * x}px`;
+  segmentElem.innerHTML = char;
+
+  fieldElem.appendChild(segmentElem);
+}
+
+// SNAKES
+
 function placeSnakeSegments(segments, fieldElem) {
   for (let i=0; i<segments.length; i++) {
     let segment = segments[i];
-
-    const [x, y] = segment;
-    let segmentElem = document.createElement("p");
     if (i == segments.length - 1) {
-      segmentElem.innerHTML = SNAKE_HEAD_CHAR;
+      char = SNAKE_HEAD_CHAR;
     } else {
-      segmentElem.innerHTML = SNAKE_SEGMENT_CHAR;
+      char = SNAKE_SEGMENT_CHAR;
     }
-    segmentElem.style.top = `${SQUARE_SIZE * y}px`;
-    segmentElem.style.left = `${SQUARE_SIZE * x}px`;
-
-    fieldElem.appendChild(segmentElem);
+    placeElem(segment, fieldElem, char);
   }
-}
-
-function draw(snakeSegments, fieldElem) {
-  fieldElem.innerHTML = "&nbsp;"; // Reset
-  placeSnakeSegments(snakeSegments, fieldElem);
 }
 
 function getNewSnakeHead(segments, direction, blocksWidth, blocksHeight) {
@@ -85,8 +106,42 @@ function getNewSnakeHead(segments, direction, blocksWidth, blocksHeight) {
   return [newX, newY];
 }
 
+// FRUITS
+
+function getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight) {
+  while (true) {
+    let randomX = getRandomInt(0, blocksWidth - 1);
+    let randomY = getRandomInt(0, blocksHeight - 1);
+
+    let potentialFruit = [randomX, randomY];
+
+    if (!elemIntersectsArray(potentialFruit, snakeSegments) && !elemIntersectsArray(potentialFruit, fruits)) {
+      return potentialFruit
+    } else {
+      console.log("failed fruit placement")
+    }
+  }
+}
+
+function placeFruits(fruits, fieldElem) {
+  for (let i=0; i<fruits.length; i++) {
+    let position = fruits[i];
+    placeElem(position, fieldElem, FRUIT_CHAR);
+  }
+}
+
+// DRAW FUNC
+
+function draw(snakeSegments, fruits, fieldElem) {
+  fieldElem.innerHTML = "&nbsp;"; // Reset
+  placeSnakeSegments(snakeSegments, fieldElem);
+  placeFruits(fruits, fieldElem);
+}
 
 function handleKeyPress(e) {
+  //TODO  Have this check if the segment before head would be munched, instead of what current direction is
+  //      In case user manages to switch directions multiple times per frame
+  
   e.preventDefault();
   switch (e.keyCode) {
     case 37: // Left Key
@@ -114,14 +169,29 @@ function handleKeyPress(e) {
    }
 }
 
-function headIntersects(head, segments) {
-  for (var segment of segments) {
-    if (segment[0] == head[0] && segment[1] == head[1]) {
-      return true
+function getFruitBeingEaten(head, fruits) {
+  for (var fruit of fruits) {
+
+    if (elemIntersects(head, fruit)) {
+      console.log("intersect", head, fruit);
+      return fruit
     }
   }
 
-  return false;
+  return null
+}
+
+function replaceFruit(fruits, eatenFruit, snakeSegments, blocksWidth, blocksHeight) {
+  let newFruits = [];
+
+  for (var fruit of fruits) {
+    if (fruit != eatenFruit) {
+      newFruits.push(fruit);
+    }
+  }
+
+  newFruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight));
+  return newFruits
 }
 
 function runSnake() {
@@ -135,18 +205,30 @@ function runSnake() {
   const blocksHeight = Math.floor(boardHeight / SQUARE_SIZE);
 
   let snakeSegments = structuredClone(INITIAL_SNAKE_SEGMENTS);
+  let fruits = [];
+
+  for (let i=0;i<STARTING_FRUIT;i++) {
+    fruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight))
+  }
 
   document.body.addEventListener("keydown", handleKeyPress);
 
   // GAME LOOP
   let gameLoopInterval = setInterval(() => {
-    draw(snakeSegments, playField);
+    draw(snakeSegments, fruits, playField);
 
-    snakeSegments = snakeSegments.slice(1); // this line will be conditional on a fruit on the space when we add those
+    let fruitBeingEaten = getFruitBeingEaten(snakeSegments[snakeSegments.length - 1], fruits);
+
+    if (fruitBeingEaten) {
+      console.log("fruit is being munched");
+      fruits = replaceFruit(fruits, fruitBeingEaten, snakeSegments, blocksWidth,  blocksHeight);
+    } else {
+      snakeSegments = snakeSegments.slice(1); // this line will be conditional on a fruit on the space when we add those
+    }
    
     let newSnakeHead = getNewSnakeHead(snakeSegments, DIRECTION, blocksWidth, blocksHeight);
 
-    if (headIntersects(newSnakeHead, snakeSegments)) {
+    if (elemIntersectsArray(newSnakeHead, snakeSegments)) {
       clearInterval(gameLoopInterval);
       playField.innerHTML = "You are dead.";
       return
@@ -155,5 +237,3 @@ function runSnake() {
     snakeSegments.push(newSnakeHead);
   }, 150);
 }
-
-setTimeout(runSnake, 2000);

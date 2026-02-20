@@ -1,22 +1,3 @@
-// UTILS
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function wait(milis) {
-  return new Promise(resolve => {
-    setTimeout(() => { resolve() }, milis);
-  })
-}
-
-// END UTILS
-
-
-
-
 // PROMPT STUFFS
 
 function getPromptResponse(userText) {
@@ -212,6 +193,9 @@ async function loadStackPane() {
 
 async function loadToysPane() {
   await loadTerminalPane("toys-pane", 'toysPaneContents', 40);
+
+  // from snake.js
+  runSnake();
 }
 
 async function loadOutroPane() {
