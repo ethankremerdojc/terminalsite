@@ -1,11 +1,13 @@
+@import "matrix.css";
 @import "toys.css";
+
 
 :root {
   --white: rgb(215, 215, 215);
   --black: #000000;
   --green: #45d91c;
   --blue: #1b84e6;
-  --background: #313131;
+  --background: var(--black);
   --medium-gray: #383838;
   --dark-gray: #282828;
 
@@ -26,6 +28,7 @@
 
 body {
   background: var(--background);
+  height: 100%;
 }
 
 h1 {
@@ -50,6 +53,9 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: var(--spacing);
+  position: absolute;
+  z-index: 1;
+  top: 0;
 
   .last-third-pane {
     grid-column: 3;

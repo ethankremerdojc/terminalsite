@@ -210,4 +210,5 @@ loadTopSections();
 loadStackPane();
 loadToysPane();
 loadOutroPane();
-loadContactPane()
+loadContactPane();
+
