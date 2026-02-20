@@ -16,8 +16,7 @@
 }
 
 #toys-container {
-  border: var(--white-border);
-  margin: var(--half-spacing);
+  margin: 8px;
   height: 400px;
   width: calc(100% - var(--spacing) - (var(--border-width) * 2));
 
