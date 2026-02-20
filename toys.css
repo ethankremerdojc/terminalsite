@@ -20,4 +20,8 @@
   margin: var(--half-spacing);
   height: 400px;
   width: calc(100% - var(--spacing) - (var(--border-width) * 2));
+
+  & p {
+    font-weight: 500;
+  }
 }
