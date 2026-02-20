@@ -1,5 +1,5 @@
 :root {
-  --white: #fff;
+  --white: rgb(245, 245, 245);
   --black: #000000;
   --green: #58E032;
   --blue: #328CE0;
@@ -18,6 +18,7 @@
 * {
   margin: 0;
   font-family: var(--font-family);
+  color: var(--white);
 }
 
 body {
@@ -34,10 +35,6 @@ p {
 
 input {
   font-weight: 500;
-}
-
-p, pre {
-  color: var(--white);
 }
 
 main {
@@ -73,6 +70,13 @@ main {
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.ascii {
+  white-space: pre;      /* preserve spaces + newlines */
+  line-height: 1;        /* often helps alignment */
+  font-size: 14px;       /* optional */
+  margin: 0;             /* optional */
 }
 
 .pane-chunk {
@@ -142,13 +146,46 @@ main {
   }
 }
 
-#main-terminal-pane {
+
+/* CUSTOM HEIGHTS FOR PANES */
+
+#main-terminal-pane, #ascii-art-pane {
   min-height: max(70vh, 600px);
 }
 
-.ascii {
-  white-space: pre;      /* preserve spaces + newlines */
-  line-height: 1;        /* often helps alignment */
-  font-size: 14px;       /* optional */
-  margin: 0;             /* optional */
+#stack-pane {
+  min-height: max(35vh, 330px);
+}
+
+#toys-pane {
+  min-height: max(60vh, 660px);
+}
+
+
+/* PANE SPECIFIC STUFFS */
+
+#stack-pane {
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+  }
+
+  #stack-item-info {
+    & h2 {
+      padding: var(--half-spacing);
+    }
+  }
+}
+
+#toys-pane {
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: var(--half-spacing);
+    padding: var(--half-spacing);
+    border-bottom: var(--white-border);
+  }
 }

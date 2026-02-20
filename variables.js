@@ -48,6 +48,61 @@ const PANES_CONTENT = {
         "   `-'       `--'            "
       ]
     }
+  ],
+  stackPaneContents: [
+    {
+      promptText: "stack",
+      resultTag: "rawhtml",
+      result: [
+        "<p>Hover over the icons for info.</p>" +
+        "<ul>" +
+          '<li><img src="icons/python.svg" /></li>' +
+          '<li><img src="icons/js.svg" /></li>' +
+          '<li><img src="icons/html.svg" /></li>' +
+          '<li><img src="icons/css.svg" /></li>' +
+          '<li><img src="icons/bash.svg" /></li>' +
+        "</ul>" +
+        '<div id="stack-item-info">' +
+          '<h2 id="stack-item-name">JavaScript</h2>' +
+          '<p id="stack-item-details">Thoughs + experience</p>' +
+        '</div>'
+      ]
+    }
+  ],
+  toysPaneContents: [
+    {
+      promptText: "toys",
+      resultTag: "rawhtml",
+      result: [
+        '<ul id="toys-header-items">' +
+          '<li>[ SNAKE ]</li>' +
+          '<li>[ SNAKE ]</li>' +
+          '<li>[ SNAKE ]</li>' +
+          '<li>[ SNAKE ]</li>' +
+        '</ul>' +
+        '<div id="toys-canvas-container">' +
+          '<h2>Where the toys will go</h2>' +
+        '</div>'
+      ]
+    }
+  ],
+  outroPaneContents: [
+    {
+      promptText: "outro",
+      resultTag: "p",
+      result: [
+        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
+      ]
+    },
+  ],
+  contactPaneContents: [
+    {
+      promptText: "contact",
+      resultTag: "p",
+      result: [
+        "Contact Me! (eventually put rawhtml here with inputs/form)"
+      ]
+    },
   ]
 };
 
@@ -55,6 +110,9 @@ const PANES_CONTENT = {
 
 const RESPONSES = {
   commands: {
+    commands: () => {
+      return `commands cd ls clear`.split(" ")
+    },
     cd: (args) => {
       let dir = args[0];
       return [`Changing current working dir to '${dir}'`];

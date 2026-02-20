@@ -110,7 +110,7 @@ async function handlePromptSubmit(e) {
   focusLatestInput();
 }
 
-async function populatePrompt(promptDiv, promptText, speed) {
+async function populatePrompt(promptDiv, promptText, speed, isFirst=false) {
   let ps1 = document.createElement("span");
   ps1.classList.add("prompt-ps1");
   ps1.innerHTML = "<name>ethan_kremer</name><at>@</at><host>site: </host>";
@@ -130,6 +130,11 @@ async function populatePrompt(promptDiv, promptText, speed) {
   } else {
     promptInput = document.createElement("input");
     promptInput.id = "promptInput";
+
+    if (isFirst) {
+      promptInput.placeholder = "Type Commands here!"
+    }
+
     promptInput.classList.add("prompt-input");
 
     promptInput.addEventListener("keydown", handlePromptSubmit);
@@ -153,12 +158,12 @@ async function populateResult(resultDiv, resultLines, resultTag, speed) {
   }
 }
 
-async function populatePaneChunk(chunk, paneContent, speed) {
+async function populatePaneChunk(chunk, paneContent, speed, isFirst=false) {
   const {promptText, result, resultTag} = paneContent;
 
   const promptDiv = getPromptDiv();
   chunk.appendChild(promptDiv);
-  await populatePrompt(promptDiv, promptText, speed);
+  await populatePrompt(promptDiv, promptText, speed, isFirst);
 
   let pane = chunk.closest(".terminal-pane");
   pane.scrollTop = pane.scrollHeight;
@@ -183,18 +188,41 @@ async function loadTerminalPane(paneId, contentId, speed) {
     terminalPane.appendChild(chunk);
 
     await populatePaneChunk(
-      chunk, paneContent, speed
+      chunk, paneContent, speed, true
     );
 
     await wait(250 / speed);
   }
 }
 
-async function load() {
+async function loadTopSections() {
+
+  // below two will be loaded at the same time
   loadTerminalPane("ascii-art-pane", 'artPaneContents', 4);
   await loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
-  focusLatestInput();
-  
+
+  // we will focus the terminal after that
+  // focusLatestInput();
 }
 
-load();
+async function loadStackPane() {
+  await loadTerminalPane("stack-pane", 'stackPaneContents', 4);
+}
+
+async function loadToysPane() {
+  await loadTerminalPane("toys-pane", 'toysPaneContents', 4);
+}
+
+async function loadOutroPane() {
+  await loadTerminalPane("outro-pane", 'outroPaneContents', 4);
+}
+
+async function loadContactPane() {
+  await loadTerminalPane("contact-pane", 'contactPaneContents', 4);
+}
+
+loadTopSections();
+loadStackPane();
+loadToysPane();
+loadOutroPane();
+loadContactPane()
