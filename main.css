@@ -1,16 +1,16 @@
 :root {
-  --white: rgb(245, 245, 245);
+  --white: rgb(215, 215, 215);
   --black: #000000;
-  --green: #58E032;
-  --blue: #328CE0;
-  --light-gray: #585858;
-  --medium-gray: #404040;
-  --dark-gray: #2c2c2c;
+  --green: #45d91c;
+  --blue: #1b84e6;
+  --background: #313131;
+  --medium-gray: #383838;
+  --dark-gray: #282828;
 
-  --spacing: 30px;
-  --half-spacing: 15px;
+  --spacing: 28px;
+  --half-spacing: calc(var(--spacing) / 2);
 
-  --white-border: solid white 3px;
+  --white-border: solid var(--white) 2px;
 
   --font-family: "Fira Sans", sans-serif;
 }
@@ -22,7 +22,7 @@
 }
 
 body {
-  background: var(--light-gray);
+  background: var(--background);
 }
 
 h1 {
@@ -94,6 +94,7 @@ main {
     line-height: 22px;
     font-weight: 300;
     text-align: center;
+    width: calc(100% - var(--spacing));
   }
 
   h1 {
@@ -187,5 +188,9 @@ main {
     margin-bottom: var(--half-spacing);
     padding: var(--half-spacing);
     border-bottom: var(--white-border);
+
+    li {
+      font-weight: 500;
+    }
   }
 }

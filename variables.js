@@ -28,24 +28,24 @@ const PANES_CONTENT = {
       promptText: "art",
       resultTag: "pre",
       result: [
-        "     Linux-Penguin          \n" +
-        "                            \n" +
-        "         _nnnn_             \n" +
-        "        dGGGGMM             \n" +
-        "       @p-qp--qM            \n" +
-        "       M|@||@) M            \n" +
-        "       @,----.JM|           \n" +
-        "      JS^\\__/  qKL         \n" +
-        "    dZP        qKRb         \n" +
-        "    dZP          qKKb       \n" +
-        "   fZP            SMMb      \n" +
-        "   HZM            MMMM      \n" +
-        "   FqM            MMMM      \n" +
-        "__| \".        |\\dS\"qML   \n" +
-        "|    `.       | `' \\Zq   \\\n" +
-        "_nnnn_)      \.___.,|     .'\n" +
-        "\\____)MMMMMP|   .'         \n" +
-        "   `-'       `--'            "
+        "         Linux-Penguin         \n" +
+        "                               \n" +
+        "          _nnnn_               \n" +
+        "         dGGGGMM               \n" +
+        "        @p-qp--qM              \n" +
+        "        M|@||@) M              \n" +
+        "        @,----.JM|             \n" +
+        "       JS^\\__/  qKL           \n" +
+        "     dZP        qKRb           \n" +
+        "     dZP          qKKb         \n" +
+        "    fZP            SMMb        \n" +
+        "    HZM            MMMM        \n" +
+        "    FqM            MMMM        \n" +
+        "   __| \".        |\\dS\"qML   \n" +
+        "   |    `.       | `' \\Zq   \\\n" +
+        "  _nnnn_)      \.___.,|     .' \n" +
+        "  \\____)MMMMMP|   .'          \n" +
+        "    `-'       `--'              "
       ]
     }
   ],
@@ -76,9 +76,9 @@ const PANES_CONTENT = {
       result: [
         '<ul id="toys-header-items">' +
           '<li>[ SNAKE ]</li>' +
-          '<li>[ SNAKE ]</li>' +
-          '<li>[ SNAKE ]</li>' +
-          '<li>[ SNAKE ]</li>' +
+          '<li>[ HANGMAN ]</li>' +
+          '<li>[ DONUT ]</li>' +
+          '<li>[ MATRIX ]</li>' +
         '</ul>' +
         '<div id="toys-canvas-container">' +
           '<h2>Where the toys will go</h2>' +
