@@ -206,19 +206,20 @@ async function loadTopSections() {
 }
 
 async function loadStackPane() {
-  await loadTerminalPane("stack-pane", 'stackPaneContents', 4);
+  await loadTerminalPane("stack-pane", 'stackPaneContents', 40);
+
 }
 
 async function loadToysPane() {
-  await loadTerminalPane("toys-pane", 'toysPaneContents', 4);
+  await loadTerminalPane("toys-pane", 'toysPaneContents', 40);
 }
 
 async function loadOutroPane() {
-  await loadTerminalPane("outro-pane", 'outroPaneContents', 4);
+  await loadTerminalPane("outro-pane", 'outroPaneContents', 40);
 }
 
 async function loadContactPane() {
-  await loadTerminalPane("contact-pane", 'contactPaneContents', 4);
+  await loadTerminalPane("contact-pane", 'contactPaneContents', 40);
 }
 
 loadTopSections();

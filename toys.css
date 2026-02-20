@@ -1,0 +1,23 @@
+@import "toys/snake.css";
+
+#toys-pane {
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 60px;
+    padding: var(--half-spacing);
+    border-bottom: var(--white-border);
+
+    li {
+      font-weight: 500;
+    }
+  }
+}
+
+#toys-container {
+  border: var(--white-border);
+  margin: var(--half-spacing);
+  height: 400px;
+  width: calc(100% - var(--spacing) - (var(--border-width) * 2));
+}

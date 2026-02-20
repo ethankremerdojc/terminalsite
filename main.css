@@ -1,3 +1,5 @@
+@import "toys.css";
+
 :root {
   --white: rgb(215, 215, 215);
   --black: #000000;
@@ -10,7 +12,8 @@
   --spacing: 28px;
   --half-spacing: calc(var(--spacing) / 2);
 
-  --white-border: solid var(--white) 2px;
+  --border-width: 2px;
+  --white-border: solid var(--white) var(--border-width);
 
   --font-family: "Fira Sans", sans-serif;
 }
@@ -35,6 +38,10 @@ p {
 
 input {
   font-weight: 500;
+}
+
+rawhtml {
+  display: block;
 }
 
 main {
@@ -158,9 +165,9 @@ main {
   min-height: max(35vh, 330px);
 }
 
-#toys-pane {
-  min-height: max(60vh, 660px);
-}
+/* #toys-pane { */
+/*   min-height: max(60vh, 660px); */
+/* } */
 
 
 /* PANE SPECIFIC STUFFS */
@@ -175,22 +182,6 @@ main {
   #stack-item-info {
     & h2 {
       padding: var(--half-spacing);
-    }
-  }
-}
-
-#toys-pane {
-  ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    gap: 60px;
-    margin-bottom: var(--half-spacing);
-    padding: var(--half-spacing);
-    border-bottom: var(--white-border);
-
-    li {
-      font-weight: 500;
     }
   }
 }

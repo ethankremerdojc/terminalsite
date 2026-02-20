@@ -80,9 +80,7 @@ const PANES_CONTENT = {
           '<li>[ DONUT ]</li>' +
           '<li>[ MATRIX ]</li>' +
         '</ul>' +
-        '<div id="toys-canvas-container">' +
-          '<h2>Where the toys will go</h2>' +
-        '</div>'
+        '<div id="toys-container" class="snake">Snake</div>'
       ]
     }
   ],
