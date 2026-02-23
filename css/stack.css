@@ -17,12 +17,20 @@
       position: absolute;
       top: 0;
       left: 0;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease-in-out;
 
       &:hover, &.active  {
         width: 140px;
         left: -20px;
         top: -20px;
+      }
+
+      &.active {
+        filter: drop-shadow(0 0 2px var(--blue));
+      }
+
+      &:hover {
+        filter: drop-shadow(0 0 4px var(--blue));
       }
     }
   }
