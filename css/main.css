@@ -1,6 +1,6 @@
 @import "matrix.css";
 @import "toys.css";
-
+@import "header.css";
 
 :root {
   --white: rgb(215, 215, 215);
@@ -65,7 +65,7 @@ main {
     grid-column: 1 / span 2;
   }
 
-  .all-three-panes {
+  .all-three-panes, header {
     grid-column: 1 / span 3;
   }
 }
