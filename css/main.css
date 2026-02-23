@@ -1,6 +1,7 @@
 @import "matrix.css";
 @import "toys.css";
 @import "header.css";
+@import "stack.css";
 
 :root {
   --white: rgb(215, 215, 215);
@@ -190,18 +191,4 @@ main {
 /* } */
 
 
-/* PANE SPECIFIC STUFFS */
 
-#stack-pane {
-  ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-evenly;
-  }
-
-  #stack-item-info {
-    & h2 {
-      padding: var(--half-spacing);
-    }
-  }
-}

@@ -18,7 +18,7 @@ const PANES_CONTENT = {
       promptText: "tips",
       resultTag: "p",
       result: [
-        "Try out commands like 'stack', 'info', 'interests', or common linux commands like 'ls' and 'clear'"
+        "Try out commands like 'stack', 'details', 'interests', or common linux commands like 'ls' and 'clear'"
       ]
     },
     EMPTY_PANE,
@@ -54,17 +54,17 @@ const PANES_CONTENT = {
       promptText: "stack",
       resultTag: "rawhtml",
       result: [
-        "<p>Hover over the icons for info.</p>" +
-        "<ul>" +
-          '<li><img src="icons/python.svg" /></li>' +
+        "<p>Hover over the icons for details.</p>" +
+        '<ul id="stack-nav-items">' +
+          '<li><img class="active" src="icons/python.svg" /></li>' +
           '<li><img src="icons/js.svg" /></li>' +
           '<li><img src="icons/html.svg" /></li>' +
           '<li><img src="icons/css.svg" /></li>' +
           '<li><img src="icons/bash.svg" /></li>' +
         "</ul>" +
-        '<div id="stack-item-info">' +
-          '<h2 id="stack-item-name">JavaScript</h2>' +
-          '<p id="stack-item-details">Thoughs + experience</p>' +
+        '<div class="stack-item-details">' +
+          '<h2 id="stack-item-name"></h2>' +
+          '<div id="stack-item-info"></div>' +
         '</div>'
       ]
     }
@@ -75,7 +75,7 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         '<ul id="toys-header-items">' +
-          '<li>[ SNAKE ]</li>' +
+          '<li class="active">[ SNAKE ]</li>' +
           '<li>[ HANGMAN ]</li>' +
           '<li>[ DONUT ]</li>' +
           '<li>[ MATRIX ]</li>' +
@@ -138,7 +138,43 @@ const RESPONSES = {
   }
 }
 
-
+const STACK_INFO = {
+  "python": {
+    title: "Python",
+    details: [
+      "python stuff",
+      "for sure"
+    ]
+  },
+  "js": {
+    title: "JavaScript",
+    details: [
+      "js stuff",
+      "for sure"
+    ]
+  },
+  "html": {
+    title: "HTML",
+    details: [
+      "html stuff",
+      "for sure"
+    ]
+  },
+  "css": {
+    title: "CSS",
+    details: [
+      "css stuff",
+      "for sure"
+    ]
+  },
+  "bash": {
+    title: "Scripting",
+    details: [
+      "bash, ps1, etc. stuff",
+      "for sure"
+    ]
+  }
+}
 
 
 

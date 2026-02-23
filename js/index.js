@@ -22,30 +22,6 @@ function getPromptResponse(userText) {
   }
 }
 
-async function typeOutTextContent(element, content, delayRange) {
-  return new Promise((resolve) => {
-    let textLength = 0;
-
-    let pane = element.closest(".terminal-pane");
-
-    let tick = () => {
-      textLength ++;
-      newText = content.slice(0, textLength);
-      element.innerHTML = newText;
-
-      pane.scrollTop = pane.scrollHeight;
-
-      if (textLength != content.length) {
-        setTimeout(tick, getRandomInt(delayRange[0], delayRange[1]));
-      } else {
-        resolve();
-      }
-    }
-
-    element.innerHTML = "";
-    tick()
-  })
-}
 
 function getPromptDiv() {
   let promptDiv = document.createElement("h1");
@@ -188,7 +164,7 @@ async function loadTopSections() {
 
 async function loadStackPane() {
   await loadTerminalPane("stack-pane", 'stackPaneContents', 40);
-
+  loadStackNav();
 }
 
 async function loadToysPane() {
@@ -196,6 +172,7 @@ async function loadToysPane() {
 
   // from snake.js
   initializeSnake();
+  loadToysNav();
 }
 
 async function loadOutroPane() {
@@ -206,9 +183,15 @@ async function loadContactPane() {
   await loadTerminalPane("contact-pane", 'contactPaneContents', 40);
 }
 
-loadTopSections();
-loadStackPane();
-loadToysPane();
-loadOutroPane();
-loadContactPane();
+
+
+function loadPage() {
+  loadTopSections();
+  loadStackPane();
+  loadToysPane();
+  loadOutroPane();
+  loadContactPane();
+}
+
+loadPage();
 
