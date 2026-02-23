@@ -4,5 +4,49 @@ header {
 
   h1 {
     color: var(--green);
+
+    &.buttonlike:hover {
+      text-shadow: var(--green) 0px 0px 5px;
+    }
   }
+
+  ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing);
+
+
+
+    li {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+
+      &.buttonlike:hover {
+        text-shadow: var(--white) 0px 0px 5px;
+      }
+    }
+  }
+
+  .buttonlike {
+    border: solid rgb(255 255 255 / 35%) var(--border-width);
+    background: rgb(255 255 255 / 18%);
+    border-radius: var(--border-radius);
+    padding: 4px var(--half-spacing);
+
+    /* box shadow white haze */
+    box-shadow: var(--pane-box-shadow);
+    -webkit-box-shadow: var(--pane-box-shadow-webkit);
+
+    margin: 0 0;
+
+    transition: text-shadow 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+      border-color: var(--white);
+    }
+  }
+
+  
 }

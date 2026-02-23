@@ -4,6 +4,7 @@ var numbers = Array.from({length: 10}, (_, i) => i);
 var chars = katagana.concat(numbers.map(n => n.toString()));
 
 var SPEED = 4;
+var TEXT_COLOR = "#8b34c5";
 
 // ---------------------------------------------------------------
 class Matrix {
@@ -56,7 +57,7 @@ class Matrix {
   clear() {
     this._ctx.fillStyle = 'rgba(0, 0,0,0.05)';
     this._ctx.fillRect(0, 0, this._width, this._height);
-    this._ctx.fillStyle = '#8b34c5';
+    this._ctx.fillStyle = TEXT_COLOR;
     this._ctx.font = this._font_size + "px monospace";
   }
   render() {

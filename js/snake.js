@@ -1,21 +1,3 @@
-// GLOBAL CONSTS
-
-const INITIAL_SNAKE_SEGMENTS = [
-  [0, 0], [0, 1], [0, 2], [0, 3]
-];
-
-const SNAKE_SEGMENT_CHAR = "⊙";
-const SNAKE_HEAD_CHAR = "⊗";
-const FRUIT_CHAR = "●";
-
-const SQUARE_SIZE = 20;
-
-const STARTING_FRUIT = 3;
-
-// GLOBAL VARS
-
-var DIRECTION = "-x";
-
 // collision and placement
 
 function elemIntersects(elem, segment) {
@@ -32,13 +14,18 @@ function elemIntersectsArray(elem, segments) {
   return false;
 }
 
-function placeElem(position, fieldElem, char) {
+function placeElem(position, fieldElem, char, elemClass, onClick=null) {
   const [x, y] = position;
   let segmentElem = document.createElement("p");
 
   segmentElem.style.top = `${SQUARE_SIZE * y}px`;
   segmentElem.style.left = `${SQUARE_SIZE * x}px`;
+  segmentElem.className = elemClass;
   segmentElem.innerHTML = char;
+
+  if (onClick) {
+    segmentElem.onclick = onClick;
+  }
 
   fieldElem.appendChild(segmentElem);
 }
@@ -53,7 +40,7 @@ function placeSnakeSegments(segments, fieldElem) {
     } else {
       char = SNAKE_SEGMENT_CHAR;
     }
-    placeElem(segment, fieldElem, char);
+    placeElem(segment, fieldElem, char, "snake");
   }
 }
 
@@ -126,23 +113,55 @@ function getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight) {
 function placeFruits(fruits, fieldElem) {
   for (let i=0; i<fruits.length; i++) {
     let position = fruits[i];
-    placeElem(position, fieldElem, FRUIT_CHAR);
+    placeElem(position, fieldElem, FRUIT_CHAR, "fruit");
   }
+}
+
+// GAME INFO
+
+function placePauseText(fieldElem) {
+  placeElem([0, 0], fieldElem, "PAUSED", "infobutton", () => { PAUSED = false })
+}
+
+function placeStartText(fieldElem) {
+  placeElem([0, 0], fieldElem, "START", "infobutton", () => { RUNNING = true })
+}
+
+function placeDeadText(fieldElem) {
+  placeElem([0, 1], fieldElem, "YOU DIED", "infobutton")
 }
 
 // DRAW FUNC
 
 function draw(snakeSegments, fruits, fieldElem) {
   fieldElem.innerHTML = "&nbsp;"; // Reset
-  placeSnakeSegments(snakeSegments, fieldElem);
-  placeFruits(fruits, fieldElem);
+
+  if (RUNNING) {
+    placeFruits(fruits, fieldElem);
+    placeSnakeSegments(snakeSegments, fieldElem);   
+  } else {
+    if (PAUSED) {
+      placePauseText(fieldElem);
+    } else {
+      placeStartText(fieldElem);
+    }
+
+    if (JUST_DIED) {
+      placeDeadText(fieldElem);
+    }
+  }
 }
 
 function handleKeyPress(e) {
   //TODO  Have this check if the segment before head would be munched, instead of what current direction is
   //      In case user manages to switch directions multiple times per frame
-  
+
+  if (!RUNNING) {
+    return
+  }
+
   e.preventDefault();
+
   switch (e.keyCode) {
     case 37: // Left Key
       if (DIRECTION != "+x") {
@@ -194,7 +213,28 @@ function replaceFruit(fruits, eatenFruit, snakeSegments, blocksWidth, blocksHeig
   return newFruits
 }
 
-function runSnake() {
+// GLOBAL CONSTS
+
+const INITIAL_SNAKE_SEGMENTS = [
+  [0, 0], [0, 1], [0, 2], [0, 3]
+];
+
+const SNAKE_SEGMENT_CHAR = "⊙";
+const SNAKE_HEAD_CHAR = "⊗";
+const FRUIT_CHAR = "●";
+
+const SQUARE_SIZE = 20;
+
+const STARTING_FRUIT = 3;
+
+// GLOBAL VARS
+
+var DIRECTION = "+x";
+var RUNNING = false;
+var PAUSED = false;
+var JUST_DIED = false;
+
+function initializeSnake() {
   const playField = document.getElementById("toys-container");
   const boardWidth = playField.clientWidth;
   const boardHeight = playField.clientHeight;
@@ -207,14 +247,21 @@ function runSnake() {
   let snakeSegments = structuredClone(INITIAL_SNAKE_SEGMENTS);
   let fruits = [];
 
+  let currentSpeed = 1.0;
+
   for (let i=0;i<STARTING_FRUIT;i++) {
     fruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight))
   }
 
   document.body.addEventListener("keydown", handleKeyPress);
 
-  // GAME LOOP
-  let gameLoopInterval = setInterval(() => {
+  draw(snakeSegments, fruits, playField);
+
+  function gameLoop() {
+    if (!RUNNING) {
+      return
+    }
+
     draw(snakeSegments, fruits, playField);
 
     let fruitBeingEaten = getFruitBeingEaten(snakeSegments[snakeSegments.length - 1], fruits);
@@ -222,6 +269,7 @@ function runSnake() {
     if (fruitBeingEaten) {
       console.log("fruit is being munched");
       fruits = replaceFruit(fruits, fruitBeingEaten, snakeSegments, blocksWidth,  blocksHeight);
+      currentSpeed = currentSpeed + 0.05;
     } else {
       snakeSegments = snakeSegments.slice(1); // this line will be conditional on a fruit on the space when we add those
     }
@@ -229,11 +277,35 @@ function runSnake() {
     let newSnakeHead = getNewSnakeHead(snakeSegments, DIRECTION, blocksWidth, blocksHeight);
 
     if (elemIntersectsArray(newSnakeHead, snakeSegments)) {
-      clearInterval(gameLoopInterval);
-      playField.innerHTML = "You are dead.";
-      return
+      RUNNING = false;
+      JUST_DIED = true;
+
+      draw(snakeSegments, fruits, playField);
     }
 
     snakeSegments.push(newSnakeHead);
-  }, 150);
+
+    if (fruitBeingEaten) {
+      resetGameLoop();
+    }
+  }
+
+  function stopGameLoop() {
+    clearInterval(gameLoopInterval);
+  }
+
+  function startGameLoop() {
+    gameLoopInterval = setInterval(gameLoop, 200/currentSpeed);
+  }
+
+  function resetGameLoop() {
+    stopGameLoop();
+    startGameLoop();
+  }
+
+  // GAME LOOP
+  let gameLoopInterval;
+  startGameLoop(currentSpeed);
 }
+
+

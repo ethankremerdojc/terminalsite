@@ -2,12 +2,22 @@
   position: relative;
   
   p {
-
     padding: 0 !important;
     margin: 0 !important;
-    width: 20px;
     text-align: center;
     font-size: 20px; /* Make sure this is the same as square size in snake.js */
     position: absolute;
+
+    &:not(.infobutton) {
+      width: 20px;
+    }
+  }
+
+  .snake {
+    color: var(--green);
+  }
+
+  .fruit {
+    color: var(--purple);
   }
 }
