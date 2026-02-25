@@ -4,6 +4,62 @@ const EMPTY_PANE = {
   result: []
 }
 
+let ascii_arrays = [
+  [
+    "         Linux-Penguin",
+    "",
+    "          _nnnn_",
+    "         dGGGGMM",
+    "        @p-qp--qM",
+    "        M|@||@) M",
+    "        @,----.JM|",
+    "       JS^\\__/  qKL",
+    "     dZP        qKRb",
+    "     dZP          qKKb",
+    "    fZP            SMMb",
+    "    HZM            MMMM",
+    "    FqM            MMMM",
+    "   __| \".        |\\dS\"qML",
+    "   |    `.       | `' \\Zq   \\",
+    "  _nnnn_)      \.___.,|     .'",
+    "  \\____)MMMMMP|   .'",
+    "    `-'       `--'"
+  ],
+  [
+    "                PYTHON",
+    "",
+    "             .::::::::::.",
+    "           .::``::::::::::.",
+    "           :::..:::::::::::",
+    "           ````````::::::::",
+    "   .::::::::::::::::::::::: iiiiiii,",
+    ".:::::::::::::::::::::::::: iiiiiiiii.",
+    "::::::::::::::::::::::::::: iiiiiiiiii",
+    "::::::::::::::::::::::::::: iiiiiiiiii",
+    ":::::::::: ,,,,,,,,,,,,,,,,,iiiiiiiiii",
+    ":::::::::: iiiiiiiiiiiiiiiiiiiiiiiiiii",
+    "`::::::::: iiiiiiiiiiiiiiiiiiiiiiiiii`",
+    "   `:::::: iiiiiiiiiiiiiiiiiiiiiii`",
+    "           iiiiiiii,,,,,,,,",
+    "           iiiiiiiiiii''iii",
+    "           `iiiiiiiiii..ii`",
+    "             `iiiiiiiiii`",
+  ]
+]
+
+const MAX_ASCII_CHAR_WIDTH = 40;
+let ASCIIS = [];
+
+for (var ascii_array of ascii_arrays) {
+  for (var line of ascii_array) {
+    if (line.length > MAX_ASCII_CHAR_WIDTH) {
+      throw "ASCII art provided is greater MAX_ASCII_CHAR_WIDTH: " + MAX_ASCII_CHAR_WIDTH
+    }
+  }
+
+  ASCIIS.push(ascii_array.join("\n"));
+}
+
 const PANES_CONTENT = {
   mainPaneContents: [
     // {
@@ -28,24 +84,7 @@ const PANES_CONTENT = {
       promptText: "art",
       resultTag: "pre",
       result: [
-        "         Linux-Penguin         \n" +
-        "                               \n" +
-        "          _nnnn_               \n" +
-        "         dGGGGMM               \n" +
-        "        @p-qp--qM              \n" +
-        "        M|@||@) M              \n" +
-        "        @,----.JM|             \n" +
-        "       JS^\\__/  qKL           \n" +
-        "     dZP        qKRb           \n" +
-        "     dZP          qKKb         \n" +
-        "    fZP            SMMb        \n" +
-        "    HZM            MMMM        \n" +
-        "    FqM            MMMM        \n" +
-        "   __| \".        |\\dS\"qML   \n" +
-        "   |    `.       | `' \\Zq   \\\n" +
-        "  _nnnn_)      \.___.,|     .' \n" +
-        "  \\____)MMMMMP|   .'          \n" +
-        "    `-'       `--'              "
+        ASCIIS[1]
       ]
     }
   ],

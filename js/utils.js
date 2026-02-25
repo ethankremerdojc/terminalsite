@@ -34,3 +34,14 @@ async function typeOutTextContent(element, content, delayRange) {
     tick()
   })
 }
+
+async function fadeInContent(element, content, transitionTime) {
+  let pane = element.closest(".terminal-pane");
+  element.style.opacity = "0";
+  element.innerHTML = content;
+  pane.scrollTop = pane.scrollHeight;
+
+  element.style.transition = `opacity ${transitionTime}s ease-in-out`;
+  element.style.opacity = "1";
+  await wait(transitionTime)
+}

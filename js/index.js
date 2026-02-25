@@ -22,7 +22,6 @@ function getPromptResponse(userText) {
   }
 }
 
-
 function getPromptDiv() {
   let promptDiv = document.createElement("h1");
   promptDiv.classList.add("prompt");
@@ -67,7 +66,23 @@ async function handlePromptSubmit(e) {
   focusLatestInput();
 }
 
-async function populatePrompt(promptDiv, promptText, speed, isFirst=false) {
+function getResultDiv() {
+  let resultDiv = document.createElement("div");
+  resultDiv.classList.add("result");
+
+  return resultDiv
+}
+
+async function handleContentInjection(element, content, method, speed) {
+  if (method == "type-out") {
+    await typeOutTextContent(element, content, [50 / speed, 250 / speed]);
+  }
+  if (method == "fade-in") {
+    await fadeInContent(element, content, 8/speed);
+  }
+}
+
+async function populatePrompt(promptDiv, promptText, speed, method, isFirst=false) {
   let ps1 = document.createElement("span");
   ps1.classList.add("prompt-ps1");
   ps1.innerHTML = "<name>ethan_kremer</name><at>@</at><host>site: </host>";
@@ -82,8 +97,7 @@ async function populatePrompt(promptDiv, promptText, speed, isFirst=false) {
   let promptInput;
 
   if (promptText) {
-    //promptInputSpan.innerHTML = promptText;
-    await typeOutTextContent(promptInputSpan, promptText, [50 / speed, 250 / speed]);
+    await handleContentInjection(promptInputSpan, promptText, method, speed);
   } else {
     promptInput = document.createElement("input");
     promptInput.id = "promptInput";
@@ -99,28 +113,21 @@ async function populatePrompt(promptDiv, promptText, speed, isFirst=false) {
   };
 }
 
-function getResultDiv() {
-  let resultDiv = document.createElement("div");
-  resultDiv.classList.add("result");
-
-  return resultDiv
-}
-
-async function populateResult(resultDiv, resultLines, resultTag, speed) {
+async function populateResult(resultDiv, resultLines, resultTag, method, speed) {
    for (var resultLine of resultLines) {
     let resultElem = document.createElement(resultTag);
     resultDiv.appendChild(resultElem);
 
-    await typeOutTextContent(resultElem, resultLine, [5 / speed, 50 / speed]);
+    await handleContentInjection(resultElem, resultLine, method, speed*8);
   }
 }
 
-async function populatePaneChunk(chunk, paneContent, speed, isFirst=false) {
+async function populatePaneChunk(chunk, paneContent, speed, method, isFirst=false) {
   const {promptText, result, resultTag} = paneContent;
 
   const promptDiv = getPromptDiv();
   chunk.appendChild(promptDiv);
-  await populatePrompt(promptDiv, promptText, speed, isFirst);
+  await populatePrompt(promptDiv, promptText, speed, method, isFirst);
 
   let pane = chunk.closest(".terminal-pane");
   pane.scrollTop = pane.scrollHeight;
@@ -129,12 +136,12 @@ async function populatePaneChunk(chunk, paneContent, speed, isFirst=false) {
   
   let resultDiv = getResultDiv();
   chunk.appendChild(resultDiv);
-  await populateResult(resultDiv, result, resultTag, speed);
+  await populateResult(resultDiv, result, resultTag, method, speed);
 }
 
 // END PROMPT STUFFS
 
-async function loadTerminalPane(paneId, contentId, speed) {
+async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
   const terminalPane = document.getElementById(paneId);
 
   let paneContents = PANES_CONTENT[contentId];
@@ -145,7 +152,7 @@ async function loadTerminalPane(paneId, contentId, speed) {
     terminalPane.appendChild(chunk);
 
     await populatePaneChunk(
-      chunk, paneContent, speed, true
+      chunk, paneContent, speed, method, true
     );
 
     await wait(250 / speed);
@@ -155,7 +162,7 @@ async function loadTerminalPane(paneId, contentId, speed) {
 async function loadTopSections() {
 
   // below two will be loaded at the same time
-  loadTerminalPane("ascii-art-pane", 'artPaneContents', 4);
+  loadTerminalPane("ascii-art-pane", 'artPaneContents', 4, "fade-in");
   await loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
 
   // we will focus the terminal after that

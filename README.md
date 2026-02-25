@@ -19,3 +19,4 @@
   - Fix reversing on self logic
   - make initial snake random
   - make height somewhat customish?
+10. Ascii:
