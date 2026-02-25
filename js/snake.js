@@ -104,8 +104,6 @@ function getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight) {
 
     if (!elemIntersectsArray(potentialFruit, snakeSegments) && !elemIntersectsArray(potentialFruit, fruits)) {
       return potentialFruit
-    } else {
-      console.log("failed fruit placement")
     }
   }
 }
@@ -152,6 +150,8 @@ function draw(snakeSegments, fruits, fieldElem) {
   }
 }
 
+
+
 function handleKeyPress(e) {
   //TODO  Have this check if the segment before head would be munched, instead of what current direction is
   //      In case user manages to switch directions multiple times per frame
@@ -162,37 +162,35 @@ function handleKeyPress(e) {
 
   e.preventDefault();
 
+  let snakeHead = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1];
+  let proposedDirection;
+
   switch (e.keyCode) {
     case 37: // Left Key
-      if (DIRECTION != "+x") {
-        DIRECTION = "-x";
-      }
+      proposedDirection = "-x";
       break;
     case 39: // Right Key
-      if (DIRECTION != "-x") {
-        DIRECTION = "+x";
-      }
+      proposedDirection = "+x";
       break;
     case 38: // Up Key
-      if (DIRECTION != "-y") {
-        DIRECTION = "+y";
-      }
+      proposedDirection = "+y";
       break;
     case 40: // Down Key
-      if (DIRECTION != "+y") {
-        DIRECTION = "-y";
-      }
+      proposedDirection = "-y";
       break;
     default:
       break;
    }
+
+  let proposedNewHead = getNewSnakeHead(SNAKE_SEGMENTS, proposedDirection, BOARD_WIDTH, BOARD_HEIGHT);
+  let neck = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 2];
+
+  if (proposedNewHead[0] != neck[0] && proposedNewHead[1] != neck[1]) { DIRECTION = proposedDirection; }
 }
 
 function getFruitBeingEaten(head, fruits) {
   for (var fruit of fruits) {
-
     if (elemIntersects(head, fruit)) {
-      console.log("intersect", head, fruit);
       return fruit
     }
   }
@@ -228,11 +226,15 @@ const SQUARE_SIZE = 20;
 const STARTING_FRUIT = 3;
 
 // GLOBAL VARS
+var SNAKE_SEGMENTS = [];
 
 var DIRECTION = "+x";
 var RUNNING = false;
 var PAUSED = false;
 var JUST_DIED = false;
+
+var BOARD_WIDTH = null;
+var BOARD_HEIGHT = null;
 
 function initializeSnake() {
   const playField = document.getElementById("toys-container");
@@ -241,49 +243,46 @@ function initializeSnake() {
 
   // split up into 20x20px blocks
 
-  const blocksWidth = Math.floor(boardWidth / SQUARE_SIZE);
-  const blocksHeight = Math.floor(boardHeight / SQUARE_SIZE);
+  BOARD_WIDTH = Math.floor(boardWidth / SQUARE_SIZE);
+  BOARD_HEIGHT = Math.floor(boardHeight / SQUARE_SIZE);
+  
 
-  let snakeSegments = structuredClone(INITIAL_SNAKE_SEGMENTS);
+  SNAKE_SEGMENTS = structuredClone(INITIAL_SNAKE_SEGMENTS);
   let fruits = [];
 
   let currentSpeed = 1.0;
 
   for (let i=0;i<STARTING_FRUIT;i++) {
-    fruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight))
+    fruits.push(getNewFruit(SNAKE_SEGMENTS, fruits, BOARD_WIDTH, BOARD_HEIGHT))
   }
 
   document.body.addEventListener("keydown", handleKeyPress);
 
-  draw(snakeSegments, fruits, playField);
+  draw(SNAKE_SEGMENTS, fruits, playField);
 
   function gameLoop() {
-    if (!RUNNING) {
-      return
-    }
+    if (!RUNNING) { return }
+    draw(SNAKE_SEGMENTS, fruits, playField);
 
-    draw(snakeSegments, fruits, playField);
-
-    let fruitBeingEaten = getFruitBeingEaten(snakeSegments[snakeSegments.length - 1], fruits);
+    let fruitBeingEaten = getFruitBeingEaten(SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1], fruits);
 
     if (fruitBeingEaten) {
-      console.log("fruit is being munched");
-      fruits = replaceFruit(fruits, fruitBeingEaten, snakeSegments, blocksWidth,  blocksHeight);
+      fruits = replaceFruit(fruits, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
       currentSpeed = currentSpeed + 0.05;
     } else {
-      snakeSegments = snakeSegments.slice(1); // this line will be conditional on a fruit on the space when we add those
+      SNAKE_SEGMENTS = SNAKE_SEGMENTS.slice(1); // this line will be conditional on a fruit on the space when we add those
     }
    
-    let newSnakeHead = getNewSnakeHead(snakeSegments, DIRECTION, blocksWidth, blocksHeight);
+    let newSnakeHead = getNewSnakeHead(SNAKE_SEGMENTS, DIRECTION, BOARD_WIDTH, BOARD_HEIGHT);
 
-    if (elemIntersectsArray(newSnakeHead, snakeSegments)) {
+    if (elemIntersectsArray(newSnakeHead, SNAKE_SEGMENTS)) {
       RUNNING = false;
       JUST_DIED = true;
 
-      draw(snakeSegments, fruits, playField);
+      draw(SNAKE_SEGMENTS, fruits, playField);
     }
 
-    snakeSegments.push(newSnakeHead);
+    SNAKE_SEGMENTS.push(newSnakeHead);
 
     if (fruitBeingEaten) {
       resetGameLoop();
