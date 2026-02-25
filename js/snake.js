@@ -156,11 +156,13 @@ function handleKeyPress(e) {
   //TODO  Have this check if the segment before head would be munched, instead of what current direction is
   //      In case user manages to switch directions multiple times per frame
 
-  if (!RUNNING) {
+  if (!RUNNING) { return }
+
+  if ([37, 38, 39, 40].includes(e.keyCode)) {
+    e.preventDefault();
+  } else {
     return
   }
-
-  e.preventDefault();
 
   let snakeHead = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1];
   let proposedDirection;
@@ -181,6 +183,8 @@ function handleKeyPress(e) {
     default:
       break;
    }
+
+
 
   let proposedNewHead = getNewSnakeHead(SNAKE_SEGMENTS, proposedDirection, BOARD_WIDTH, BOARD_HEIGHT);
   let neck = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 2];
