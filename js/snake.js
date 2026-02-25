@@ -182,9 +182,7 @@ function handleKeyPress(e) {
       break;
     default:
       break;
-   }
-
-
+  }
 
   let proposedNewHead = getNewSnakeHead(SNAKE_SEGMENTS, proposedDirection, BOARD_WIDTH, BOARD_HEIGHT);
   let neck = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 2];

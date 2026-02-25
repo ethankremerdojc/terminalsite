@@ -65,7 +65,6 @@ function getPromptDiv() {
 }
 
 function focusLatestInput() {
-  console.log("focusing latest input");
   let newInput = document.getElementById("promptInput");
   newInput.focus();
 }

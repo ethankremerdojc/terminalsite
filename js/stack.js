@@ -53,8 +53,6 @@ async function updateStackInfo(itemType) {
 
   let stackInfo = STACK_INFO[itemType];
 
-  console.log(stackItemName.innerHTML)
-  
   await typeOutTextContent(stackItemName, stackInfo.title, [20, 100]);
   await typeOutTextContent(stackDetails, stackInfo.details.join(" "), [4, 40]);
 

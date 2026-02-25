@@ -65,9 +65,6 @@ async function populatePaneChunk(chunk, paneContent, speed, method="type-out", i
 // END PROMPT STUFFS
 
 async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
-
-  console.log("loading pane with id", paneId);
-
   const terminalPane = document.getElementById(paneId);
 
   let paneContents = PANES_CONTENT[contentId];
