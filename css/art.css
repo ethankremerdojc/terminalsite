@@ -1,8 +1,61 @@
-pre {
+#ascii-art-pane {
 
+  .pane-chunk {
+    height: 100%;
+  }
+
+  .result {
+
+    height: calc(100% - var(--spacing) - 27px); /* Height  of the text in the prompt */
+
+    rawhtml {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--half-spacing);
+      flex-direction: column;
+      width: calc(100% - var(--spacing));
+      height: calc(100% - var(--spacing));
+      padding: var(--half-spacing);
+    }
+  }
+}
+
+pre {
+  transition: opacity 1.5s ease;
   font-family: var(--font-family-monospace);
   line-height: 22px;
   font-weight: 300;
   width: fit-content;
-  margin: 0 auto;
+}
+
+#ascii-nav {
+
+  button, &:before, &:after {
+    opacity: 0.6;
+    font-size: 28px;
+  }
+
+  &:before {
+    content: "(";
+  }
+
+  &:after {
+    content: ")";
+  }
+
+  button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+
+    opacity: 0.6;
+
+    transition: opacity 0.3s ease;
+
+    &.active {
+      opacity: 1;
+    }
+  }
 }

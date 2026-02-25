@@ -45,3 +45,12 @@ async function fadeInContent(element, content, transitionTime) {
   element.style.opacity = "1";
   await wait(transitionTime)
 }
+
+async function handleContentInjection(element, content, method, speed) {
+  if (method == "type-out") {
+    await typeOutTextContent(element, content, [50 / speed, 250 / speed]);
+  }
+  if (method == "fade-in") {
+    await fadeInContent(element, content, 20/speed);
+  }
+}

@@ -16,6 +16,8 @@
   --dark-gray: #282828;
   --purple: #8b34c5;
 
+  --pane-opacity: 0.8;
+
   --spacing: 28px;
   --half-spacing: calc(var(--spacing) / 2);
 
@@ -71,7 +73,7 @@ main {
 
 .terminal-pane {
   border: var(--white-border);
-  background-color: var(--medium-gray);
+  background-color: rgb(from var(--medium-gray) r g b / var(--pane-opacity));
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: scroll;
 
@@ -110,10 +112,11 @@ main {
 
   input {
     height: 20px;
+    font-family: var(--font-family-monospace);
   }
 
   h1 {
-    background-color: var(--dark-gray);
+    background-color: rgb(from var(--dark-gray) r g b / var(--pane-opacity));
     padding: var(--half-spacing);
     border-bottom: var(--white-border);
   }
@@ -166,12 +169,20 @@ main {
 
 /* CUSTOM HEIGHTS FOR PANES */
 
-#main-terminal-pane, #ascii-art-pane {
-  min-height: max(70vh, 600px);
+#main-terminal-pane {
+  height: 630px;
 }
 
 #stack-pane {
   min-height: max(35vh, 350px);
+}
+
+#toys-pane {
+  min-height: 712px;
+}
+
+#outro-pane, #contact-pane {
+  min-height: 400px;
 }
 
 @media screen and (max-width: 930px) {

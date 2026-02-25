@@ -6,7 +6,31 @@ const EMPTY_PANE = {
 
 let ascii_arrays = [
   [
-    "         Linux-Penguin",
+    "              MANDELBROT",
+    "",
+    "                           ..",
+    "                          .:+:-.",
+    "                        ..::*=:..",
+    "                     ....::####:...",
+    "                  ...-=::--*##=-::::=.",
+    "                ....::##############=.",
+    "          ........::#@#############@:.",
+    "        ..:%::=::::-#################%",
+    "      ....::*#####=##################+",
+    "  ......:==%#########################.",
+    ":::#:===+##########################-:.",
+    "   .....:--%#########################:",
+    "       ...::*#####-##################+",
+    "         .:=::-::::=#################@",
+    "          .........:#+#############+:.",
+    "                ....::############%@+.",
+    "                   ..:-:::-###=:::..:.",
+    "                     ....::###%:...",
+    "                        ...:-=:..",
+    "                          .:%::."
+  ],
+  [
+    "       LINUX PENGUIN",
     "",
     "          _nnnn_",
     "         dGGGGMM",
@@ -44,6 +68,23 @@ let ascii_arrays = [
     "           iiiiiiiiiii''iii",
     "           `iiiiiiiiii..ii`",
     "             `iiiiiiiiii`",
+  ],
+  [
+    "        .--'''''''''--.",
+    "     .'      .---.      '.",
+    "    /    .-----------.    \\",
+    "   /        .-----.        \\",
+    "   |       .-.   .-.       |",
+    "   |      /   \\ /   \\      |",
+    "    \\    | .-. | .-. |    /",
+    "     '-._| | | | | | |_.-'",
+    "         | '-' | '-' |",
+    "          \\___/ \\___/",
+    "       _.-'  /   \\  `-._",
+    "     .' _.--|     |--._ '.",
+    "     ' _...-|     |-..._ '",
+    "            |     |",
+    "            '.___.'"
   ]
 ]
 
@@ -82,9 +123,10 @@ const PANES_CONTENT = {
   artPaneContents: [
     {
       promptText: "art",
-      resultTag: "pre",
+      resultTag: "rawhtml",
       result: [
-        ASCIIS[1]
+        `<pre id="ascii-art-pre">${ASCIIS[0]}</pre>` +
+        `<div id="ascii-nav"></div>`
       ]
     }
   ],
@@ -142,83 +184,3 @@ const PANES_CONTENT = {
     },
   ]
 };
-
-// each response must return an array of items
-
-const RESPONSES = {
-  commands: {
-    commands: () => {
-      return `commands cd ls clear`.split(" ")
-    },
-    cd: (args) => {
-      let dir = args[0];
-      return [`Changing current working dir to '${dir}'`];
-    },
-    ls: (args) => {
-      if (args.length == 0) {
-        return "icons/ README.md index.html index.js main.css variables.js".split(" ")
-      }
-      let dir = args[0];
-      if (["icons", "icons/"].includes(dir)) {
-        return "bash.svg css.svg docker.svg html.svg js.svg nginx.svg python.svg react.svg".split(" ")
-      }
-      return [`Unknown dir: '${dir}'`]
-    },
-    clear: () => {
-      return ["clearing screen"]
-    },
-    cls: () => {
-      return ["clearing screen"]
-    }
-  },
-  errors: {
-    unknownCmd: (cmd) => [`Unknown command: ${cmd}`],
-    unknownErr: (err) => [`Unknown err: [${err}]`]
-  }
-}
-
-const STACK_INFO = {
-  "python": {
-    title: "Python",
-    details: [
-      "python stuff",
-      "for sure"
-    ]
-  },
-  "js": {
-    title: "JavaScript",
-    details: [
-      "js stuff",
-      "for sure"
-    ]
-  },
-  "html": {
-    title: "HTML",
-    details: [
-      "html stuff",
-      "for sure"
-    ]
-  },
-  "css": {
-    title: "CSS",
-    details: [
-      "css stuff",
-      "for sure"
-    ]
-  },
-  "bash": {
-    title: "Scripting",
-    details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
-    ]
-  }
-}
-
-
-
-
-
-
-
-

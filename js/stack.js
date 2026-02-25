@@ -1,3 +1,41 @@
+const STACK_INFO = {
+  "python": {
+    title: "Python",
+    details: [
+      "python stuff",
+      "for sure"
+    ]
+  },
+  "js": {
+    title: "JavaScript",
+    details: [
+      "js stuff",
+      "for sure"
+    ]
+  },
+  "html": {
+    title: "HTML",
+    details: [
+      "html stuff",
+      "for sure"
+    ]
+  },
+  "css": {
+    title: "CSS",
+    details: [
+      "css stuff",
+      "for sure"
+    ]
+  },
+  "bash": {
+    title: "Scripting",
+    details: [
+      "bash, ps1, etc. stuff",
+      "for sure"
+    ]
+  }
+}
+
 function getDetailsHtml(details) {
   let result = '';
   for (var detail of details) {
