@@ -1,7 +1,12 @@
+let CWD = "/site";
+
 const RESPONSES = {
   commands: {
-    commands: () => {
-      return `commands cd ls clear`.split(" ")
+    help: () => {
+      return `commands cd ls clear`.split(" ") // have this list the keys of this
+    },
+    pwd: () => {
+      return [CWD]
     },
     cd: (args) => {
       let dir = args[0];
