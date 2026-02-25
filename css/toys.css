@@ -26,7 +26,7 @@
   }
 }
 
-#toys-container {
+#toys-container-snake {
   margin: 8px;
   height: min(600px, 60vh);
   width: calc(100% - var(--spacing) - (var(--border-width) * 2));

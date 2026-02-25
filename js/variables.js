@@ -163,7 +163,10 @@ const PANES_CONTENT = {
           '<li>[ DONUT ]</li>' +
           '<li>[ MATRIX ]</li>' +
         '</ul>' +
-        '<div id="toys-container" class="snake">Snake</div>'
+        // '<div id="toys-container-snake" class="snake">Snake</div>',
+        '<div id="toys-container-donut" class="donut">' +
+          '<pre id="output" style="font-size: 7px; font-weight: bolder;"></pre>' +
+        '</div>',
       ]
     }
   ],

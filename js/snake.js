@@ -239,7 +239,7 @@ var BOARD_WIDTH = null;
 var BOARD_HEIGHT = null;
 
 function initializeSnake() {
-  const playField = document.getElementById("toys-container");
+  const playField = document.getElementById("toys-container-snake");
   const boardWidth = playField.clientWidth;
   const boardHeight = playField.clientHeight;
 

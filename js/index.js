@@ -100,7 +100,8 @@ async function loadToysPane() {
   await loadTerminalPane("toys-pane", 'toysPaneContents', 40);
 
   // from snake.js
-  initializeSnake();
+  runDonut();
+  // initializeSnake();
   loadToysNav();
 }
 
