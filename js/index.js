@@ -101,7 +101,6 @@ async function loadToysPane() {
 
   // from snake.js
   runDonut();
-  initializeSnake();
   hideAllToys();
 
   await loadToysNav();

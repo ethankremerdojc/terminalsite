@@ -4,6 +4,7 @@
 @import "toys.css";
 @import "stack.css";
 @import "donut.css";
+@import "hangman.css";
 
 :root {
   --white: rgb(215, 215, 215);

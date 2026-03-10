@@ -1,0 +1,24 @@
+.hangman {
+  position: relative;
+}
+
+.letter-button {
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--green);
+  }
+}
+
+.letter-button-selected {
+  opacity: 0.8;
+  &:after {
+    content: "-";
+    color: var(--blue);
+    font-size: 40px;
+    position: absolute;
+    left: -2px;
+    top: -12px;
+  }
+}

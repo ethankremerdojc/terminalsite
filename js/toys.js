@@ -18,6 +18,23 @@ function activateNavItem(name) {
 function showToy(name) {
   document.getElementById(`toys-container-${name}`).style.display = "block";
   activateNavItem(name);
+
+  if (SNAKE_RUNNING) {
+    SNAKE_RUNNING = false;
+    SNAKE_PAUSED = false;
+    stopSnakeGameLoop();
+  }
+
+  switch (name) {
+    case "snake":
+      initializeSnake();
+      break;
+    case "hangman":
+      initializeHangman();
+  
+    default:
+      break;
+  }
 }
 
 function loadToysNav() {
@@ -34,4 +51,24 @@ function loadToysNav() {
   for (var li of toysNavItems) {
     li.onclick = setActive;
   }
+}
+
+let SQUARE_SIZE = 20;
+var BOARD_WIDTH = null;
+var BOARD_HEIGHT = null;
+
+function placeElem(position, fieldElem, char, elemClass, onClick=null) {
+  const [x, y] = position;
+  let segmentElem = document.createElement("p");
+
+  segmentElem.style.top = `${SQUARE_SIZE * y}px`;
+  segmentElem.style.left = `${SQUARE_SIZE * x}px`;
+  segmentElem.className = elemClass;
+  segmentElem.innerHTML = char;
+
+  if (onClick) {
+    segmentElem.onclick = onClick;
+  }
+
+  fieldElem.appendChild(segmentElem);
 }
