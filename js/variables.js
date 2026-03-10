@@ -161,9 +161,9 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         '<ul id="toys-header-items">' +
-          '<li>[ SNAKE ]</li>' +
-          '<li>[ HANGMAN ]</li>' +
-          '<li>[ DONUT ]</li>' +
+          '<li id="nav-item-snake">[ SNAKE ]</li>' +
+          '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
+          '<li id="nav-item-donut">[ DONUT ]</li>' +
         '</ul>' +
         '<div id="toys-container-snake" class="snake toy-div">Snake</div>' +
         '<div id="toys-container-hangman" class="hangman toy-div">Hangman</div>' +

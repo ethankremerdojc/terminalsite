@@ -13,6 +13,24 @@
     }
   }
 
+  .infobutton {
+    /* top and left are set by game, we want to move them to center instead. */
+    top: unset !important;
+    left: unset !important;
+
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--green);
+      cursor: pointer;
+    }
+
+  }
+
   .snake {
     color: var(--green);
   }
