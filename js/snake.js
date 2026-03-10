@@ -118,7 +118,7 @@ function placeFruits(fruits, fieldElem) {
 // GAME INFO
 
 function placePauseText(fieldElem) {
-  placeElem([0, 0], fieldElem, "Snake: PAUSED", "infobutton", () => { PAUSED = false })
+  placeElem([0, 0], fieldElem, "Snake: PAUSED (Click to continue)", "infobutton", () => { PAUSED = false; RUNNING = true; })
 }
 
 function placeStartText(fieldElem) {
@@ -126,17 +126,22 @@ function placeStartText(fieldElem) {
 }
 
 function placeDeadText(fieldElem) {
-  placeElem([0, 1], fieldElem, "Snake: YOU DIED", "infobutton")
+  placeElem([0, 1], fieldElem, "Snake: YOU DIED", "infotext")
+}
+
+function placeGameDetails(fieldElem) {
+  placeElem([0, 1], fieldElem, `Score: ${SCORE} | Snake Speed: ${Math.floor(CURRENT_SPEED * 100) / 100}`, "infotext");
 }
 
 // DRAW FUNC
 
-function draw(snakeSegments, fruits, fieldElem) {
+function draw(snakeSegments, fruits, fieldElem, ) {
   fieldElem.innerHTML = "&nbsp;"; // Reset
 
   if (RUNNING) {
     placeFruits(fruits, fieldElem);
-    placeSnakeSegments(snakeSegments, fieldElem);   
+    placeSnakeSegments(snakeSegments, fieldElem);
+    placeGameDetails(fieldElem);
   } else {
     if (PAUSED) {
       placePauseText(fieldElem);
@@ -149,8 +154,6 @@ function draw(snakeSegments, fruits, fieldElem) {
     }
   }
 }
-
-
 
 function handleKeyPress(e) {
   //TODO  Have this check if the segment before head would be munched, instead of what current direction is
@@ -231,12 +234,21 @@ const STARTING_FRUIT = 3;
 var SNAKE_SEGMENTS = [];
 
 var DIRECTION = "+x";
+var CURRENT_SPEED = 1.0;
+var SCORE = 0;
 var RUNNING = false;
 var PAUSED = false;
 var JUST_DIED = false;
 
 var BOARD_WIDTH = null;
 var BOARD_HEIGHT = null;
+
+function pauseGame() {
+  const playField = document.getElementById("toys-container-snake");
+  RUNNING = false;
+  PAUSED = true;
+  draw([], [], playField);
+}
 
 function initializeSnake() {
   const playField = document.getElementById("toys-container-snake");
@@ -252,13 +264,22 @@ function initializeSnake() {
   SNAKE_SEGMENTS = structuredClone(INITIAL_SNAKE_SEGMENTS);
   let fruits = [];
 
-  let currentSpeed = 1.0;
+  CURRENT_SPEED = 1.0;
+  SCORE = 0;
 
   for (let i=0;i<STARTING_FRUIT;i++) {
     fruits.push(getNewFruit(SNAKE_SEGMENTS, fruits, BOARD_WIDTH, BOARD_HEIGHT))
   }
 
   document.body.addEventListener("keydown", handleKeyPress);
+  document.body.addEventListener("mousedown", (e) => {
+    let snakeDiv = document.getElementById("toys-container-snake");
+    if (!snakeDiv.contains(e.target)) {
+      if (!PAUSED && RUNNING) {
+        pauseGame();
+      }
+    }
+  });
 
   draw(SNAKE_SEGMENTS, fruits, playField);
 
@@ -270,7 +291,8 @@ function initializeSnake() {
 
     if (fruitBeingEaten) {
       fruits = replaceFruit(fruits, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
-      currentSpeed = currentSpeed + 0.05;
+      CURRENT_SPEED = CURRENT_SPEED + 0.05;
+      SCORE += 1;
     } else {
       SNAKE_SEGMENTS = SNAKE_SEGMENTS.slice(1); // this line will be conditional on a fruit on the space when we add those
     }
@@ -296,7 +318,7 @@ function initializeSnake() {
   }
 
   function startGameLoop() {
-    gameLoopInterval = setInterval(gameLoop, 200/currentSpeed);
+    gameLoopInterval = setInterval(gameLoop, 200/CURRENT_SPEED);
   }
 
   function resetGameLoop() {
@@ -306,7 +328,7 @@ function initializeSnake() {
 
   // GAME LOOP
   let gameLoopInterval;
-  startGameLoop(currentSpeed);
+  startGameLoop(CURRENT_SPEED);
 }
 
 
