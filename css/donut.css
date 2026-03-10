@@ -1,6 +1,7 @@
 #output {
   font-family: var(--font-family-monospace);
-  font-size: 14px !important;
+  font-size: 13px !important;
+  line-height: 16px;
 }
 
 #toys-container-donut {

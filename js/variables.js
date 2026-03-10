@@ -90,6 +90,9 @@ let ascii_arrays = [
   ]
 ]
 
+// Ascii art credits to:
+// https://www.asciiart.eu/
+
 const MAX_ASCII_CHAR_WIDTH = 40;
 let ASCIIS = [];
 
@@ -158,13 +161,13 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         '<ul id="toys-header-items">' +
-          '<li class="active">[ SNAKE ]</li>' +
+          '<li>[ SNAKE ]</li>' +
           '<li>[ HANGMAN ]</li>' +
           '<li>[ DONUT ]</li>' +
-          '<li>[ MATRIX ]</li>' +
         '</ul>' +
-        // '<div id="toys-container-snake" class="snake">Snake</div>',
-        '<div id="toys-container-donut" class="donut">' +
+        '<div id="toys-container-snake" class="snake toy-div">Snake</div>' +
+        '<div id="toys-container-hangman" class="hangman toy-div">Hangman</div>' +
+        '<div id="toys-container-donut" class="donut toy-div">' +
           '<pre id="output" style="font-size: 7px; font-weight: bolder;"></pre>' +
         '</div>',
       ]

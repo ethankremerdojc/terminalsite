@@ -97,12 +97,16 @@ async function loadStackPane() {
 }
 
 async function loadToysPane() {
-  await loadTerminalPane("toys-pane", 'toysPaneContents', 40);
+  await loadTerminalPane("toys-pane", 'toysPaneContents', 40, "fade-in");
 
   // from snake.js
   runDonut();
-  // initializeSnake();
-  loadToysNav();
+  initializeSnake();
+  hideAllToys();
+
+  await loadToysNav();
+  showToy("snake");
+
 }
 
 async function loadOutroPane() {

@@ -118,15 +118,15 @@ function placeFruits(fruits, fieldElem) {
 // GAME INFO
 
 function placePauseText(fieldElem) {
-  placeElem([0, 0], fieldElem, "PAUSED", "infobutton", () => { PAUSED = false })
+  placeElem([0, 0], fieldElem, "Snake: PAUSED", "infobutton", () => { PAUSED = false })
 }
 
 function placeStartText(fieldElem) {
-  placeElem([0, 0], fieldElem, "START", "infobutton", () => { RUNNING = true })
+  placeElem([0, 0], fieldElem, "Start Snake Game", "infobutton", () => { RUNNING = true })
 }
 
 function placeDeadText(fieldElem) {
-  placeElem([0, 1], fieldElem, "YOU DIED", "infobutton")
+  placeElem([0, 1], fieldElem, "Snake: YOU DIED", "infobutton")
 }
 
 // DRAW FUNC
