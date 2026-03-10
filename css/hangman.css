@@ -11,7 +11,7 @@
   }
 }
 
-.letter-button-selected {
+.letter-button-incorrect {
   opacity: 0.8;
   &:after {
     content: "-";
@@ -20,5 +20,55 @@
     position: absolute;
     left: -2px;
     top: -12px;
+  }
+}
+
+.letter-button-correct {
+  opacity: 0.8;
+  &:after {
+    content: "O";
+    color: var(--green);
+    font-size: 40px;
+    position: absolute;
+    left: -2px;
+    top: -12px;
+  }
+}
+
+.letter-button-game-over {
+  cursor: default !important;
+  opacity: 0.8;
+  &:hover {
+    color: white !important;
+  }
+}
+
+.bodypart-head, .bodypart-body, 
+.bodypart-leftarm, .bodypart-rightarm, 
+.bodypart-leftleg, .bodypart-rightleg, 
+.gallows-part,
+.char-to-guess
+{
+  font-size: 40px !important;
+}
+
+.bodypart-leftarm, .bodypart-leftleg {
+  padding-left: 20px !important;
+}
+
+.bodypart-rightarm, .bodypart-rightleg {
+  &:before {
+    content: "\\";
+    position: absolute;
+    left: -20px;
+  }
+}
+
+.char-to-guess {
+  &:after {
+    content: "_";
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }

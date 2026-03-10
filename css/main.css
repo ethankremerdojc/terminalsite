@@ -135,19 +135,6 @@ main {
     border-top: var(--white-border);
   }
 
-  .result {
-    p {
-      font-family: "IBM Plex Mono", monospace;
-      padding-left: var(--half-spacing);
-      padding-right: var(--half-spacing);
-      padding-bottom: var(--half-spacing);
-
-      &:first-child {
-        padding-top: var(--half-spacing);
-      }
-    }
-  }
-
   /* the 'PS1' before the prompt */
 
   name { color: var(--green); }
@@ -168,6 +155,20 @@ main {
   }
 }
 
+#main-terminal-pane, #stack-pane, #outro-pane, #contact-pane {
+  .result {
+    p {
+      font-family: "IBM Plex Mono", monospace;
+      padding-left: var(--half-spacing);
+      padding-right: var(--half-spacing);
+      padding-bottom: var(--half-spacing);
+
+      &:first-child {
+        padding-top: var(--half-spacing);
+      }
+    }
+  }
+}
 
 /* CUSTOM HEIGHTS FOR PANES */
 
