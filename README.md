@@ -7,16 +7,11 @@
 
 
 # TODOS
-1. Fix box shadows
-2. Update header
-3. set up backend somehow? django? Flask?
-4. set up contact form
-5. Add other toys
-6. Update 'stack'
-7. Find more ideas
-8. Add 'Experience' section?
-9. Snake:
-  - Fix reversing on self logic
+1. set up backend somehow? django? Flask?
+2. set up contact form
+3. Update 'stack'
+4. Add 'Experience' section?
+5. Snake:
   - make initial snake random
-  - make height somewhat customish?
-10. Ascii:
+6. Do mobile things
+7. Outro
