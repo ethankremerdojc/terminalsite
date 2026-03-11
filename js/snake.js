@@ -352,7 +352,23 @@ function gameLoop() {
   }
 }
 
+
+
+function handleResize() {
+  if (INITIALIZING_SNAKE) {
+    return
+  }
+
+  stopSnakeGameLoop();
+  SNAKE_PAUSED = false;
+  SNAKE_RUNNING = false;
+  initializeSnake();
+}
+
+var INITIALIZING_SNAKE = false;
+
 function initializeSnake() {
+  INITIALIZING_SNAKE = true;
   SNAKE_FIELD_ELEM = document.getElementById("toys-container-snake");
   const boardWidth = SNAKE_FIELD_ELEM.clientWidth;
   const boardHeight = SNAKE_FIELD_ELEM.clientHeight;
@@ -368,6 +384,7 @@ function initializeSnake() {
   
 
   SNAKE_SEGMENTS = structuredClone(INITIAL_SNAKE_SEGMENTS);
+  FRUITS = [];
 
   SNAKE_CURRENT_SPEED = 1.0;
   SNAKE_SCORE = 0;
@@ -378,9 +395,11 @@ function initializeSnake() {
 
   document.body.addEventListener("keydown", handleKeyPress);
   document.body.addEventListener("mousedown", handleClick);
+  window.addEventListener("resize", handleResize);
 
   drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
 
   // GAME LOOP
   resetSnakeGameLoop();
+  INITIALIZING_SNAKE = false;
 }

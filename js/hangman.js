@@ -110,7 +110,7 @@ function drawHangmanDude() {
       x = 2;
     }
 
-    placeElem([x + 1, y + 2], HANGMAN_FIELD_ELEM, bodyPartChar, `bodypart-${bodyPartName}`);
+    placeElem([x + 3, y + 2], HANGMAN_FIELD_ELEM, bodyPartChar, `bodypart-${bodyPartName}`);
   }
 }
 
@@ -132,7 +132,7 @@ function drawGallows() {
     let y = part[0][1];
     let char = part[1];
 
-    placeElem([x + 2, y], HANGMAN_FIELD_ELEM, char, `gallows-part`);
+    placeElem([x + 4, y], HANGMAN_FIELD_ELEM, char, `gallows-part`);
   }
 }
 
