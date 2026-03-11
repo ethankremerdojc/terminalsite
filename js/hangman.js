@@ -61,7 +61,7 @@ function drawLetterButtons() {
       }
     }
 
-    placeElem([x + 1, y + 7], HANGMAN_FIELD_ELEM, letter, buttonClass, func);
+    placeElem([x + 1, y + 10], HANGMAN_FIELD_ELEM, letter, buttonClass, func);
   }
 }
 
@@ -110,7 +110,7 @@ function drawHangmanDude() {
       x = 2;
     }
 
-    placeElem([x + 2, y + 2], HANGMAN_FIELD_ELEM, bodyPartChar, `bodypart-${bodyPartName}`);
+    placeElem([x + 1, y + 2], HANGMAN_FIELD_ELEM, bodyPartChar, `bodypart-${bodyPartName}`);
   }
 }
 
@@ -132,8 +132,19 @@ function drawGallows() {
     let y = part[0][1];
     let char = part[1];
 
-    placeElem([x + 3, y], HANGMAN_FIELD_ELEM, char, `gallows-part`);
+    placeElem([x + 2, y], HANGMAN_FIELD_ELEM, char, `gallows-part`);
   }
+}
+
+function getCharsToGuessLeftOffset() {
+  let width = 10;
+  let diff = 10 - WORD_TO_GUESS.length;
+
+  if (diff < 1) {
+    return 0
+  }
+
+  return Math.floor(diff/2);
 }
 
 function drawCharsToGuess() {
@@ -145,7 +156,7 @@ function drawCharsToGuess() {
       charToPlace = letter;
     }
 
-    placeElem([i + 8, 5], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess`);
+    placeElem([i + 1 + getCharsToGuessLeftOffset(), 7], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess`);
   }
 }
 
@@ -192,7 +203,7 @@ function initializeHangman() {
   const boardHeight = HANGMAN_FIELD_ELEM.clientHeight;
 
   SQUARE_SIZE = 40;
-  BOARD_WIDTH = Math.floor(boardWidth / SQUARE_SIZE);
+  BOARD_WIDTH = 12;
   BOARD_HEIGHT = Math.floor(boardHeight / SQUARE_SIZE);
 
   drawHangmanGame()

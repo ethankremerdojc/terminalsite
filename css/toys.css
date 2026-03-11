@@ -64,6 +64,7 @@
     font-weight: 700;
 
     transition: color 0.3s ease;
+    text-decoration: underline;
 
     &:hover {
       color: var(--green);
@@ -94,4 +95,12 @@
     padding: 0;
     margin: 0;
   }
+}
+
+.outer-hangman {
+  padding-left: calc((100% - 440px) / 2); /* 440px is the width of hangman roughly */
+}
+
+.outer-donut {
+  padding-left: calc((100% - 437px) / 2); /* Roughly width of donut */
 }
