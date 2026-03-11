@@ -72,3 +72,11 @@
     left: 0;
   }
 }
+
+.you-lose-char {
+  color: red !important;
+}
+
+.hangman-infobutton {
+  width: 440px !important;
+}

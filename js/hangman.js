@@ -152,11 +152,18 @@ function drawCharsToGuess() {
     let letter = WORD_TO_GUESS[i];
     let charToPlace = " ";
 
+    let extra = "";
+
     if (GUESSED_LETTERS.includes(letter)) {
       charToPlace = letter;
+    } else {
+      if (getBodyPartCount() == 6) {
+        charToPlace = letter;
+        extra = " you-lose-char";
+      }
     }
 
-    placeElem([i + 1 + getCharsToGuessLeftOffset(), 7], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess`);
+    placeElem([i + 1 + getCharsToGuessLeftOffset(), 7], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess` + extra);
   }
 }
 
@@ -170,11 +177,11 @@ function doesPlayerWin() {
 }
 
 function drawHangmanRestartButton() {
-  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You lose. Restart?", 'infobutton', initializeHangman);
+  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You lose. Restart?", 'infobutton hangman-infobutton', initializeHangman);
 }
 
 function drawHangmanPlayAgainButton() {
-  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You win! Play again?", 'infobutton', initializeHangman);
+  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You win! Play again?", 'infobutton hangman-infobutton', initializeHangman);
 }
 
 function drawHangmanGame() {

@@ -19,12 +19,16 @@ function elemIntersectsArray(elem, segments) {
 function placeSnakeSegments(segments) {
   for (let i=0; i<segments.length; i++) {
     let segment = segments[i];
+
+    let extra = "";
+
     if (i == segments.length - 1) {
       char = SNAKE_HEAD_CHAR;
+      extra = " snake-head"
     } else {
       char = SNAKE_SEGMENT_CHAR;
     }
-    placeElem(segment, SNAKE_FIELD_ELEM, char, "snake");
+    placeElem(segment, SNAKE_FIELD_ELEM, char, "snake" + extra);
   }
 }
 
@@ -120,6 +124,7 @@ function placeDeadText() {
 }
 
 function placeGameDetails() {
+  placeElem([0, 2], SNAKE_FIELD_ELEM, `Play with arrow keys, mouse or touch.`, "infotext");
   placeElem([0, 1], SNAKE_FIELD_ELEM, `Score: ${SNAKE_SCORE} | Snake Speed: ${Math.floor(SNAKE_CURRENT_SPEED * 100) / 100}`, "infotext");
 }
 
@@ -177,6 +182,72 @@ function handleKeyPress(e) {
       break;
   }
 
+  let proposedNewHead = getNewSnakeHead(SNAKE_SEGMENTS, proposedDirection, BOARD_WIDTH, BOARD_HEIGHT);
+  let neck = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 2];
+
+  if (proposedNewHead[0] != neck[0] && proposedNewHead[1] != neck[1]) { SNAKE_DIRECTION = proposedDirection; }
+}
+
+function getProposedDirectionFromOffsets(offsetX, offsetY, width, height) {
+  let result = "";
+
+  let xMidpoint = width/2;
+  let yMidpoint = height/2;
+
+  let xDist; let yDist;
+
+  if (offsetX < xMidpoint) {
+    xDist = xMidpoint - offsetX;
+  } else {
+    xDist = offsetX - xMidpoint;
+  }
+
+  if (offsetY < yMidpoint) {
+    yDist = yMidpoint - offsetY;
+  } else {
+    yDist = offsetY - yMidpoint;
+  }
+
+  let char;
+  let sign;
+
+  if (xDist > yDist) {
+    char = "x";
+
+    if (offsetX < xMidpoint) {
+      sign = "-";
+    } else {
+      sign = "+";
+    }
+  } else {
+    char = "y";
+
+    if (offsetY < yMidpoint) {
+      sign = "+";
+    } else {
+      sign = "-";
+    }
+  }
+
+  return sign + char;
+}
+
+function handleClick(e) {
+  let snakeDiv = document.getElementById("toys-container-snake");
+  if (!snakeDiv.contains(e.target)) {
+    if (!SNAKE_PAUSED && SNAKE_RUNNING) {
+      pauseGame();
+    }
+    return
+  }
+
+  const rect = snakeDiv.getBoundingClientRect();
+
+  const offsetX = e.clientX - rect.left;
+  const offsetY = e.clientY - rect.top;
+
+
+  let proposedDirection = getProposedDirectionFromOffsets(offsetX, offsetY, rect.width, rect.height);
   let proposedNewHead = getNewSnakeHead(SNAKE_SEGMENTS, proposedDirection, BOARD_WIDTH, BOARD_HEIGHT);
   let neck = SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 2];
 
@@ -258,7 +329,7 @@ function gameLoop() {
   let fruitBeingEaten = getFruitBeingEaten(SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1], FRUITS);
 
   if (fruitBeingEaten) {
-    fruits = replaceFruit(FRUITS, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
+    FRUITS = replaceFruit(FRUITS, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
     SNAKE_CURRENT_SPEED = SNAKE_CURRENT_SPEED + 0.05;
     SNAKE_SCORE += 1;
   } else {
@@ -277,7 +348,7 @@ function gameLoop() {
   SNAKE_SEGMENTS.push(newSnakeHead);
 
   if (fruitBeingEaten) {
-    resetGameSnakeLoop();
+    resetSnakeGameLoop();
   }
 }
 
@@ -306,14 +377,7 @@ function initializeSnake() {
   }
 
   document.body.addEventListener("keydown", handleKeyPress);
-  document.body.addEventListener("mousedown", (e) => {
-    let snakeDiv = document.getElementById("toys-container-snake");
-    if (!snakeDiv.contains(e.target)) {
-      if (!SNAKE_PAUSED && SNAKE_RUNNING) {
-        pauseGame();
-      }
-    }
-  });
+  document.body.addEventListener("mousedown", handleClick);
 
   drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
 

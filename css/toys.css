@@ -27,9 +27,9 @@
 }
 
 #toys-container-snake {
-  margin: 8px;
+  padding: 8px;
   height: min(600px, 60vh);
-  width: calc(100% - var(--spacing) - (var(--border-width) * 2));
+  width: calc(100% - var(--half-spacing) - (var(--border-width) * 2));
 
   & p {
     font-weight: 500;
@@ -73,7 +73,6 @@
   }
 
   .infotext {
-    top: unset !important;
     left: unset !important;
 
     font-weight: 400;
@@ -88,6 +87,7 @@
     padding: 0 !important;
     margin: 0 !important;
   }
+  width: 100%;
 }
 
 .hangman {
