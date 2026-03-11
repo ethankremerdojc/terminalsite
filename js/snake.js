@@ -355,7 +355,7 @@ function gameLoop() {
 
 
 function handleResize() {
-  if (INITIALIZING_SNAKE) {
+  if (INITIALIZING_SNAKE || !SNAKE_RUNNING) {
     return
   }
 
@@ -393,13 +393,13 @@ function initializeSnake() {
     FRUITS.push(getNewFruit(SNAKE_SEGMENTS, FRUITS, BOARD_WIDTH, BOARD_HEIGHT))
   }
 
-  document.body.addEventListener("keydown", handleKeyPress);
-  document.body.addEventListener("mousedown", handleClick);
-  window.addEventListener("resize", handleResize);
-
   drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
 
   // GAME LOOP
   resetSnakeGameLoop();
   INITIALIZING_SNAKE = false;
 }
+
+document.body.addEventListener("keydown", handleKeyPress);
+document.body.addEventListener("mousedown", handleClick);
+window.addEventListener("resize", handleResize);
