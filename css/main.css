@@ -196,9 +196,17 @@ main {
 }
 
 @media screen and (max-width: 940px) {
-  .first-two-thirds-pane, .last-third-pane {
-    grid-column: 1 / span 3;
+
+  main {
+    display: flex;
+    flex-direction: column;
   }
+
+  /* .first-two-thirds-pane, .last-third-pane { */
+  /*   grid-column: 1; */
+  /* } */
+
+  
 
   .pane-chunk {
     h1, p, input {
