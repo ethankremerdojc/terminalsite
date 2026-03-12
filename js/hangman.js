@@ -17,9 +17,7 @@ var GUESSED_LETTERS = [];
 var HANGMAN_FIELD_ELEM = null;
 
 function selectLetter(letter) {
-  console.log("Selected ", letter);
   GUESSED_LETTERS.push(letter);
-
   drawHangmanGame();
 }
 

@@ -1,5 +1,4 @@
 #ascii-art-pane {
-
   .pane-chunk {
     height: 100%;
   }
@@ -21,10 +20,15 @@
   }
 }
 
+.stack-tooltip {
+  text-align: center;
+}
+
 pre {
   transition: opacity 1.5s ease;
   font-family: var(--font-family-monospace);
-  line-height: 22px;
+  font-size: 17px;
+  line-height: 19px;
   font-weight: 300;
   width: fit-content;
 }

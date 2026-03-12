@@ -140,7 +140,7 @@ const PANES_CONTENT = {
       promptText: "stack",
       resultTag: "rawhtml",
       result: [
-        "<p>Hover over the icons for details.</p>" +
+        '<p class="stack-tooltip">Click on the icons for details.</p>' +
         '<ul id="stack-nav-items">' +
           '<li><img class="active" src="icons/python.svg" /></li>' +
           '<li><img src="icons/js.svg" /></li>' +

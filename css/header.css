@@ -4,6 +4,7 @@ header {
 
   h1 {
     color: var(--green);
+    font-size: 28px;
 
     &.buttonlike:hover {
       text-shadow: var(--green) 0px 0px 5px;

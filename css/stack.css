@@ -1,28 +1,32 @@
 #stack-nav-items {
 
+  --item-size: 70px;
+  --grow-amount: 20px;
+  --offset-amount: calc(var(--grow-amount) / 2 * -1);
+
   margin-top: var(--spacing);
 
   display: flex;
   list-style: none;
   justify-content: center;
-  gap: 70px;
+  gap: 50px;
 
   li {
-    width: 100px;
-    height: 100px;
+    width: var(--item-size);
+    height: var(--item-size);
     position: relative;
 
     img {
-      width: 100px;
+      width: var(--item-size);
       position: absolute;
       top: 0;
       left: 0;
       transition: all 0.25s ease-in-out;
 
       &:hover, &.active  {
-        width: 140px;
-        left: -20px;
-        top: -20px;
+        width: calc(var(--item-size) + var(--grow-amount));
+        left: var(--offset-amount);
+        top: var(--offset-amount);
       }
 
       &.active {
