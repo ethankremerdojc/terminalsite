@@ -74,21 +74,30 @@ main {
   position: absolute;
   z-index: 1;
   top: 0;
+
+  ::-webkit-scrollbar {
+    width: 18px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(from var(--purple) r g b / 0.8);
+    border-left: 2px solid white;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border: none;
+    border-left: 2px solid white;
+  }
 }
+
+
 
 .terminal-pane {
   border: var(--white-border);
   background-color: rgb(from var(--medium-gray) r g b / var(--pane-opacity));
   max-height: calc(100vh - (var(--spacing) * 2));
-  overflow-y: scroll;
-
-  /* Hide scrollbar */
-  &::-webkit-scrollbar { /* Chrome */
-    display: none;
-  }
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
 
   /* box shadow white haze */
   box-shadow: var(--pane-box-shadow);
@@ -175,12 +184,8 @@ main {
 
 /* CUSTOM HEIGHTS FOR PANES */
 
-#main-terminal-pane {
-  min-height: 500px;
-}
-
-#art-pane {
-  height: 500px;
+#main-terminal-pane, #ascii-art-pane {
+  height: 560px;
 }
 
 #stack-pane {

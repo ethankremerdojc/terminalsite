@@ -1,41 +1,3 @@
-const STACK_INFO = {
-  "python": {
-    title: "Python",
-    details: [
-      "python stuff",
-      "for sure"
-    ]
-  },
-  "js": {
-    title: "JavaScript",
-    details: [
-      "js stuff",
-      "for sure"
-    ]
-  },
-  "html": {
-    title: "HTML",
-    details: [
-      "html stuff",
-      "for sure"
-    ]
-  },
-  "css": {
-    title: "CSS",
-    details: [
-      "css stuff",
-      "for sure"
-    ]
-  },
-  "bash": {
-    title: "Scripting",
-    details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
-    ]
-  }
-}
-
 function getDetailsHtml(details) {
   let result = '';
   for (var detail of details) {
@@ -70,7 +32,9 @@ function getItemType(imgSrc) {
   return imgName
 }
 
-function loadStackNav() {
+
+
+async function loadStackNav() {
   let stackNav = document.getElementById("stack-nav-items");
   let stackNavItems = stackNav.querySelectorAll('img');
 

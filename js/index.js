@@ -88,7 +88,7 @@ async function loadAsciiPane() {
 }
 
 async function loadMainPane() {
-  await loadTerminalPane("main-terminal-pane", "mainPaneContents", 3);
+  await loadTerminalPane("main-terminal-pane", "mainPaneContents", 5);
 }
 
 async function loadStackPane() {
@@ -102,7 +102,6 @@ async function loadToysPane() {
   // from snake.js
   runDonut();
   hideAllToys();
-
   await loadToysNav();
   showToy("snake");
 

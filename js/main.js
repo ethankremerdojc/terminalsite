@@ -27,6 +27,12 @@ const RESPONSES = {
     },
     cls: () => {
       return ["clearing screen"]
+    },
+    intro: () => {
+      return INTRO_TEXT_ARRAY;
+    },
+    tips: () => {
+      return TIPS_TEXT_ARRAY;
     }
   },
   errors: {
