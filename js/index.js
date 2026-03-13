@@ -15,7 +15,7 @@ async function populatePrompt(promptDiv, promptText, speed, method, isFirst=fals
   promptInputSpan.classList.add("prompt-input-span");
   promptDiv.appendChild(promptInputSpan);
 
-  await wait(1000 / speed);
+  await wait(500 / speed);
 
   let promptInput;
 

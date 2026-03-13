@@ -5,7 +5,7 @@
   --item-gap: 50px;
   --offset-amount: calc(var(--grow-amount) / 2 * -1);
 
-  margin-top: var(--spacing);
+  margin: var(--spacing) 0;
 
   padding: 0;
   display: flex;

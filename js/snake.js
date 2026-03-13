@@ -234,6 +234,11 @@ function getProposedDirectionFromOffsets(offsetX, offsetY, width, height) {
 
 function handleClick(e) {
   let snakeDiv = document.getElementById("toys-container-snake");
+
+  if (!snakeDiv) {
+    return
+  }
+
   if (!snakeDiv.contains(e.target)) {
     if (!SNAKE_PAUSED && SNAKE_RUNNING) {
       pauseGame();

@@ -41,6 +41,8 @@
   margin: 0;
   font-family: var(--font-family);
   color: var(--white);
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -99,6 +101,7 @@ main {
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: auto;
   overflow-x: hidden;
+  text-decoration: none;
 
   /* box shadow white haze */
   box-shadow: var(--pane-box-shadow);
