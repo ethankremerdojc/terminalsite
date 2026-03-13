@@ -2,14 +2,16 @@
 
   --item-size: 70px;
   --grow-amount: 20px;
+  --item-gap: 50px;
   --offset-amount: calc(var(--grow-amount) / 2 * -1);
 
   margin-top: var(--spacing);
 
+  padding: 0;
   display: flex;
   list-style: none;
   justify-content: center;
-  gap: 50px;
+  gap: var(--item-gap);
 
   li {
     width: var(--item-size);
@@ -30,11 +32,11 @@
       }
 
       &.active {
-        filter: drop-shadow(0 0 2px var(--blue));
+        filter: drop-shadow(0 0 4px var(--blue));
       }
 
       &:hover {
-        filter: drop-shadow(0 0 4px var(--blue));
+        filter: drop-shadow(0 0 8px var(--blue));
       }
     }
   }
@@ -43,4 +45,28 @@
 
 #stack-item-info, #stack-item-name {
   padding: var(--half-spacing);
+}
+
+@media screen and (max-width: 1100px) {
+  #stack-nav-items {
+    --item-size: 50px;
+    --item-gap: 30px;
+    --grow-amount: 12px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #stack-nav-items {
+    --item-size: 34px;
+    --item-gap: 18px;
+    --grow-amount: 8px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #stack-nav-items {
+    --item-size: 26px;
+    --item-gap: 12px;
+    --grow-amount: 6px;
+  }
 }

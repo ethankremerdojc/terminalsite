@@ -104,3 +104,15 @@
 .outer-donut {
   padding-left: calc((100% - 437px) / 2); /* Roughly width of donut */
 }
+
+@media screen and (max-width: 500px) {
+  #toys-pane ul {
+
+    gap: 20px;
+
+    li {
+      font-size: 13px;
+    }
+
+  }
+}

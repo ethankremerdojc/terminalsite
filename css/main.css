@@ -66,7 +66,7 @@ rawhtml {
 }
 
 main {
-  width: calc(100% - 2*var(--spacing));
+  width: calc(100% - (2*var(--spacing)));
   padding: var(--spacing);
   display: grid;
   grid-template-columns: 1fr 1fr 450px;
@@ -80,7 +80,7 @@ main {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(from var(--purple) r g b / 0.8);
+    background-color: rgb(from var(--purple) r g b / 0.5);
     border-left: 2px solid white;
   }
 
@@ -98,6 +98,7 @@ main {
   background-color: rgb(from var(--medium-gray) r g b / var(--pane-opacity));
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: auto;
+  overflow-x: hidden;
 
   /* box shadow white haze */
   box-shadow: var(--pane-box-shadow);
@@ -225,5 +226,12 @@ main {
     h1, p, input {
       font-size: 12px;
     }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  #ascii-art-pane {
+    height: 480px;
   }
 }

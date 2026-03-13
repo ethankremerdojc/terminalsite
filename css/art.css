@@ -63,3 +63,24 @@ pre {
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  pre {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+
+  #ascii-nav {
+    button, &:before, &:after {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  pre {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

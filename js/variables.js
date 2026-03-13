@@ -61,7 +61,11 @@ function getStackNavStr() {
   let stackNavStr = `<ul id="stack-nav-items">`;
 
   for (var [itemName, itemDetails] of Object.entries(STACK_INFO)) {
-    stackNavStr += `<li><img src="icons/${itemName}.svg" /></li>`;
+    let activeStr = "";
+    if (itemName == "python") {
+      activeStr = `class="active"`;
+    }
+    stackNavStr += `<li><img ${activeStr} src="icons/${itemName}.svg" /></li>`;
   }
 
   stackNavStr += "</ul>"
