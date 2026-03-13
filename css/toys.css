@@ -66,6 +66,10 @@
     transition: color 0.3s ease;
     text-decoration: underline;
 
+    padding-top: 10px !important;
+
+    z-index: 100;
+
     &:hover {
       color: var(--green);
       cursor: pointer;

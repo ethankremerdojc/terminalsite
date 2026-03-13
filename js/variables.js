@@ -262,16 +262,20 @@ const PANES_CONTENT = {
       promptText: "outro",
       resultTag: "p",
       result: [
-        "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
+        "Credits: ... At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
       ]
     },
   ],
   contactPaneContents: [
     {
       promptText: "contact",
-      resultTag: "p",
+      resultTag: "rawhtml",
       result: [
-        "Contact Me! (eventually put rawhtml here with inputs/form)"
+        `<p>Contact Me!</p>` +
+        `<form>` +
+        `<input name="email" type="email" />` +
+        `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
+        `</form>`
       ]
     },
   ]
