@@ -20,7 +20,7 @@ const STACK_INFO = {
   "html": {
     title: "HTML",
     details: [
-      "Experience: 7+ years"
+      "Experience: 7+ years",
       "HTML! The perfect language. So simple, so concise, so un-compromising.",
       "I'm not sure I need to say anything here... but yes, I do know my way around html...",
       "...",
@@ -45,24 +45,27 @@ const STACK_INFO = {
     ]
   },
   "docker": {
-    title: "Scripting",
+    title: "Docker",
     details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
+      "Experience: 3 years",
+      "One of my favorite tools. I use containers a lot in my day job, managing different dev servers and QOL applications.", 
+      "I also love to find tools that run in docker so that my servers can get the most out of their cpus."
     ]
   },
   "react": {
-    title: "Scripting",
+    title: "React",
     details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
+      "Experience: 4 years",
+      "I have been using React to build out all the pages on my current companies site. I am confident in both the older class " +
+      "based components as well as function based. I have experience using redux to manage the applications data as well."
     ]
   },
   "linux": {
-    title: "Scripting",
+    title: "Linux",
     details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
+      "Experience: 5 years",
+      "I use Arch btw.",
+      "Still use Windows for gaming, but that's about it. Linux FTW"
     ]
   },
 }

@@ -16,7 +16,7 @@ async function updateStackInfo(itemType) {
   let stackInfo = STACK_INFO[itemType];
 
   await typeOutTextContent(stackItemName, stackInfo.title, [20, 100]);
-  await typeOutTextContent(stackDetails, stackInfo.details.join("<br />"), [4, 40]);
+  await typeOutTextContent(stackDetails, stackInfo.details.join("<br />"), [2, 10]);
 
   // stackItemName.innerHTML = stackInfo.title;
   // stackDetails.innerHTML = getDetailsHtml(stackInfo.details);
