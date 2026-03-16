@@ -235,6 +235,10 @@ main {
       font-size: 12px;
     }
   }
+
+  #toys-pane {
+    min-height: 530px;
+  }
 }
 
 

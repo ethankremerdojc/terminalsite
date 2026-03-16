@@ -80,3 +80,17 @@
 .hangman-infobutton {
   width: 440px !important;
 }
+
+@media screen and (max-width: 600px) {
+  .outer-hangman {
+    display: flex;
+  }
+
+  .hangman {
+    transform: scale(0.7);
+  }
+
+  .letter-button, .letter-button-incorrect, .letter-button-correct {
+    font-size: 20px !important;
+  }
+}

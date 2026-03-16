@@ -10,3 +10,10 @@
   justify-content: center;
   padding: var(--spacing);
 }
+
+@media screen and (max-width: 670px) {
+  #output {
+    font-size: 9px !important;
+    line-height: 12px;
+  }
+}
