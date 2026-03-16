@@ -5,6 +5,7 @@
 @import "stack.css";
 @import "donut.css";
 @import "hangman.css";
+@import "outro.css";
 
 :root {
   --white: rgb(215, 215, 215);
@@ -171,10 +172,9 @@ main {
   }
 }
 
-#main-terminal-pane, #stack-pane, #outro-pane, #contact-pane {
+#main-terminal-pane, #stack-pane {
   .result {
     p {
-      font-family: "IBM Plex Mono", monospace;
       padding-left: var(--half-spacing);
       padding-right: var(--half-spacing);
       padding-bottom: var(--half-spacing);

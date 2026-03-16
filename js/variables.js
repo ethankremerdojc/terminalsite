@@ -260,14 +260,15 @@ const PANES_CONTENT = {
   outroPaneContents: [
     {
       promptText: "outro",
-      resultTag: "p",
+      resultTag: "rawhtml",
       result: [
-        "CREDITS: ",
-        "Ascii Arts:",
-        "found at https://www.asciiart.eu/",
-        "Ascii Donut:", 
-        "found at https://surenenfiajyan.github.io/3d-ascii-donut-js/, though that was also a recreation of another."
-
+      `<div class="outro-html">` +
+        "<b>CREDITS: </b>" +
+        "<p>Ascii Arts:</p>" +
+        `<i>Sourced rom <a href="https://www.asciiart.eu/">https://www.asciiart.eu/</a></i>` +
+        "<p>Ascii Donut:</p>" +
+        `<i>Sourced from <a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a>, though that was also a recreation of another.</i>` +
+      "</div>"
       ]
     },
   ],
