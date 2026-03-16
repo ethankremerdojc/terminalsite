@@ -277,10 +277,11 @@ const PANES_CONTENT = {
       promptText: "contact",
       resultTag: "rawhtml",
       result: [
-        `<p>Contact Me!</p>` +
-        `<form>` +
-        `<input name="email" type="email" />` +
-        `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
+        `<form class="contact-form" method="POST" action="/contact" target="_blank">` +
+          `<p>Contact me blah blah, ill get back to you... lorem lorem lorem!</p>` +
+          `<input name="email" type="email" placeholder="email" />` +
+          `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
+          `<button type="submit">Submit!</textarea>` +
         `</form>`
       ]
     },

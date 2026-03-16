@@ -6,6 +6,7 @@
 @import "donut.css";
 @import "hangman.css";
 @import "outro.css";
+@import "contact.css";
 
 :root {
   --white: rgb(215, 215, 215);
@@ -23,6 +24,7 @@
 
   --spacing: 28px;
   --half-spacing: calc(var(--spacing) / 2);
+  --quarter-spacing: calc(var(--spacing) / 4);
 
   --border-width: 2px;
   --border-radius: 4px;
@@ -157,7 +159,9 @@ main {
   name { color: var(--green); }
   at { color: var(--white); margin: 0 4px; }
   host { color: var(--blue); }
+}
 
+#main-terminal-pane {
   input {
     background: none;
     border: none;
@@ -173,6 +177,7 @@ main {
 }
 
 #main-terminal-pane, #stack-pane {
+
   .result {
     p {
       padding-left: var(--half-spacing);

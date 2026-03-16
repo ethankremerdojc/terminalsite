@@ -1,0 +1,16 @@
+.outro-html {
+  padding: var(--half-spacing);
+
+  & i, & b {
+    display: block;
+  }
+
+  & b {
+    margin-bottom: var(--half-spacing);
+  }
+
+  & i {
+    margin-left: var(--half-spacing);
+    margin-bottom: var(--half-spacing);
+  }
+}
