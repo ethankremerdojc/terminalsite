@@ -3,9 +3,9 @@ const STACK_INFO = {
     title: "Python",
     details: [
       "Experience: 6 years",
-      "My favorite programming language! I've made endless automation scripts, games, webservers, tui's and more. " + 
-      "I love it's readability, and how easy it is to get up and running with it. If I was ever stranted on a desert " +
-      "island, I would want Python on the island with me. "
+      "My favorite programming language! I've made endless automation scripts, games, webservers, tui's and more. ", 
+      "I love it's readability, and how easy it is to get up and running with it.", 
+      "If I was ever stranted on a desert island, I would want Python on the island with me. "
     ]
   },
   "js": {
@@ -65,6 +65,7 @@ const STACK_INFO = {
     details: [
       "Experience: 5 years",
       "I use Arch btw.",
+      "However, I do have extended experience in Ubuntu + Ubuntu server, linux in docker, and linux mint.",
       "Still use Windows for gaming, but that's about it. Linux FTW"
     ]
   },
@@ -293,7 +294,7 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         `<form class="contact-form" method="POST" action="/contact" target="_blank">` +
-          `<p>Contact me blah blah, ill get back to you... lorem lorem lorem!</p>` +
+          `<p>Fill out this form to contact me, and I'll send you an email as soon as I can with a reply!</p>` +
           `<input name="email" type="email" placeholder="email" />` +
           `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
           `<button type="submit">Submit!</textarea>` +

@@ -33,12 +33,42 @@ const RESPONSES = {
     },
     tips: () => {
       return TIPS_TEXT_ARRAY;
-    }
+    },
+    stack: () => {
+      navigateToPane("stack");
+      return ["Navigating to stack."];
+    },
+    toys: () => {
+      navigateToPane("toys");
+      return ["Navigating to toys."];
+    },
+    outro: () => {
+      navigateToPane("outro");
+      return ["Navigating to outro."];
+    },
+    contact: () => {
+      navigateToPane("contact");
+      return ["Navigating to contact."];
+    },
   },
   errors: {
     unknownCmd: (cmd) => [`Unknown command: ${cmd}`],
     unknownErr: (err) => [`Unknown err: [${err}]`]
   }
+}
+
+function navigateToPane(paneName, delay=1000) {
+  let stackElem = document.getElementById(`${paneName}-pane`);
+
+  setTimeout(() => {
+    stackElem.scrollIntoView(
+      {
+          behavior: 'auto',
+          block: 'center',
+          inline: 'center'
+      }
+    ); 
+  }, delay)
 }
 
 function getPromptResponse(userText) {
@@ -102,6 +132,8 @@ async function handlePromptSubmit(e) {
   await populatePaneChunk(
     chunk, EMPTY_PANE, 2
   ); //TODO figure out how to specify speed
-
-  focusLatestInput();
+  
+  if (!response[0].includes("Navigating")) {
+    focusLatestInput();
+  }
 }
