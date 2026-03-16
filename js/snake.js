@@ -111,12 +111,32 @@ function unPause() {
   resetSnakeGameLoop();
 }
 
+function placeLoadingSnake(func) {
+
+  let loadingSnakeHtml = `<div class="loading-snake-grid">`;
+
+  for (let i=0; i<3; i++) {
+    let snakeBodyCellHtml = `<div class="cell c${i+1}">${SNAKE_SEGMENT_CHAR}</div>`;
+    loadingSnakeHtml += snakeBodyCellHtml;
+  };
+
+  let snakeHeadCellHtml = `<div class="cell c4">${SNAKE_HEAD_CHAR}</div>`;
+  loadingSnakeHtml += snakeHeadCellHtml;
+
+  loadingSnakeHtml += "</div>";
+
+  placeElem([0, 0], SNAKE_FIELD_ELEM, loadingSnakeHtml, "snake-loading", func, true);
+}
+
 function placePauseText() {
-  placeElem([0, 0], SNAKE_FIELD_ELEM, "Snake: PAUSED (Click to continue)", "infobutton", unPause)
+  placeElem([0, 0], SNAKE_FIELD_ELEM, "Snake: PAUSED", "infobutton", unPause);
+  placeLoadingSnake(unPause);
 }
 
 function placeStartText() {
-  placeElem([0, 0], SNAKE_FIELD_ELEM, "Start Snake Game", "infobutton", () => { SNAKE_RUNNING = true })
+  let startGameFunc = () => { SNAKE_RUNNING = true };
+  placeElem([0, 0], SNAKE_FIELD_ELEM, "Start Snake Game", "infobutton", startGameFunc);
+  placeLoadingSnake(startGameFunc);
 }
 
 function placeDeadText() {
@@ -127,6 +147,8 @@ function placeGameDetails() {
   placeElem([0, 2], SNAKE_FIELD_ELEM, `Play with arrow keys, mouse or touch.`, "infotext");
   placeElem([0, 1], SNAKE_FIELD_ELEM, `Score: ${SNAKE_SCORE} | Snake Speed: ${Math.floor(SNAKE_CURRENT_SPEED * 100) / 100}`, "infotext");
 }
+
+
 
 // DRAW FUNC
 
@@ -150,11 +172,181 @@ function drawSnake(snakeSegments, fruits) {
   }
 }
 
+function getFruitBeingEaten(head, fruits) {
+  for (var fruit of fruits) {
+    if (elemIntersects(head, fruit)) {
+      return fruit
+    }
+  }
+
+  return null
+}
+
+function replaceFruit(fruits, eatenFruit, snakeSegments, blocksWidth, blocksHeight) {
+  let newFruits = [];
+
+  for (var fruit of fruits) {
+    if (fruit != eatenFruit) {
+      newFruits.push(fruit);
+    }
+  }
+
+  newFruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight));
+  return newFruits
+}
+
+// GLOBAL CONSTS
+
+function getRandomDirection() {
+  let directions = ["-x", "+x", "-y", "+y"];
+  return directions[getRandomInt(0, 3)];
+}
+
+function getInitialSnakeSegments(snakeLength=5) {
+  let segments = [];
+  let maxX = BOARD_WIDTH - 1;
+  let maxY = BOARD_HEIGHT - 1;
+
+  // choose head position
+
+  let randX = getRandomInt(1, maxX);
+  let randY = getRandomInt(1, maxY);
+
+  segments.push([randX, randY]);
+
+  for (let i=1; i<snakeLength; i++) {
+
+    let newX; let newY;
+
+    switch (SNAKE_DIRECTION) {
+
+      case "-x":
+        newX = randX - i;
+        if (newX < 0) {
+          newX = BOARD_WIDTH + (newX - 1);
+        }
+        segments.push([newX, randY]);
+        break;
+
+      case "+x":
+        newX = randX + i;
+        if (newX > BOARD_WIDTH) {
+          newX = (newX - BOARD_WIDTH) - 1;
+        }
+        segments.push([newX, randY]);
+        break;
+
+      case "+y":
+        newY = randY - i;
+        if (newY < 0) {
+          newY = BOARD_HEIGHT + (newY - 1);
+        }
+        segments.push([randX, newY]);
+        break;
+
+      case "-y":
+        newY = randY + i;
+        if (newY > BOARD_HEIGHT) {
+          newY = (newY - BOARD_HEIGHT) - 1;
+        }
+        segments.push([randX, newY]);
+        break;
+
+      default: throw "Unknown direction"; break;
+    }
+  }
+  
+  return segments
+}
+
+
+const SNAKE_SEGMENT_CHAR = "⊙";
+const SNAKE_HEAD_CHAR = "⊗";
+const FRUIT_CHAR = "●";
+const STARTING_FRUIT = 3;
+var SNAKE_FIELD_ELEM = null;
+
+// GLOBAL VARS
+var SNAKE_SEGMENTS = [];
+var FRUITS = [];
+
+var SNAKE_DIRECTION = null;
+var SNAKE_CURRENT_SPEED = 1.0;
+var SNAKE_SCORE = 0;
+var SNAKE_RUNNING = false;
+var SNAKE_PAUSED = false;
+var SNAKE_JUST_DIED = false;
+var SNAKE_GAME_LOOP_INTERVAL = null;
+
+function pauseGame() {
+  const SNAKE_FIELD_ELEM = document.getElementById("toys-container-snake");
+  SNAKE_RUNNING = false;
+  SNAKE_PAUSED = true;
+  stopSnakeGameLoop();
+  drawSnake([], [], SNAKE_FIELD_ELEM);
+}
+
+function stopSnakeGameLoop() {
+  clearInterval(SNAKE_GAME_LOOP_INTERVAL);
+}
+
+function startSnakeGameLoop() {
+  SNAKE_GAME_LOOP_INTERVAL = setInterval(gameLoop, 200/SNAKE_CURRENT_SPEED);
+}
+
+function resetSnakeGameLoop() {
+  stopSnakeGameLoop();
+  startSnakeGameLoop();
+}
+
+function gameLoop() {
+  if (!SNAKE_RUNNING) { return }
+  drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
+
+  let fruitBeingEaten = getFruitBeingEaten(SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1], FRUITS);
+
+  if (fruitBeingEaten) {
+    FRUITS = replaceFruit(FRUITS, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
+    SNAKE_CURRENT_SPEED = SNAKE_CURRENT_SPEED + 0.05;
+    SNAKE_SCORE += 1;
+  } else {
+    SNAKE_SEGMENTS = SNAKE_SEGMENTS.slice(1); // this line will be conditional on a fruit on the space when we add those
+  }
+  
+  let newSnakeHead = getNewSnakeHead(SNAKE_SEGMENTS, SNAKE_DIRECTION, BOARD_WIDTH, BOARD_HEIGHT);
+
+  if (elemIntersectsArray(newSnakeHead, SNAKE_SEGMENTS)) {
+    SNAKE_RUNNING = false;
+    SNAKE_JUST_DIED = true;
+
+    drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
+  }
+
+  SNAKE_SEGMENTS.push(newSnakeHead);
+
+  if (fruitBeingEaten) {
+    resetSnakeGameLoop();
+  }
+}
+
+// event handlers
+
+function handleResize() {
+  if (INITIALIZING_SNAKE || !SNAKE_RUNNING) {
+    return
+  }
+
+  stopSnakeGameLoop();
+  SNAKE_PAUSED = false;
+  SNAKE_RUNNING = false;
+  initializeSnake();
+}
+
 function handleKeyPress(e) {
   //TODO  Have this check if the segment before head would be munched, instead of what current direction is
   //      In case user manages to switch directions multiple times per frame
 
-  if (!SNAKE_RUNNING) { return }
+  if (!SNAKE_RUNNING || INITIALIZING_SNAKE) { return }
 
   if ([37, 38, 39, 40].includes(e.keyCode)) {
     e.preventDefault();
@@ -233,6 +425,11 @@ function getProposedDirectionFromOffsets(offsetX, offsetY, width, height) {
 }
 
 function handleClick(e) {
+
+  if (INITIALIZING_SNAKE || !SNAKE_RUNNING) {
+    return
+  }
+
   let snakeDiv = document.getElementById("toys-container-snake");
 
   if (!snakeDiv) {
@@ -259,116 +456,6 @@ function handleClick(e) {
   if (proposedNewHead[0] != neck[0] && proposedNewHead[1] != neck[1]) { SNAKE_DIRECTION = proposedDirection; }
 }
 
-function getFruitBeingEaten(head, fruits) {
-  for (var fruit of fruits) {
-    if (elemIntersects(head, fruit)) {
-      return fruit
-    }
-  }
-
-  return null
-}
-
-function replaceFruit(fruits, eatenFruit, snakeSegments, blocksWidth, blocksHeight) {
-  let newFruits = [];
-
-  for (var fruit of fruits) {
-    if (fruit != eatenFruit) {
-      newFruits.push(fruit);
-    }
-  }
-
-  newFruits.push(getNewFruit(snakeSegments, fruits, blocksWidth, blocksHeight));
-  return newFruits
-}
-
-// GLOBAL CONSTS
-
-const INITIAL_SNAKE_SEGMENTS = [
-  [0, 0], [0, 1], [0, 2], [0, 3]
-];
-
-const SNAKE_SEGMENT_CHAR = "⊙";
-const SNAKE_HEAD_CHAR = "⊗";
-const FRUIT_CHAR = "●";
-const STARTING_FRUIT = 3;
-var SNAKE_FIELD_ELEM = null;
-
-// GLOBAL VARS
-var SNAKE_SEGMENTS = [];
-var FRUITS = [];
-
-var SNAKE_DIRECTION = "+x";
-var SNAKE_CURRENT_SPEED = 1.0;
-var SNAKE_SCORE = 0;
-var SNAKE_RUNNING = false;
-var SNAKE_PAUSED = false;
-var SNAKE_JUST_DIED = false;
-var SNAKE_GAME_LOOP_INTERVAL = null;
-
-function pauseGame() {
-  const SNAKE_FIELD_ELEM = document.getElementById("toys-container-snake");
-  SNAKE_RUNNING = false;
-  SNAKE_PAUSED = true;
-  stopSnakeGameLoop();
-  drawSnake([], [], SNAKE_FIELD_ELEM);
-}
-
-function stopSnakeGameLoop() {
-  clearInterval(SNAKE_GAME_LOOP_INTERVAL);
-}
-
-function startSnakeGameLoop() {
-  SNAKE_GAME_LOOP_INTERVAL = setInterval(gameLoop, 200/SNAKE_CURRENT_SPEED);
-}
-
-function resetSnakeGameLoop() {
-  stopSnakeGameLoop();
-  startSnakeGameLoop();
-}
-
-function gameLoop() {
-  if (!SNAKE_RUNNING) { return }
-  drawSnake(SNAKE_SEGMENTS, FRUITS, SNAKE_FIELD_ELEM);
-
-  let fruitBeingEaten = getFruitBeingEaten(SNAKE_SEGMENTS[SNAKE_SEGMENTS.length - 1], FRUITS);
-
-  if (fruitBeingEaten) {
-    FRUITS = replaceFruit(FRUITS, fruitBeingEaten, SNAKE_SEGMENTS, BOARD_WIDTH, BOARD_HEIGHT);
-    SNAKE_CURRENT_SPEED = SNAKE_CURRENT_SPEED + 0.05;
-    SNAKE_SCORE += 1;
-  } else {
-    SNAKE_SEGMENTS = SNAKE_SEGMENTS.slice(1); // this line will be conditional on a fruit on the space when we add those
-  }
-  
-  let newSnakeHead = getNewSnakeHead(SNAKE_SEGMENTS, SNAKE_DIRECTION, BOARD_WIDTH, BOARD_HEIGHT);
-
-  if (elemIntersectsArray(newSnakeHead, SNAKE_SEGMENTS)) {
-    SNAKE_RUNNING = false;
-    SNAKE_JUST_DIED = true;
-
-    drawSnake(SNAKE_SEGMENTS, fruits, SNAKE_FIELD_ELEM);
-  }
-
-  SNAKE_SEGMENTS.push(newSnakeHead);
-
-  if (fruitBeingEaten) {
-    resetSnakeGameLoop();
-  }
-}
-
-
-
-function handleResize() {
-  if (INITIALIZING_SNAKE || !SNAKE_RUNNING) {
-    return
-  }
-
-  stopSnakeGameLoop();
-  SNAKE_PAUSED = false;
-  SNAKE_RUNNING = false;
-  initializeSnake();
-}
 
 var INITIALIZING_SNAKE = false;
 
@@ -382,13 +469,16 @@ function initializeSnake() {
   SNAKE_RUNNING = false;
 
   // split up into 20x20px blocks
+  SNAKE_DIRECTION = "-y" // getRandomDirection();
 
   SQUARE_SIZE = 20;
   BOARD_WIDTH = Math.floor(boardWidth / SQUARE_SIZE);
   BOARD_HEIGHT = Math.floor(boardHeight / SQUARE_SIZE);
-  
 
-  SNAKE_SEGMENTS = structuredClone(INITIAL_SNAKE_SEGMENTS);
+  //todo add some sort of check that board width and height are set?
+  SNAKE_DIRECTION = "+y" // getRandomDirection();
+  SNAKE_SEGMENTS = getInitialSnakeSegments();
+
   FRUITS = [];
 
   SNAKE_CURRENT_SPEED = 1.0;

@@ -57,9 +57,15 @@ let SQUARE_SIZE = 20;
 var BOARD_WIDTH = null;
 var BOARD_HEIGHT = null;
 
-function placeElem(position, fieldElem, char, elemClass, onClick=null) {
+function placeElem(position, fieldElem, char, elemClass, onClick=null, rawHtml=false) {
   const [x, y] = position;
-  let segmentElem = document.createElement("p");
+  let segmentElem;
+
+  if (!rawHtml) {
+    segmentElem = document.createElement("p");
+  } else {
+    segmentElem = document.createElement("rawhtml");
+  }
 
   segmentElem.style.top = `${SQUARE_SIZE * y}px`;
   segmentElem.style.left = `${SQUARE_SIZE * x}px`;

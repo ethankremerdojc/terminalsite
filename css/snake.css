@@ -11,4 +11,62 @@
   .fruit {
     color: var(--purple);
   }
+
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.snake-loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.loading-snake-grid {
+
+  /* Hover effect */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+
+  &:hover {
+
+    -webkit-box-shadow: inset 0px 0px 6px 1px var(--green), 0px 0px 8px 3px var(--green); 
+    box-shadow: inset 0px 0px 6px 1px var(--green), 0px 0px 8px 3px var(--green);
+  }
+
+
+  /* Stuff for circling snake */
+  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, 21px);
+  grid-template-rows: repeat(3, 21px);
+
+  --loading-speed: 1.2s;
+  --speed-offset: calc((var(--loading-speed) / 8) * -1);
+
+  .cell {
+    animation: move var(--loading-speed) steps(8) infinite;
+    color: var(--green);
+    text-align: center;
+  }
+
+  .c1 { animation-delay: 0s; }
+  .c2 { animation-delay: var(--speed-offset); }
+  .c3 { animation-delay: calc(var(--speed-offset) * 2); }
+  .c4 { animation-delay: calc(var(--speed-offset) * 3); }
+}
+
+
+
+@keyframes move {
+  0%   { grid-area: 1 / 1; }
+  12.5%{ grid-area: 1 / 2; }
+  25%  { grid-area: 1 / 3; }
+  37.5%{ grid-area: 2 / 3; }
+  50%  { grid-area: 3 / 3; }
+  62.5%{ grid-area: 3 / 2; }
+  75%  { grid-area: 3 / 1; }
+  87.5%{ grid-area: 2 / 1; }
+  100% { grid-area: 1 / 1; }
 }

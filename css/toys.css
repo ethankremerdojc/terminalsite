@@ -39,11 +39,7 @@
 .snake, .hangman {
   position: relative;
 
-  p {
-    text-align: center;
-    font-size: 20px; /* Make sure this is the same as square size in snake.js */
-    position: absolute;
-
+  p, rawhtml {
     -webkit-user-select: none;
     /* Firefox */
     -moz-user-select: none;
@@ -51,6 +47,12 @@
     -ms-user-select: none;
     /* Standard property */
     user-select: none;
+  }
+
+  p {
+    text-align: center;
+    font-size: 20px; /* Make sure this is the same as square size in snake.js */
+    position: absolute;
 
     &:not(.infobutton) {
       width: 20px;
@@ -63,17 +65,20 @@
     text-align: center;
     font-weight: 700;
 
-    transition: color 0.3s ease;
-    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+
+    font-weight: 800 !important;
+    font-size: 22px;
+
+    &:hover {
+      text-shadow: 0 0 8px var(--green);
+    }
 
     padding-top: 10px !important;
 
     z-index: 100;
-
-    &:hover {
-      color: var(--green);
-      cursor: pointer;
-    }
   }
 
   .infotext {
@@ -120,3 +125,5 @@
 
   }
 }
+
+
