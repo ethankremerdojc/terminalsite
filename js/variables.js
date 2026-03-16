@@ -281,6 +281,8 @@ const PANES_CONTENT = {
         `<i>Sourced rom <a href="https://www.asciiart.eu/">https://www.asciiart.eu/</a></i>` +
         "<p>Ascii Donut:</p>" +
         `<i>Sourced from <a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a>, though that was also a recreation of another.</i>` +
+        "<p>Matrix Background</p>" +
+        `<i>Adapted from <a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
       "</div>"
       ]
     },
