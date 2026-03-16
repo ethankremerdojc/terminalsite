@@ -2,36 +2,46 @@ const STACK_INFO = {
   "python": {
     title: "Python",
     details: [
-      "python stuff",
-      "for sure"
+      "Experience: 6 years",
+      "My favorite programming language! I've made endless automation scripts, games, webservers, tui's and more. " + 
+      "I love it's readability, and how easy it is to get up and running with it. If I was ever stranted on a desert " +
+      "island, I would want Python on the island with me. "
     ]
   },
   "js": {
     title: "JavaScript",
     details: [
-      "js stuff",
-      "for sure"
+      "Experinence: 6 years",
+      "Ahh, one of the most intuitive and perfect programming languages, why else would it be in every single browser? ",
+      "Joking aside, I have coded many websites with javascript. I've made carousells and reactive tables, and coded simple forms and complex business workflows.",
+      "I am very comfortable working with javascript, and have wide experience in many areas."
     ]
   },
   "html": {
     title: "HTML",
     details: [
-      "html stuff",
-      "for sure"
+      "Experience: 7+ years"
+      "HTML! The perfect language. So simple, so concise, so un-compromising.",
+      "I'm not sure I need to say anything here... but yes, I do know my way around html...",
+      "...",
+      "...HTML is the best!"
     ]
   },
   "css": {
     title: "CSS",
     details: [
-      "css stuff",
-      "for sure"
+      "Experience: 7+ years",
+      "I am quite expierenced with all areas of frontend styling, and am currently in a mode of trying to use CSS for all kinds of things" +
+      "that people don't think it should be used for. Animations, togglable menus, and form validation stuffs.", 
+      "I think it's quite fun, and only mildy annoying."
     ]
   },
   "bash": {
     title: "Scripting",
     details: [
-      "bash, ps1, etc. stuff",
-      "for sure"
+      "Experience: 6 years",
+      "I have made many a script. For anything a computer might do. I have plenty of automation scripts running now that automate much of my workflow day to day.",
+      "I am fluent in bash, and comfortable with both Powershell and *cough* batch.",
     ]
   },
   "docker": {
