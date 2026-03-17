@@ -1,62 +1,3 @@
-let CWD = "/site";
-
-const RESPONSES = {
-  commands: {
-    help: () => {
-      return `commands cd ls clear`.split(" ") // have this list the keys of this
-    },
-    pwd: () => {
-      return [CWD]
-    },
-    cd: (args) => {
-      let dir = args[0];
-      return [`Changing current working dir to '${dir}'`];
-    },
-    ls: (args) => {
-      if (args.length == 0) {
-        return "icons/ README.md index.html index.js main.css variables.js".split(" ")
-      }
-      let dir = args[0];
-      if (["icons", "icons/"].includes(dir)) {
-        return "bash.svg css.svg docker.svg html.svg js.svg nginx.svg python.svg react.svg".split(" ")
-      }
-      return [`Unknown dir: '${dir}'`]
-    },
-    clear: () => {
-      return ["clearing screen"]
-    },
-    cls: () => {
-      return ["clearing screen"]
-    },
-    intro: () => {
-      return INTRO_TEXT_ARRAY;
-    },
-    tips: () => {
-      return TIPS_TEXT_ARRAY;
-    },
-    stack: () => {
-      navigateToPane("stack");
-      return ["Navigating to stack."];
-    },
-    toys: () => {
-      navigateToPane("toys");
-      return ["Navigating to toys."];
-    },
-    outro: () => {
-      navigateToPane("outro");
-      return ["Navigating to outro."];
-    },
-    contact: () => {
-      navigateToPane("contact");
-      return ["Navigating to contact."];
-    },
-  },
-  errors: {
-    unknownCmd: (cmd) => [`Unknown command: ${cmd}`],
-    unknownErr: (err) => [`Unknown err: [${err}]`]
-  }
-}
-
 function navigateToPane(paneName, delay=1000) {
   let stackElem = document.getElementById(`${paneName}-pane`);
 
@@ -132,8 +73,13 @@ async function handlePromptSubmit(e) {
   await populatePaneChunk(
     chunk, EMPTY_PANE, 2
   ); //TODO figure out how to specify speed
-  
-  if (!response[0].includes("Navigating")) {
-    focusLatestInput();
+
+  let isNavigating = false;
+  if (response[0]) {
+    if (response[0].includes("Navigating")) {
+      isNavigating = true;
+    }
   }
+
+  if (!isNavigating) { focusLatestInput() };
 }

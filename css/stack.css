@@ -63,10 +63,26 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
   #stack-nav-items {
     --item-size: 26px;
     --item-gap: 12px;
     --grow-amount: 6px;
+  }
+
+  #stack-item-name {
+    font-size: 18px;
+  }
+
+  #stack-item-info {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+#stack-nav-items {
+    --item-size: 20px;
+    --item-gap: 8px;
+    --grow-amount: 4px;
   }
 }
