@@ -226,6 +226,7 @@ const TIPS_TEXT_ARRAY = [
   "Try out common linux commands, or type 'help' to see the current list of working commands."
 ]
 
+// test
 const PANES_CONTENT = {
   emptyPaneContents: [
     EMPTY_PANE
