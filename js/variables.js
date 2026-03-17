@@ -210,7 +210,7 @@ const INTRO_TEXT_ARRAY = [
 
   "I am a software developer with over five years of experience building reliable web applications and backend systems. " +
   "My primary experience is in Python, particularly with Django, though I am comfortable working across the stack " +
-  "from bare metal to grahpic designs. I enjoy designing clean architectures and have a strong interest in systems building, " +
+  "from server configuration to grahpic designs. I enjoy designing clean architectures and have a strong interest in systems building, " +
   "from structuring applications to improving performance and development workflows.",
 
   "I am passionate about creating well-designed, maintainable software that solves real problems, but I also love " + 
@@ -223,10 +223,13 @@ const INTRO_TEXT_ARRAY = [
 ]
 
 const TIPS_TEXT_ARRAY = [
-  "Try out commands like 'stack', 'details', 'interests', or common linux commands like 'ls' and 'clear'"
+  "Try out common linux commands, or type 'help' to see the current list of working commands."
 ]
 
 const PANES_CONTENT = {
+  emptyPaneContents: [
+    EMPTY_PANE
+  ],
   mainPaneContents: [
     {
       promptText: "intro",
@@ -297,6 +300,8 @@ const PANES_CONTENT = {
         `<i>Adapted from <a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
         "<p>Code</p>" +
         `<i>Github: <a href="https://github.com/ethankremerdojc/terminalsite">https://github.com/ethankremerdojc/terminalsite</a></i>` +
+        "<p>Resume</p>" +
+        `<i>Google Docs: <a href="https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing">https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing</a></i>` +
       "</div>"
       ]
     },
@@ -307,7 +312,7 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         `<form class="contact-form" method="POST" action="/contact" target="_blank">` +
-          `<p>Fill out this form to contact me, and I'll send you an email as soon as I can with a reply!</p>` +
+          `<p>Have any questions for me, or feedback on this site? Fill out this form to contact me, and I'll send you an email as soon as I can with a reply!</p>` +
           `<input name="email" type="email" placeholder="email" />` +
           `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
           `<button type="submit">Submit!</textarea>` +

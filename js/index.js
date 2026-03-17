@@ -50,7 +50,7 @@ async function populatePaneChunk(chunk, paneContent, speed, method="type-out", i
 
   const promptDiv = getPromptDiv();
   chunk.appendChild(promptDiv);
-  await populatePrompt(promptDiv, promptText, speed, method, isFirst);
+  await populatePrompt(promptDiv, promptText, speed, "type-out", isFirst);
 
   let pane = chunk.closest(".terminal-pane");
   pane.scrollTop = pane.scrollHeight;
@@ -83,7 +83,7 @@ async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
 }
 
 async function loadAsciiPane() {
-  await loadTerminalPane("ascii-art-pane", 'artPaneContents', 4, "fade-in");
+  await loadTerminalPane("ascii-art-pane", 'artPaneContents', 5, "fade-in");
   loadAsciiNav();
 }
 
