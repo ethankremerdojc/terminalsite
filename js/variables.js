@@ -312,11 +312,11 @@ const PANES_CONTENT = {
       promptText: "contact",
       resultTag: "rawhtml",
       result: [
-        `<form class="contact-form" method="POST" action="/contact" target="_blank">` +
+        `<form class="contact-form" id="contact-form" method="POST">` +
           `<p>Have any questions for me, or feedback on this site? Fill out this form to contact me, and I'll send you an email as soon as I can with a reply!</p>` +
           `<input name="email" type="email" placeholder="email" />` +
           `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
-          `<button type="submit">Submit!</textarea>` +
+          `<button id="contact-submit-button" type="submit">Submit!</textarea>` +
         `</form>`
       ]
     },
