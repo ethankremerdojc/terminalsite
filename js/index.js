@@ -113,6 +113,7 @@ async function loadOutroPane() {
 
 async function loadContactPane() {
   await loadTerminalPane("contact-pane", 'contactPaneContents', 40);
+  initializeContactFormListener();
 }
 
 function loadPage() {
