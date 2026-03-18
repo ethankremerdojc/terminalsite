@@ -72,7 +72,7 @@ async function handlePromptSubmit(e) {
 
   await populatePaneChunk(
     chunk, EMPTY_PANE, 2
-  ); //TODO figure out how to specify speed
+  );
 
   let isNavigating = false;
   if (response[0]) {

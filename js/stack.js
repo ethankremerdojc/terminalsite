@@ -11,8 +11,6 @@ async function updateStackInfo(itemType) {
   let stackItemName = document.getElementById("stack-item-name");
   let stackDetails = document.getElementById("stack-item-info");
 
-  //TODO use the typing animation to do this!
-
   let stackInfo = STACK_INFO[itemType];
 
   await typeOutTextContent(stackItemName, stackInfo.title, [20, 100]);

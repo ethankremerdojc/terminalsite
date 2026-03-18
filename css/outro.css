@@ -1,7 +1,11 @@
 .outro-html {
   padding: var(--half-spacing);
 
-  i, b, a {
+  i, b, a, p {
+    font-size: 13px !important;
+  }
+
+  i, b {
     display: block;
   }
 
@@ -20,9 +24,5 @@
 }
 
 @media screen and (max-width: 600px) {
-  .outro-html {
-    i, a {
-      font-size: 13px;
-    }
-  }
+
 }

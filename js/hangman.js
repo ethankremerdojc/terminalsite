@@ -80,7 +80,7 @@ function drawHangmanDude() {
     ["O", "head"],
     ["▯", "body"],
     ["/", "leftarm"],
-    ["", "rightarm"], // TODO using hack :before in css so the right items have no content
+    ["", "rightarm"], //HACK using :before in css so the right items have no content
     ["/", "leftleg"],
     ["", "rightleg"]
   ]

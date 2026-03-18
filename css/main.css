@@ -211,7 +211,7 @@ main {
 }
 
 #outro-pane, #contact-pane {
-  min-height: 470px;
+  min-height: 430px;
 }
 
 @media screen and (max-width: 940px) {

@@ -343,9 +343,6 @@ function handleResize() {
 }
 
 function handleKeyPress(e) {
-  //TODO  Have this check if the segment before head would be munched, instead of what current direction is
-  //      In case user manages to switch directions multiple times per frame
-
   if (!SNAKE_RUNNING || INITIALIZING_SNAKE) { return }
 
   if ([37, 38, 39, 40].includes(e.keyCode)) {
@@ -475,7 +472,6 @@ function initializeSnake() {
   BOARD_WIDTH = Math.floor(boardWidth / SQUARE_SIZE);
   BOARD_HEIGHT = Math.floor(boardHeight / SQUARE_SIZE);
 
-  //todo add some sort of check that board width and height are set?
   SNAKE_DIRECTION = "+y" // getRandomDirection();
   SNAKE_SEGMENTS = getInitialSnakeSegments();
 
