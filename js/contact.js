@@ -1,10 +1,15 @@
-
 function initializeContactFormListener() {
   document.getElementById("contact-form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const form = e.target;
-    const data = new FormData(form);
+    const fd = new FormData();
+
+    let email = e.querySelector("input").value;
+    let notes = e.querySelector("textarea").value;
+
+    fd.append("email", email);
+    fd.append("notes", notes);
 
     const res = await fetch("/contact", {
       method: "POST",
