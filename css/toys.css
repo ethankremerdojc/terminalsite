@@ -26,14 +26,24 @@
   }
 }
 
-#toys-container-snake {
+.snake {
   padding: 8px;
   height: min(600px, 60vh);
   width: calc(100% - var(--half-spacing) - (var(--border-width) * 2));
 
   & p {
     font-weight: 500;
+    padding: 0 !important;
+    margin: 0 !important;
   }
+  width: 100%;
+}
+
+.donut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing);
 }
 
 .snake, .hangman {
@@ -94,19 +104,37 @@
 .toys-info {
   padding: var(--spacing);
 
-  & b, p {
+  & h2 {
+    font-size: 22px;
+  }
+
+  & b, p, h3 {
     font-size: 17px;
     display: block;
     margin-bottom: var(--half-spacing);
   }
 }
 
-.snake {
-  p {
-    padding: 0 !important;
-    margin: 0 !important;
+.toy-div {
+
+  --delay: 2s;
+  --speed: 2s;
+
+  overflow: hidden;
+
+  transition:
+    opacity var(--speed) ease, 
+    height 0s ease var(--delay);
+
+  &.active-toy {
+    opacity: 1;
+    height: 100%;
   }
-  width: 100%;
+
+  &:not(.active-toy) {
+    opacity: 0;
+    height: 0px;
+  }
 }
 
 .hangman {
@@ -124,7 +152,7 @@
   padding-left: calc((100% - 437px) / 2); /* Roughly width of donut */
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 620px) {
   #toys-pane ul {
 
     gap: 20px;
@@ -136,4 +164,14 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  #toys-pane ul {
 
+    gap: 12px;
+
+    li {
+      font-size: 10px;
+    }
+
+  }
+}

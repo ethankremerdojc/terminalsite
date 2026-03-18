@@ -279,12 +279,24 @@ const PANES_CONTENT = {
           '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
         '</ul>' +
-        '<div id="toys-container-toys-info" class="toys-info toy-div">Toys Info</div>' +
-        '<div id="toys-container-snake" class="snake toy-div">Snake</div>' +
-        '<div class="outer-hangman"><div id="toys-container-hangman" class="hangman toy-div">Hangman</div></div>' + // this has extra div in order to center
-        '<div class="outer-donut"><div id="toys-container-donut" class="donut toy-div">' +
-          '<pre id="output" style="font-size: 7px; font-weight: bolder;"></pre>' +
-        '</div></div>',
+
+        `<div class="toys-container-outer">` +
+
+          '<div id="toys-container-toys-info" class="toys-info toy-div">Toys Info</div>' +
+
+          '<div id="toys-container-snake" class="snake toy-div">Snake</div>' +
+
+          '<div class="hangman toy-div" id="toys-container-hangman">' +
+            '<div  class="inner-hangman">Hangman</div>' +
+          '</div>' +
+
+          '<div id="toys-container-donut" class="donut toy-div">' +
+            '<div class="inner-donut">' +
+              '<pre id="output" style="font-size: 7px; font-weight: bolder;"></pre>' +
+            '</div>' + 
+          '</div>' +
+
+        '</div>'
       ]
     }
   ],

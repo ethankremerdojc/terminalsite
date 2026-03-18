@@ -1,7 +1,9 @@
-function hideAllToys() {
-  for (var toy of document.querySelectorAll(".toy-div")) {
-    toy.style.display = "none";
-  }
+function makeToyActive(toyDiv) {
+  toyDiv.classList.add("active-toy");
+}
+
+function hideActiveToy() {
+  document.querySelector(".active-toy").classList.remove("active-toy"); 
 }
 
 function deactivateCurrentActiveNavItem() {
@@ -16,25 +18,30 @@ function activateNavItem(name) {
 }
 
 const TOY_INFO_HTML = `
-<h2>Toys:</br> Tips, Info and more</h2>
+<h2>TOYS:</h2>
+<h3>Tips, Info and more</h3>
 <br />
 <br />
 <b>SNAKE</b>
 <p>The playfield is responsive and the width and height in 'cells' is dependent on the user's screen size. The downside that the game is harder the smaller the screen. The upside is... hmm... I'll come up with one later.</p>
+<p>Snake can be controlled by pressing arrow keys, or by tapping the sides of the playfield with mouse or finger.</p>
 <b>HANGMAN</b>
-<p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory.</p>
+<p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory. Stole a wordlist from some github post haha.</p>
 <b>DONUT</b>
-<p>I actually just stole this from a source (in outro at bottom of page) just because I ain't spending hours rewriting the C code of the 'cdonut' program when multiple people have already done that.</p>
-
+<p>I actually just stole this from a source (in outro) just because I ain't spending hours rewriting the C code of the 'cdonut' program when multiple people have already done that.</p>
 `
 
 async function initializeToysInfo() {
   let toyInfoBlock = document.getElementById(`toys-container-toys-info`);
-  await typeOutTextContent(toyInfoBlock, TOY_INFO_HTML, [5, 20]);
+  await typeOutTextContent(toyInfoBlock, TOY_INFO_HTML, [2, 6]);
 }
 
 function showToy(name) {
-  document.getElementById(`toys-container-${name}`).style.display = "block";
+  console.log(name);
+  let newToy = document.getElementById(`toys-container-${name}`);
+  console.log(newToy);
+
+  makeToyActive(newToy);
   activateNavItem(name);
 
   if (SNAKE_RUNNING) {
@@ -49,10 +56,7 @@ function showToy(name) {
       break;
     case "hangman":
       initializeHangman();
-    case "toys-info":
-      initializeToysInfo();
-    default:
-      break;
+    default: break;
   }
 }
 
@@ -61,8 +65,11 @@ function loadToysNav() {
   let toysNavItems = toysNav.querySelectorAll('li');
 
   const setActive = (e) => {
-    let newToyName = e.target.innerHTML.replace("[", "").replace("]", "").replaceAll(" ", "").toLowerCase();
-    hideAllToys();
+    let newToyName = e.target.innerHTML.replace("[", "").replace("]", "").trim().toLowerCase();
+    if (newToyName.includes(" ")) {
+      newToyName = newToyName.replaceAll(" ", "-");
+    }
+    hideActiveToy();
     deactivateCurrentActiveNavItem()
     showToy(newToyName);
   }

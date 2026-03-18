@@ -4,13 +4,6 @@
   line-height: 16px;
 }
 
-#toys-container-donut {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing);
-}
-
 @media screen and (max-width: 670px) {
   #output {
     font-size: 9px !important;
