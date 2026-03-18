@@ -6,19 +6,16 @@ from urllib.error import URLError
 from datetime import datetime
 import json
 
-import os
-
-GOTIFY_IP = os.environ["GOTIFY_IP"]
-GOTIFY_TOKEN = os.environ["GOTIFY_TOKEN"]
+import os, ssl
 
 LISTEN_HOST = "127.0.0.1"
 LISTEN_PORT = 9000
 
+GOTIFY_TOKEN = os.environ["GOTIFY_TOKEN"]
+
 OUTPUT_FILE = "/home/ethan/gotify/contact_submissions.txt"
 
-GOTIFY_URL = f"http://{GOTIFY_IP}/message?token={GOTIFY_TOKEN}"
-
-print(GOTIFY_URL)
+GOTIFY_URL = f"http://127.0.0.1:8007/message?token={GOTIFY_TOKEN}"
 
 class ContactHandler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -35,6 +32,8 @@ class ContactHandler(BaseHTTPRequestHandler):
             email = form.get("email", [""])[0].strip()
             notes = form.get("notes", [""])[0].strip()
             now = datetime.utcnow().isoformat() + "Z"
+
+            print("Email: ", email, "Notes: ", notes)
 
             log_entry = (
                 f"TIME: {now}\n"
@@ -58,6 +57,7 @@ class ContactHandler(BaseHTTPRequestHandler):
                 headers={"Content-Type": "application/json"},
                 method="POST",
             )
+
             urlopen(req, timeout=5).read()
 
             self.send_response(200)
@@ -67,6 +67,7 @@ class ContactHandler(BaseHTTPRequestHandler):
         except URLError as e:
             self.send_error(500, f"Gotify push failed: {e}")
         except Exception as e:
+            raise e
             self.send_error(500, f"Server error: {e}")
 
     def log_message(self, format, *args):
