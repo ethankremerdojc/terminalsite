@@ -5,8 +5,8 @@ function initializeContactFormListener() {
     const form = e.target;
     const fd = new FormData();
 
-    let email = e.querySelector("input").value;
-    let notes = e.querySelector("textarea").value;
+    let email = e.target.querySelector("input").value;
+    let notes = e.target.querySelector("textarea").value;
 
     fd.append("email", email);
     fd.append("notes", notes);
