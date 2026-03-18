@@ -3,17 +3,20 @@ function initializeContactFormListener() {
     e.preventDefault();
 
     const form = e.target;
-    const fd = new FormData();
+    const body = new URLSearchParams();
 
     let email = e.target.querySelector("input").value;
     let notes = e.target.querySelector("textarea").value;
 
-    fd.append("email", email);
-    fd.append("notes", notes);
+    body.append("email", email);
+    body.append("notes", notes);
 
     const res = await fetch("/contact", {
       method: "POST",
-      body: fd
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: body.toString()
     });
 
     if (res.ok) {
