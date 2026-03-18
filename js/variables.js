@@ -274,10 +274,12 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         '<ul id="toys-header-items">' +
+          '<li id="nav-item-toys-info">[ TOYS INFO ]</li>' +
           '<li id="nav-item-snake">[ SNAKE ]</li>' +
           '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
         '</ul>' +
+        '<div id="toys-container-toys-info" class="toys-info toy-div">Toys Info</div>' +
         '<div id="toys-container-snake" class="snake toy-div">Snake</div>' +
         '<div class="outer-hangman"><div id="toys-container-hangman" class="hangman toy-div">Hangman</div></div>' + // this has extra div in order to center
         '<div class="outer-donut"><div id="toys-container-donut" class="donut toy-div">' +

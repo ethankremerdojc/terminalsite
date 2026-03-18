@@ -91,6 +91,16 @@
   }
 }
 
+.toys-info {
+  padding: var(--spacing);
+
+  & b, p {
+    font-size: 17px;
+    display: block;
+    margin-bottom: var(--half-spacing);
+  }
+}
+
 .snake {
   p {
     padding: 0 !important;

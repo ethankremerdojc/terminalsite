@@ -15,6 +15,24 @@ function activateNavItem(name) {
   navItem.classList.add("active");
 }
 
+const TOY_INFO_HTML = `
+<h2>Toys:</br> Tips, Info and more</h2>
+<br />
+<br />
+<b>SNAKE</b>
+<p>The playfield is responsive and the width and height in 'cells' is dependent on the user's screen size. The downside that the game is harder the smaller the screen. The upside is... hmm... I'll come up with one later.</p>
+<b>HANGMAN</b>
+<p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory.</p>
+<b>DONUT</b>
+<p>I actually just stole this from a source (in outro at bottom of page) just because I ain't spending hours rewriting the C code of the 'cdonut' program when multiple people have already done that.</p>
+
+`
+
+async function initializeToysInfo() {
+  let toyInfoBlock = document.getElementById(`toys-container-toys-info`);
+  await typeOutTextContent(toyInfoBlock, TOY_INFO_HTML, [5, 20]);
+}
+
 function showToy(name) {
   document.getElementById(`toys-container-${name}`).style.display = "block";
   activateNavItem(name);
@@ -31,7 +49,8 @@ function showToy(name) {
       break;
     case "hangman":
       initializeHangman();
-  
+    case "toys-info":
+      initializeToysInfo();
     default:
       break;
   }

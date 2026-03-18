@@ -103,7 +103,7 @@ async function loadToysPane() {
   runDonut();
   hideAllToys();
   await loadToysNav();
-  showToy("snake");
+  showToy("toys-info");
 
 }
 

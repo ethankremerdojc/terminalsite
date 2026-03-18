@@ -11,6 +11,10 @@ function wait(milis) {
 }
 
 async function typeOutTextContent(element, content, delayRange) {
+  //TODO
+  //Add in logic that checks if any of the start and end block chars are being written,
+  //and just write them as is. otherwise it looks weird
+
   return new Promise((resolve) => {
     let textLength = 0;
 
