@@ -13,7 +13,7 @@ function initializeContactFormListener() {
 
     const res = await fetch("/contact", {
       method: "POST",
-      body: data
+      body: fd
     });
 
     if (res.ok) {
