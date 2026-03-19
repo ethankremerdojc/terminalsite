@@ -27,10 +27,6 @@
 }
 
 .snake {
-  padding: 8px;
-  height: min(600px, 60vh);
-  width: calc(100% - var(--half-spacing) - (var(--border-width) * 2));
-
   & p {
     font-weight: 500;
     padding: 0 !important;
@@ -43,7 +39,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing);
 }
 
 .snake, .hangman {
@@ -102,8 +97,6 @@
 }
 
 .toys-info {
-  padding: var(--spacing);
-
   & h2 {
     font-size: 22px;
   }
@@ -115,41 +108,53 @@
   }
 }
 
-.toy-div {
-
-  --delay: 2s;
-  --speed: 2s;
-
+.toys-container-outer {
+  height: 530px;
+  position: relative;
   overflow: hidden;
+}
 
-  transition:
-    opacity var(--speed) ease, 
-    height 0s ease var(--delay);
+/* .toy-div:not(.hangman) { */
+/* } */
+
+.snake, .donut {
+  width: 100%;
+}
+
+.toys-info {
+  padding: var(--half-spacing);
+  width: calc(100% - var(--spacing));
+}
+
+.toy-div {
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: opacity 1s ease;
 
   &.active-toy {
     opacity: 1;
-    height: 100%;
+    z-index: 2;
   }
 
   &:not(.active-toy) {
     opacity: 0;
-    height: 0px;
+    z-index: 1;
   }
 }
 
 .hangman {
+
+  width: 440px; /* 40x 21, width of actual cells */
+  left: calc((100% - 440px) / 2);
+
   p {
     padding: 0;
     margin: 0;
   }
-}
-
-.outer-hangman {
-  padding-left: calc((100% - 440px) / 2); /* 440px is the width of hangman roughly */
-}
-
-.outer-donut {
-  padding-left: calc((100% - 437px) / 2); /* Roughly width of donut */
 }
 
 @media screen and (max-width: 620px) {

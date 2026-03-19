@@ -88,8 +88,14 @@ html {
   }
 }
 
+outermain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 main {
-  width: calc(100% - (2*var(--spacing)));
+  width: min(calc(100% - ( 2 * var(--spacing))), 1300px);
   padding: var(--spacing);
   display: grid;
   grid-template-columns: 1fr 1fr 450px;
@@ -206,9 +212,9 @@ main {
   min-height: max(35vh, 420px);
 }
 
-#toys-pane {
-  min-height: 644px;
-}
+/* #toys-pane { */
+/*   min-height: 644px; */
+/* } */
 
 #outro-pane, #contact-pane {
   min-height: 430px;

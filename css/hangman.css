@@ -1,7 +1,3 @@
-.hangman {
-  position: relative;
-}
-
 .letter-button {
   transition: color 0.3s ease;
   cursor: pointer;
@@ -77,15 +73,7 @@
   color: red !important;
 }
 
-.hangman-infobutton {
-  width: 440px !important;
-}
-
 @media screen and (max-width: 600px) {
-  .outer-hangman {
-    display: flex;
-  }
-
   .hangman {
     transform: scale(0.7);
   }
