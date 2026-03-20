@@ -1,3 +1,7 @@
+.stack-pane .result {
+  padding: var(--spacing) 0;
+}
+
 .stack-nav-items {
 
   --item-size: 70px;
