@@ -1,4 +1,4 @@
-#ascii-art-pane {
+.art-pane {
   .pane-chunk {
     height: 100%;
   }
@@ -33,7 +33,7 @@ pre {
   width: fit-content;
 }
 
-#ascii-nav {
+.ascii-nav {
 
   button, &:before, &:after {
     opacity: 0.6;
@@ -71,7 +71,7 @@ pre {
   }
 
 
-  #ascii-nav {
+  .ascii-nav {
     button, &:before, &:after {
       font-size: 18px;
     }

@@ -2,7 +2,7 @@
 @import "toys/donut.css";
 @import "toys/hangman.css";
 
-#toys-pane {
+.toys-pane {
   ul {
     display: flex;
     list-style: none;
@@ -160,7 +160,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  #toys-pane ul {
+  .toys-pane ul {
 
     gap: 20px;
 
@@ -172,7 +172,7 @@
 }
 
 @media screen and (max-width: 440px) {
-  #toys-pane ul {
+  .toys-pane ul {
 
     gap: 12px;
 

@@ -65,7 +65,8 @@ async function populatePaneChunk(chunk, paneContent, speed, method="type-out", i
 // END PROMPT STUFFS
 
 async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
-  const terminalPane = document.getElementById(paneId);
+  const terminalPane = document.querySelector(`.${paneId}`);
+  console.log(terminalPane);
 
   let paneContents = PANES_CONTENT[contentId];
 
@@ -83,12 +84,12 @@ async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
 }
 
 async function loadAsciiPane() {
-  await loadTerminalPane("ascii-art-pane", 'artPaneContents', 5, "fade-in");
+  await loadTerminalPane("art-pane", 'artPaneContents', 5, "fade-in");
   loadAsciiNav();
 }
 
 async function loadMainPane() {
-  await loadTerminalPane("main-terminal-pane", "mainPaneContents", 5);
+  await loadTerminalPane("linux-pane", "mainPaneContents", 5);
 }
 
 async function loadStackPane() {
@@ -118,12 +119,12 @@ async function loadContactPane() {
 
 function loadPage() {
   const visibilityMap = {
-    "main-terminal-pane": loadMainPane,
-    "ascii-art-pane": loadAsciiPane,
-    "stack-pane": loadStackPane,
-    "toys-pane": loadToysPane,
-    "outro-pane": loadOutroPane,
-    "contact-pane": loadContactPane
+    "main": loadMainPane,
+    "art": loadAsciiPane,
+    "stack": loadStackPane,
+    "toys": loadToysPane,
+    "outro": loadOutroPane,
+    "contact": loadContactPane
   };
   
   function initObservers() {

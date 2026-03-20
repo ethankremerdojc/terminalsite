@@ -119,8 +119,8 @@ function getDirs(currentDirContents) {
 }
 
 function clearScreen() {
-  document.getElementById("main-terminal-pane").innerHTML = "";
-  loadTerminalPane("main-terminal-pane", 'emptyPaneContents', 40).then(() => {
+  document.getElementById("linux-pane").innerHTML = "";
+  loadTerminalPane("linux-pane", 'emptyPaneContents', 40).then(() => {
     focusLatestInput();
   });
 }

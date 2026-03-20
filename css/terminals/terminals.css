@@ -73,15 +73,15 @@
 
 /* Specific Sizing */
 
-#main-terminal-pane, #ascii-art-pane {
+.linux-pane, .art-pane {
   height: 560px;
 }
 
-#stack-pane {
+.stack-pane {
   min-height: max(35vh, 420px);
 }
 
-#outro-pane, #contact-pane {
+.outro-pane, .contact-pane {
   min-height: 430px;
 }
 
@@ -100,14 +100,14 @@
     }
   }
 
-  #toys-pane {
+  .toys-pane {
     min-height: 530px;
   }
 }
 
 
 @media screen and (max-width: 500px) {
-  #ascii-art-pane {
+  .art-pane {
     height: 480px;
   }
 }

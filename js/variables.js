@@ -72,7 +72,7 @@ const STACK_INFO = {
 }
 
 function getStackNavStr() {
-  let stackNavStr = `<ul id="stack-nav-items">`;
+  let stackNavStr = `<ul class="stack-nav-items" id="stack-nav-items">`;
 
   for (var [itemName, itemDetails] of Object.entries(STACK_INFO)) {
     let activeStr = "";
@@ -250,7 +250,7 @@ const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         `<pre id="ascii-art-pre">${ASCIIS[0]}</pre>` +
-        `<div id="ascii-nav"></div>`
+        `<div class="ascii-nav" id="ascii-nav"></div>`
       ]
     }
   ],
@@ -262,8 +262,8 @@ const PANES_CONTENT = {
         '<p class="stack-tooltip">Click on the icons for details.</p>' +
         getStackNavStr() +
         '<div class="stack-item-details">' +
-          '<h2 id="stack-item-name"></h2>' +
-          '<div id="stack-item-info"></div>' +
+          '<h2 class="stack-item-name" id="stack-item-name"></h2>' +
+          '<div class="stack-item-name" id="stack-item-info"></div>' +
         '</div>'
       ]
     }
