@@ -1,4 +1,6 @@
-@import "snake.css";
+@import "toys/snake.css";
+@import "toys/donut.css";
+@import "toys/hangman.css";
 
 #toys-pane {
   ul {

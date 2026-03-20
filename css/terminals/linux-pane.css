@@ -1,0 +1,26 @@
+#main-terminal-pane {
+  input {
+    background: none;
+    border: none;
+    border-bottom: solid var(--medium-gray) 1px;
+    min-width: 80px;
+    field-sizing: content;
+    max-width: calc(100% - var(--half-spacing));
+
+    &:focus-visible, &:active {
+      outline: none;
+    }
+  }
+
+  .result {
+    p {
+      padding-left: var(--half-spacing);
+      padding-right: var(--half-spacing);
+      padding-bottom: var(--half-spacing);
+
+      &:first-child {
+        padding-top: var(--half-spacing);
+      }
+    }
+  }
+}

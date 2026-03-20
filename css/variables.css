@@ -1,0 +1,31 @@
+:root {
+  --white: rgb(215, 215, 215);
+  --black: #000000;
+  /* --green: #45d91c; */
+  --green: #46fa14;
+
+  --blue: #1b84e6;
+  --background: var(--black);
+  --medium-gray: #383838;
+  --dark-gray: #282828;
+  --purple: #8b34c5;
+
+  --pane-opacity: 0.8;
+
+  --spacing: 28px;
+  --half-spacing: calc(var(--spacing) / 2);
+  --quarter-spacing: calc(var(--spacing) / 4);
+
+  --border-width: 2px;
+  --border-radius: 4px;
+  --white-border: solid var(--white) var(--border-width);
+
+  --pane-box-shadow-webkit: 0px 4px 12px 1px rgba(255,255,255,0.35); 
+  --pane-box-shadow: 0px 4px 12px 1px rgba(255,255,255,0.35);
+
+  --font-family: "Chakra Petch", sans-serif;
+  --font-family-monospace: "IBM Plex Mono", monospace;
+
+  --tablet-breakpoint: 950px;
+  --phone-breakpoint: 600px;
+}
