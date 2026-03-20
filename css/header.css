@@ -3,12 +3,12 @@ header {
   justify-content: space-between;
 
   .header-title {
-    color: var(--green);
+    color: var(--primary-color);
     font-size: 28px;
     text-decoration: none;
 
     &:hover {
-      text-shadow: var(--green) 0px 0px 5px;
+      text-shadow: var(--primary-color) 0px 0px 5px;
     }
   }
 
@@ -23,7 +23,7 @@ header {
       font-weight: 500;
 
       &.buttonlike:hover {
-        text-shadow: var(--white) 0px 0px 5px;
+        text-shadow: var(--main-text-color) 0px 0px 5px;
       }
 
       width: 100%;
@@ -47,7 +47,7 @@ header {
 
     &:hover {
       cursor: pointer;
-      border-color: var(--white);
+      border-color: var(--main-text-color);
     }
   }
 }

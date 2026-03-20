@@ -9,8 +9,8 @@
 /* All terminal panes */
 
 .terminal-pane {
-  border: var(--white-border);
-  background-color: rgb(from var(--medium-gray) r g b / var(--pane-opacity));
+  border: var(--terminal-border);
+  background-color: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: auto;
   overflow-x: hidden;
@@ -47,28 +47,28 @@
   }
 
   h1 {
-    background-color: rgb(from var(--dark-gray) r g b / var(--pane-opacity));
+    background-color: rgb(from var(--prompt-background-color) r g b / var(--pane-opacity));
     padding: var(--half-spacing);
-    border-bottom: var(--white-border);
+    border-bottom: var(--terminal-border);
   }
 
   .prompt-input-span {
-    color: var(--purple);
+    color: var(--secondary-color);
 
     input {
-      color: var(--purple);
+      color: var(--secondary-color);
     }
   }
 
   &:not(:first-child) h1 {
-    border-top: var(--white-border);
+    border-top: var(--terminal-border);
   }
 
   /* the 'PS1' before the prompt */
 
-  name { color: var(--green); }
-  at { color: var(--white); margin: 0 4px; }
-  host { color: var(--blue); }
+  name { color: var(--primary-color); }
+  at { color: var(--main-text-color); margin: 0 4px; }
+  host { color: var(--tertiary-color); }
 }
 
 /* Specific Sizing */

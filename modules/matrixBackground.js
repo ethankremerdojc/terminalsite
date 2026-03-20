@@ -35,6 +35,14 @@ var chars = katagana.concat(numbers.map(n => n.toString()));
 
 var SPEED = 4;
 var TEXT_COLOR = "#8b34c5";
+var BG_COLOR = "rgba(0, 0,0,0.05)";
+
+//TODO
+//Whatever toggler for the matrix needs to run this below
+setTimeout(() => { 
+  TEXT_COLOR = "#0099ac";
+  BG_COLOR = "rgba(255,255,255, .05)";
+}, 5000);
 
 // ---------------------------------------------------------------
 class Matrix {
@@ -85,7 +93,7 @@ class Matrix {
     this._columns = Math.round(width / this._font_size);
   }
   clear() {
-    this._ctx.fillStyle = 'rgba(0, 0,0,0.05)';
+    this._ctx.fillStyle = BG_COLOR;
     this._ctx.fillRect(0, 0, this._width, this._height);
     this._ctx.fillStyle = TEXT_COLOR;
     this._ctx.font = this._font_size + "px monospace";

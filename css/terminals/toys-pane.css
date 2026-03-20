@@ -9,7 +9,7 @@
     justify-content: center;
     gap: 60px;
     padding: var(--half-spacing);
-    border-bottom: var(--white-border);
+    border-bottom: var(--terminal-border);
 
     li {
 
@@ -80,7 +80,7 @@
     font-size: 22px;
 
     &:hover {
-      text-shadow: 0 0 8px var(--green);
+      text-shadow: 0 0 8px var(--primary-color);
     }
 
     padding-top: 10px !important;

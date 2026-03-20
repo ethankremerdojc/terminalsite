@@ -3,7 +3,7 @@
   cursor: pointer;
 
   &:hover {
-    color: var(--green);
+    color: var(--primary-color);
   }
 }
 
@@ -11,7 +11,7 @@
   opacity: 0.8;
   &:after {
     content: "-";
-    color: var(--blue);
+    color: var(--tertiary-color);
     font-size: 40px;
     position: absolute;
     left: -2px;
@@ -23,7 +23,7 @@
   opacity: 0.8;
   &:after {
     content: "O";
-    color: var(--green);
+    color: var(--primary-color);
     font-size: 40px;
     position: absolute;
     left: -2px;

@@ -7,7 +7,7 @@
 * {
   margin: 0;
   font-family: var(--font-family);
-  color: var(--white);
+  color: var(--main-text-color);
 
   scroll-behavior: smooth;
 }
@@ -20,19 +20,19 @@ html {
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(from var(--purple) r g b / 0.5);
-    border-left: 2px solid var(--white);
+    background-color: rgb(from var(--secondary-color) r g b / 0.5);
+    border-left: 2px solid var(--main-text-color);
   }
 
   ::-webkit-scrollbar-track {
     background-color: transparent;
     border: none;
-    border-left: 2px solid var(--white);
+    border-left: 2px solid var(--main-text-color);
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--document-background-color);
   height: 100%;
 }
 

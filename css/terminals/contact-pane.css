@@ -15,27 +15,27 @@
     outline: none;
     padding: var(--quarter-spacing);
     font-size: 17px;
-    color: var(--white);
+    color: var(--main-text-color);
 
-    border: solid rgb(from var(--white) r g b / 0.75) 1px;
+    border: solid rgb(from var(--main-text-color) r g b / 0.75) 1px;
 
     &:focus-visible, &:active, &:hover {
       outline: none;
-      border: solid var(--white) 1px;
+      border: solid var(--main-text-color) 1px;
     }
   }
 
   & button {
-    background: rgb(from var(--white) r g b / 0.1);
+    background: rgb(from var(--main-text-color) r g b / 0.1);
     font-weight: 700;
     font-size: 24px;
     padding: var(--half-spacing) 0;
     outline: none;
-    border: solid var(--white) 1px;
+    border: solid var(--main-text-color) 1px;
 
     &:focus-visible, &:active, &:hover {
       outline: none;
-      border: solid var(--white) 1px;
+      border: solid var(--main-text-color) 1px;
     }
   }
 }
