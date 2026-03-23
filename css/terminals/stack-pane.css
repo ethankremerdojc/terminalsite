@@ -37,11 +37,11 @@
       }
 
       &.active {
-        filter: drop-shadow(0 0 4px var(--tertiary-color));
+        filter: drop-shadow(0 0 4px var(--quaterniary-color));
       }
 
       &:hover {
-        filter: drop-shadow(0 0 8px var(--tertiary-color));
+        filter: drop-shadow(0 0 8px var(--quaterniary-color));
       }
     }
   }

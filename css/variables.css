@@ -37,21 +37,10 @@
 
 /* Lightmode */
 .lightmode {
-  /* --main-text-color: #E64100; */
-  /**/
-  /* --document-background-color: #f3f5f5; */
-  /* --terminal-background-color: #fff; */
-  /* --prompt-background-color: #caedf2; */
-  /**/
-  /* --primary-color: #E64100; */
-  /* --secondary-color: #0095A8; */
-  /* --tertiary-color: #FF5692; */
-
-
   --main-text-color:   #776D5F; /* 'graphite' */ 
 
   --primary-color:     #EE6C4d; /* red */
-  --secondary-color:   #1C66C3; /* blue */
+  --secondary-color:   #4A94FC; /* blue */
   --tertiary-color:    #CC59D2; /* purple */
   --quaterniary-color: rgb(255, 209, 102); /* orangeish */
   --quaterniary-color-lighter: rgb(237, 227, 212);

@@ -5,9 +5,13 @@
   flex-direction: column;
   gap: 20px;
 
+  & p {
+    font-size: 14px !important;
+  }
+
   & textarea {
     resize: none;
-    height: 150px;
+    height: 130px;
   }
 
   & input, & textarea {

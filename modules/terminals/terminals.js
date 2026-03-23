@@ -23,7 +23,7 @@ export async function loadMainPane() {
 }
 
 export async function loadStackPane() {
-  await loadTerminalPane("stack-pane", 'stackPaneContents', 40, "fade-in");
+  await loadTerminalPane("stack-pane", 'stackPaneContents', 5, "fade-in");
   loadStackNav();
 }
 

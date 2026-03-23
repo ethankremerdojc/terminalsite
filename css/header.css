@@ -33,7 +33,7 @@ header {
 
   .buttonlike {
     border: solid rgb(255 255 255 / 35%) var(--border-width);
-    background: rgb(255 255 255 / 18%);
+    background: rgb(255 255 255 / 50%);
     border-radius: var(--border-radius);
     padding: 4px var(--half-spacing);
 
@@ -49,6 +49,12 @@ header {
       cursor: pointer;
       border-color: var(--main-text-color);
     }
+  }
+}
+
+.lightmode {
+  .buttonlike {
+    border: solid rgb(from var(--main-text-color) r g b / 0.35) var(--border-width);
   }
 }
 
