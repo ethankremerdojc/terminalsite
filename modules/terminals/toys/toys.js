@@ -51,8 +51,8 @@ const TOY_INFO_HTML = `
 <br />
 <br />
 <b>SNAKE</b>
-<p>The playfield is responsive and the width and height in 'cells' is dependent on the user's screen size. The downside that the game is harder the smaller the screen. The upside is... hmm... I'll come up with one later.</p>
 <p>Snake can be controlled by pressing arrow keys, or by tapping the sides of the playfield with mouse or finger.</p>
+<p>The playfield is responsive and the width and height in 'cells' is dependent on the user's screen size. The downside that the game is harder the smaller the screen. The upside is... hmm... I'll come up with one later.</p>
 <b>HANGMAN</b>
 <p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory. Stole a wordlist from some github post haha.</p>
 <b>DONUT</b>

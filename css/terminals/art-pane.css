@@ -36,7 +36,7 @@ pre {
 .ascii-nav {
 
   button, &:before, &:after {
-    opacity: 0.6;
+    opacity: 0.5;
     font-size: 28px;
   }
 

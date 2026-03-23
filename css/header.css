@@ -1,21 +1,33 @@
 header {
+  position: fixed;
+  width: calc(100% - (2*var(--spacing)));
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 6px var(--spacing);
+  background: var(--document-background-color);
+  border-bottom: var(--terminal-border);
+  z-index: 2;
 
   .header-title {
-    color: var(--primary-color);
-    font-size: 28px;
+    font-size: 16px;
     text-decoration: none;
+    font-weight: 600;
+  }
 
+  .header-title, .header-nav a {
+    transition: color 2s ease, text-shadow 0.3s ease;
     &:hover {
-      text-shadow: var(--primary-color) 0px 0px 5px;
+      text-shadow: var(--secondary-color) 0px 0px 5px;
     }
   }
 
   .header-nav {
     display: flex;
     list-style: none;
-    gap: var(--spacing);
+    gap: var(--half-spacing);
 
     a {
       display: flex;
@@ -29,46 +41,40 @@ header {
       text-decoration: none;
     }
   }
+}
 
-  .buttonlike {
-    border: solid rgb(255 255 255 / 35%) var(--border-width);
-    background: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
-    border-radius: var(--border-radius);
-    padding: 4px var(--half-spacing);
+.header-time {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: var(--font-family-monospace);
+}
 
-    /* box shadow white haze */
-    box-shadow: var(--pane-box-shadow);
-    -webkit-box-shadow: var(--pane-box-shadow-webkit);
+.transitioning {
+  #theme-toggler {
+    transition: background 2s ease;
 
-    margin: 0 0;
-
-    transition: text-shadow 0.2s ease, border-color 0.2s ease;
-
-    &:hover {
-      cursor: pointer;
-      border-color: var(--main-text-color);
+    svg {
+      transition: opacity 2s ease, fill 2s ease, color 2s ease;
     }
+
   }
 }
 
 #theme-toggler {
   border-radius: 50%;
-  height: 49px;
-  width: 49px;
+  height: 26px;
+  width: 26px;
   position: relative;
   display: block;
-
-  /* box shadow white haze */
-  box-shadow: var(--pane-box-shadow);
-  -webkit-box-shadow: var(--pane-box-shadow-webkit);
+  transition: outline 0.3s ease;
+  outline: solid rgba(0, 0, 0, 0) 1px;
 
   & svg {
-    width: 41px;
-    height: 41px;
+    width: 22px;
+    height: 22px;
     position: absolute;
-    top: 4px;
-    left: 4px;
-    transition: opacity 2s ease;
+    top: 2px;
+    left: 2px;
   }
 }
 
@@ -90,6 +96,9 @@ body { /* Darkmode */
 
   #theme-toggler {
     background: var(--prompt-background-color);
+    &:hover {
+      outline: solid var(--secondary-color) 1px;
+    }
   }
 }
 
@@ -102,24 +111,13 @@ body { /* Darkmode */
     opacity: 1;
   }
 
-  .buttonlike {
-    border: solid rgb(from var(--main-text-color) r g b / 0.35) var(--border-width);
-  }
-
   #theme-toggler {
     background: var(--terminal-background-color);
   }
 }
 
-@media screen and (max-width: 700px) {
-  header {
-    .header-title {
-      font-size: 20px;
-    }
-
-    .buttonlike {
-      font-size: 14px;
-      padding: 6px;
-    }
+@media screen and (max-width: 600px) {
+  .header-clock {
+    display: none;
   }
 }

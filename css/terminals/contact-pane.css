@@ -33,7 +33,7 @@
     background: rgb(from var(--main-text-color) r g b / 0.1);
     font-weight: 700;
     font-size: 24px;
-    padding: var(--half-spacing) 0;
+    padding: 8px 0;
     outline: none;
     border: solid var(--main-text-color) 1px;
 

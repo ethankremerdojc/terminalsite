@@ -15,7 +15,7 @@
     font-size: 40px;
     position: absolute;
     left: -2px;
-    top: -12px;
+    top: -14px;
   }
 }
 
@@ -27,7 +27,7 @@
     font-size: 40px;
     position: absolute;
     left: -2px;
-    top: -12px;
+    top: -14px;
   }
 }
 
@@ -80,5 +80,9 @@
 
   .letter-button, .letter-button-incorrect, .letter-button-correct {
     font-size: 20px !important;
+  }
+
+  .letter-button-correct:after, .letter-button-incorrect:after {
+    top: -11px;
   }
 }

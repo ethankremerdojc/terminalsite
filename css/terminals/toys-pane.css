@@ -17,13 +17,13 @@
 
       &:hover {
         cursor: pointer;
-        color: var(--secondary-color);
+        color: var(--tertiary-color);
       }
 
       font-weight: 400;
 
       &.active {
-        color: var(--secondary-color);
+        color: var(--tertiary-color);
       }
     }
   }

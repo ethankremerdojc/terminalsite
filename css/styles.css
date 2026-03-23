@@ -10,6 +10,9 @@
   color: var(--main-text-color);
 
   scroll-behavior: smooth;
+}
+
+.transitioning * {
   transition: color 2s ease, background-color 2s ease, fill 2s ease;
 }
 
@@ -44,6 +47,9 @@ outermain {
 }
 
 main {
+
+  margin-top: 40px; /* make room for the sticky header */
+
   width: min(calc(100% - ( 2 * var(--spacing))), 1300px);
   padding: var(--spacing);
   display: grid;

@@ -12,7 +12,8 @@ import {
 } from "./modules/matrixBackground.js";
 
 import {
-  toggleColorTheme
+  toggleColorTheme,
+  initializeHeader
 } from "./modules/header.js";
 
 function loadPage() {
@@ -49,6 +50,7 @@ function loadPage() {
     });
   };
 
+
   // Wait until the page is fully laid out and scroll position is final.
   window.addEventListener('load', () => {
     runMatrixBackground();
@@ -59,4 +61,5 @@ function loadPage() {
   });
 }
 
+initializeHeader();
 loadPage();

@@ -122,7 +122,7 @@ function updateMatrixColors(textColor, bgColor) {
 
 function getUpdatedThemeColors() {
 
-  let textColor = getCssVariable("--tertiary-color");
+  let textColor = getCssVariable("--secondary-color");
   let docBackColor = getCssVariable("--document-background-color");
 
   let bgColorTransparent;
