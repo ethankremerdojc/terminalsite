@@ -12,7 +12,7 @@ header {
     }
   }
 
-  div {
+  .header-nav {
     display: flex;
     list-style: none;
     gap: var(--spacing);
@@ -26,14 +26,13 @@ header {
         text-shadow: var(--main-text-color) 0px 0px 5px;
       }
 
-      width: 100%;
       text-decoration: none;
     }
   }
 
   .buttonlike {
     border: solid rgb(255 255 255 / 35%) var(--border-width);
-    background: rgb(255 255 255 / 50%);
+    background: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
     border-radius: var(--border-radius);
     padding: 4px var(--half-spacing);
 
@@ -52,9 +51,63 @@ header {
   }
 }
 
+#theme-toggler {
+  border-radius: 50%;
+  height: 49px;
+  width: 49px;
+  position: relative;
+  display: block;
+
+  /* box shadow white haze */
+  box-shadow: var(--pane-box-shadow);
+  -webkit-box-shadow: var(--pane-box-shadow-webkit);
+
+  & svg {
+    width: 41px;
+    height: 41px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: opacity 2s ease;
+  }
+}
+
+.dark-mode-icon {
+  fill: var(--main-text-color);
+}
+
+.light-mode-icon {
+  fill: var(--quaterniary-color);
+}
+
+body { /* Darkmode */
+  .light-mode-icon {
+    opacity: 0;
+  }
+  .dark-mode-icon {
+    opacity: 1;
+  }
+
+  #theme-toggler {
+    background: var(--prompt-background-color);
+  }
+}
+
 .lightmode {
+
+  .dark-mode-icon {
+    opacity: 0;
+  }
+  .light-mode-icon {
+    opacity: 1;
+  }
+
   .buttonlike {
     border: solid rgb(from var(--main-text-color) r g b / 0.35) var(--border-width);
+  }
+
+  #theme-toggler {
+    background: var(--terminal-background-color);
   }
 }
 

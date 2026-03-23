@@ -11,6 +11,10 @@ import {
   runMatrixBackground
 } from "./modules/matrixBackground.js";
 
+import {
+  toggleColorTheme
+} from "./modules/header.js";
+
 function loadPage() {
   const visibilityMap = {
     "main": loadMainPane,
@@ -49,8 +53,10 @@ function loadPage() {
   window.addEventListener('load', () => {
     runMatrixBackground();
     requestAnimationFrame(() => requestAnimationFrame(initObservers));
+
+    let toggler = document.getElementById("theme-toggler");
+    toggler.onclick = toggleColorTheme;
   });
-  
 }
 
 loadPage();

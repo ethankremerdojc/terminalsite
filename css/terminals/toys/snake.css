@@ -5,11 +5,11 @@
   }
 
   .snake {
-    color: var(--primary-color-color-color);
+    color: var(--primary-color);
   }
 
   .fruit {
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
   }
 
   overflow-x: hidden !important;
@@ -29,8 +29,8 @@
   transition: box-shadow 0.25s ease;
   border-radius: 8px;
   &:hover {
-    -webkit-box-shadow: inset 0px 0px 6px 1px var(--primary-color-color-color), 0px 0px 8px 3px var(--primary-color-color-color); 
-    box-shadow: inset 0px 0px 6px 1px var(--primary-color-color-color), 0px 0px 8px 3px var(--primary-color-color-color);
+    -webkit-box-shadow: inset 0px 0px 6px 1px var(--primary-color), 0px 0px 8px 3px var(--primary-color); 
+    box-shadow: inset 0px 0px 6px 1px var(--primary-color), 0px 0px 8px 3px var(--primary-color);
   }
 
   /* Stuff for circling snake */
@@ -48,7 +48,7 @@
     position: absolute;
 
     animation: move var(--loading-speed) linear infinite;
-    color: var(--primary-color-color-color);
+    color: var(--primary-color);
     text-align: center;
   }
 
