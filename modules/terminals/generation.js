@@ -164,7 +164,6 @@ export async function handlePromptSubmit(e) {
 
 export async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
   const terminalPane = document.querySelector(`.${paneId}`);
-  console.log(terminalPane);
 
   let paneContents = PANES_CONTENT[contentId];
 

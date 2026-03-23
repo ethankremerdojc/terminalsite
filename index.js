@@ -1,4 +1,3 @@
-import { runMatrixBackground } from "./modules/matrixBackground.js";
 import {
   loadMainPane,
   loadAsciiPane,
@@ -7,6 +6,10 @@ import {
   loadOutroPane,
   loadContactPane
 } from "./modules/terminals/terminals.js";
+
+import {
+  runMatrixBackground
+} from "./modules/matrixBackground.js";
 
 function loadPage() {
   const visibilityMap = {
@@ -40,14 +43,14 @@ function loadPage() {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-  }
-
-  runMatrixBackground();
+  };
 
   // Wait until the page is fully laid out and scroll position is final.
   window.addEventListener('load', () => {
+    runMatrixBackground();
     requestAnimationFrame(() => requestAnimationFrame(initObservers));
   });
+  
 }
 
 loadPage();

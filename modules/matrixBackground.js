@@ -1,7 +1,10 @@
+import { 
+  getRandomArrayItem,
+  getCSSColorFormat,
+  getCssVariable,
+  addTransparencyToColor
+} from "./utils.js";
 
-// ---------------------------------------------------------------
-// :: Utils
-// ---------------------------------------------------------------
 function gen_unicode(start, end) {
   var chars = [];
   for (var i = start; i <= end; ++i) {
@@ -10,41 +13,13 @@ function gen_unicode(start, end) {
   return chars;
 }
 
-// ---------------------------------------------------------------
-function rnd(array) {
-  return array[Math.floor(Math.random() * array.length)]
-}
-
-// ---------------------------------------------------------------
-function width() {
-  // why -1 ?
-  // without this there is horizontal scrollbar
-  // I have no idea what is causing this
-  return window.innerWidth - 1;
-}
-
-// ---------------------------------------------------------------
-function height() {
-  return window.innerHeight;
-}
-
 var katagana = gen_unicode(0x30A1, 0x30F6);
 var hiragana = gen_unicode(0x3041, 0x3096);
 var numbers = Array.from({length: 10}, (_, i) => i);
 var chars = katagana.concat(numbers.map(n => n.toString()));
 
 var SPEED = 4;
-var TEXT_COLOR = "#8b34c5";
-var BG_COLOR = "rgba(0, 0,0,0.05)";
 
-//TODO
-//Whatever toggler for the matrix needs to run this below
-setTimeout(() => { 
-  TEXT_COLOR = "#0099ac";
-  BG_COLOR = "rgba(255,255,255, .05)";
-}, 5000);
-
-// ---------------------------------------------------------------
 class Matrix {
   constructor(canvas, { font_size = 14, width, height } = {}) {
     this._canvas = canvas;
@@ -52,11 +27,21 @@ class Matrix {
     this._font_size = font_size;
     this._drops = [];
     this._chars = chars;
-    this.resize(width, height);
+    this.resize();
   }
+
+  getWindowHeight() {
+    return window.innerHeight;
+  }
+
+  getWindowWidth() {
+    return window.innerWidth - 1;
+  }
+
   random_char() {
-    return rnd(this._chars);
+    return getRandomArrayItem(this._chars);
   }
+
   render_char(char, x, y) {
     this._ctx.fillText(char, x, y);
   }
@@ -81,19 +66,18 @@ class Matrix {
       this._drops[x] = 255;
     }
   }
-  resize(width, height) {
-    this._width = width;
-    this._height = height;
-    // ref: https://blog.codepen.io/2013/07/29/full-screen-canvas/
-    this._canvas.width = width;
+  resize() {
+    this._width = this.getWindowWidth();
+    this._height = this.getWindowHeight();
+    this._canvas.width = this._width;
     setTimeout(() => {
-      this._canvas.height = height;
+      this._canvas.height = this._height;
       this.reset();
     }, 0);
-    this._columns = Math.round(width / this._font_size);
+    this._columns = Math.round(this._width / this._font_size);
   }
   clear() {
-    this._ctx.fillStyle = BG_COLOR;
+    this._ctx.fillStyle = BACKGROUND_COLOR;
     this._ctx.fillRect(0, 0, this._width, this._height);
     this._ctx.fillStyle = TEXT_COLOR;
     this._ctx.font = this._font_size + "px monospace";
@@ -115,12 +99,55 @@ class Matrix {
 
 var MATRIX_BACKGROUND_RUNNING = false;
 
+var BACKGROUND_COLOR = null;
+var TEXT_COLOR = null;
+
+function updateMatrixColors(textColor, bgColor) {
+  let tcFormat = getCSSColorFormat(textColor);
+  let bgFormat = getCSSColorFormat(bgColor);
+
+  if (!tcFormat) {
+    throw new Error(`'textColor': (${textColor}) is not a valid css color value.`);
+    return
+  }
+
+  if (!bgFormat.endsWith("a") || !bgFormat) { // hexa, rgba, hsla
+    throw new Error(`'bgColor': (${bgColor}) is not a color with transparency.`);
+    return 
+  }
+
+  BACKGROUND_COLOR = bgColor;
+  TEXT_COLOR = textColor;
+}
+
+function getUpdatedThemeColors() {
+
+  let textColor = getCssVariable("--tertiary-color");
+  let docBackColor = getCssVariable("--document-background-color");
+
+  let bgColorTransparent;
+  if (!getCSSColorFormat(docBackColor).endsWith("a")) {
+    bgColorTransparent = addTransparencyToColor(docBackColor, 0.05);
+  } else {
+    bgColorTransparent = docBackColor;
+  }
+
+  return {
+    bg: bgColorTransparent,
+    text: textColor
+  }
+}
+
+export function setMatrixColorsByCurrentTheme() {
+  let updatedThemeColors = getUpdatedThemeColors();
+  updateMatrixColors(updatedThemeColors.text, updatedThemeColors.bg);
+}
+
 export function runMatrixBackground() {
-  // RUN!
   var canvas = document.getElementById("matrixBackground");
 
   if (!canvas) {
-    throw "Missing 'matrixBackground' canvas element, can't initialize matrix."
+    throw new Error("Missing 'matrixBackground' canvas element, can't initialize matrix.");
     return
   }
 
@@ -129,16 +156,18 @@ export function runMatrixBackground() {
     return
   }
 
+  if (!BACKGROUND_COLOR || !TEXT_COLOR) {
+    setMatrixColorsByCurrentTheme()
+  }
+
   const matrix = new Matrix(canvas, {
-    font_size: 14,
-    width: width(),
-    height: height()
+    font_size: 14
   });
 
   MATRIX_BACKGROUND_RUNNING = true;
 
   window.addEventListener('resize', e => {
-    matrix.resize(width(), height());
+    matrix.resize();
   });
   matrix.start();
 }

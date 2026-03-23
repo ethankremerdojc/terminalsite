@@ -12,8 +12,6 @@ import {
 
 import { initializeContactFormListener } from "./contact-pane.js";
 
-console.log("ltp", loadTerminalPane);
-
 export async function loadAsciiPane() {
   await loadTerminalPane("art-pane", 'artPaneContents', 5, "fade-in");
   initializeArtPane();
@@ -25,7 +23,7 @@ export async function loadMainPane() {
 }
 
 export async function loadStackPane() {
-  await loadTerminalPane("stack-pane", 'stackPaneContents', 40);
+  await loadTerminalPane("stack-pane", 'stackPaneContents', 40, "fade-in");
   loadStackNav();
 }
 

@@ -20,7 +20,7 @@
 
 /* Darkmode default */
 :root {
-  --main-text-color: rgb(215, 215, 215);
+  --main-text-color: #D7D7D7;
 
   --document-background-color: #000000;
   --terminal-background-color: #383838;
@@ -35,15 +35,15 @@
 
 /* Lightmode */
 .lightmode {
-  --main-text-color: rgb(0, 153, 173);
+  --main-text-color: #E64100;
 
   --document-background-color: #f3f5f5;
   --terminal-background-color: #fff;
   --prompt-background-color: #caedf2;
 
-  --primary-color: rgb(230, 65, 0);
-  --secondary-color: rgb(0, 149, 168);
-  --tertiary-color: rgb(255, 87, 146);
+  --primary-color: #E64100;
+  --secondary-color: #0095A8;
+  --tertiary-color: #FF5692;
 
   --terminal-border: solid var(--main-text-color) var(--border-width);
 }
