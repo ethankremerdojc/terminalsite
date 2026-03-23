@@ -2,7 +2,7 @@
   input {
     background: none;
     border: none;
-    border-bottom: solid var(--terminal-background-color) 1px;
+    border-bottom: solid var(--terminal-background-color-transp) 1px;
     min-width: 80px;
     field-sizing: content;
     max-width: calc(100% - var(--half-spacing));

@@ -22,7 +22,8 @@
     height: var(--item-size);
     position: relative;
 
-    img {
+    svg {
+      display: block;
       width: var(--item-size);
       position: absolute;
       top: 0;
@@ -57,12 +58,26 @@
     fill: var(--primary-color);
 }
 
+
 .svg-fill-secondary {
     fill: var(--secondary-color);
 }
 
+.svg-stroke-secondary {
+    stroke: var(--secondary-color);
+}
+
+
 .svg-fill-tertiary {
     fill: var(--tertiary-color);
+}
+
+.svg-fill-quaterniary {
+  fill: var(--quaterniary-color);
+}
+
+.svg-fill-background {
+  fill: var(--terminal-background-color);
 }
 
 @media screen and (max-width: 1100px) {

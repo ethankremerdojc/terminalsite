@@ -10,7 +10,7 @@
 
 .terminal-pane {
   border: var(--terminal-border);
-  background-color: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
+  background-color: var(--terminal-background-color-transp);
   max-height: calc(100vh - (var(--spacing) * 2));
   overflow-y: auto;
   overflow-x: hidden;
@@ -47,7 +47,7 @@
   }
 
   h1 {
-    background-color: rgb(from var(--prompt-background-color) r g b / var(--pane-opacity));
+    background-color: rgb(from var(--prompt-background-color) r g b / 0.3);
     padding: var(--half-spacing);
     border-bottom: var(--terminal-border);
   }

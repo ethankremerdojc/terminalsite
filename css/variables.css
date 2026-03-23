@@ -16,6 +16,8 @@
 
   --tablet-breakpoint: 950px;
   --phone-breakpoint: 600px;
+
+  --white: rgb(250, 250, 250);
 }
 
 /* Darkmode default */
@@ -35,15 +37,30 @@
 
 /* Lightmode */
 .lightmode {
-  --main-text-color: #E64100;
+  /* --main-text-color: #E64100; */
+  /**/
+  /* --document-background-color: #f3f5f5; */
+  /* --terminal-background-color: #fff; */
+  /* --prompt-background-color: #caedf2; */
+  /**/
+  /* --primary-color: #E64100; */
+  /* --secondary-color: #0095A8; */
+  /* --tertiary-color: #FF5692; */
 
-  --document-background-color: #f3f5f5;
-  --terminal-background-color: #fff;
-  --prompt-background-color: #caedf2;
 
-  --primary-color: #E64100;
-  --secondary-color: #0095A8;
-  --tertiary-color: #FF5692;
+  --main-text-color:   #776D5F; /* 'graphite' */ 
 
+  --primary-color:     #EE6C4d; /* red */
+  --secondary-color:   #1C66C3; /* blue */
+  --tertiary-color:    #CC59D2; /* purple */
+  --quaterniary-color: rgb(255, 209, 102); /* orangeish */
+  --quaterniary-color-lighter: rgb(237, 227, 212);
+  --quaterniary-color-lightest: rgb(236, 228, 215);
+
+  --prompt-background-color: var(--quaterniary-color);
+  --terminal-background-color: var(--white);
+  --terminal-background-color-transp: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
   --terminal-border: solid var(--main-text-color) var(--border-width);
+
+  --document-background-color: var(--quaterniary-color-lightest);
 }
