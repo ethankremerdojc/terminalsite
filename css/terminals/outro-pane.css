@@ -1,7 +1,15 @@
 .outro-html {
   padding: var(--half-spacing);
 
-  i, b, a, p {
+  b {
+    font-size: 17px !important;
+  }
+
+  p {
+    font-size: 15px !important;
+  }
+
+  i, a {
     font-size: 13px !important;
   }
 

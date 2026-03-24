@@ -164,7 +164,14 @@ function getDetailsHtml(details) {
   return result
 }
 
+
+var UPDATING_STACK_INFO = false;
+
 async function updateStackInfo(itemType) {
+
+  if (UPDATING_STACK_INFO) { return }
+
+  UPDATING_STACK_INFO = true;
 
   let stackItemName = document.getElementById("stack-item-name");
   let stackDetails = document.getElementById("stack-item-info");
@@ -173,6 +180,8 @@ async function updateStackInfo(itemType) {
 
   await typeOutTextContent(stackItemName, stackInfo.title, [10, 60]);
   await typeOutTextContent(stackDetails, stackInfo.details.join("<br />"), [2, 8]);
+
+  UPDATING_STACK_INFO = false;
 }
 
 function getItemType(classes) {
@@ -200,6 +209,7 @@ export function getStackNavStr() {
   stackNavStr += "</ul>"
   return stackNavStr
 }
+
 
 export async function loadStackNav() {
   let stackNav = document.getElementById("stack-nav-items");

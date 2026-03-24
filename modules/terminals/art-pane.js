@@ -149,9 +149,11 @@ function updateCurrentArt(index, firstTime=false) {
   const artPre = document.getElementById("ascii-art-pre");
 
   artPre.style.opacity = 0;
+
   setTimeout(() => {
     artPre.innerHTML = newArt;
     artPre.style.opacity = 1;
+    clearInterval(_ASCII_ART_INTERVAL_);
     _ASCII_ART_INTERVAL_ = setInterval(nextArt, 7000);
   }, 1000)
 }

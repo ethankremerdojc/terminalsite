@@ -20,10 +20,14 @@ export function initializeContactFormListener() {
     });
 
     if (res.ok) {
-      document.getElementById("contact-submit-button").textContent = "Thank You!";
+      let submitButton = document.getElementById("contact-submit-button");
+      submitButton.textContent = "Thank You!";
+      submitButton.classList.add("submitted");
       form.reset();
     } else {
-      document.getElementById("contact-submit-button").textContent = "Submission failed.";
+      let submitButton = document.getElementById("contact-submit-button");
+      submitButton.textContent = "Submission failed.";
+      submitButton.classList.add("failed");
     }
   });
 }

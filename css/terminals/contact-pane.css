@@ -41,5 +41,13 @@
       outline: none;
       border: solid var(--main-text-color) 1px;
     }
+
+    &.submitted {
+      color: var(--primary-color);
+    }
+
+    &.failed {
+      color: red;
+    }
   }
 }

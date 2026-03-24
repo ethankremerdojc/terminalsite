@@ -64,7 +64,7 @@ export const PANES_CONTENT = {
         getStackNavStr() +
         '<div class="stack-item-details">' +
           '<h2 class="stack-item-name" id="stack-item-name"></h2>' +
-          '<div class="stack-item-name" id="stack-item-info"></div>' +
+          '<div class="stack-item-info" id="stack-item-info"></div>' +
         '</div>'
       ]
     }
@@ -114,10 +114,13 @@ export const PANES_CONTENT = {
         `<i>Sourced from <a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a> though that was also a recreation of another.</i>` +
         "<p>Matrix Background</p>" +
         `<i>Adapted from <a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
+        "<b>LINKS: </b>" +
         "<p>Code</p>" +
         `<i>Github: <a href="https://github.com/ethankremerdojc/terminalsite">https://github.com/ethankremerdojc/terminalsite</a></i>` +
         "<p>Resume</p>" +
         `<i>Google Docs: <a href="https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing">https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing</a></i>` +
+        `<br/>` +
+        `<i>© 2026 Ethan Kremer</i>` +
       "</div>"
       ]
     },
@@ -129,6 +132,7 @@ export const PANES_CONTENT = {
       result: [
         `<form class="contact-form" id="contact-form" method="POST">` +
           `<p>Have any questions for me, or feedback on this site? Fill out this form to contact me, and I'll send you an email as soon as I can with a reply!</p>` +
+          `<p>Alternatively shoot me an email at <a href="mailto:ethankremer.web@gmail.com">ethankremer.web@gmail.com</a></p>` +
           `<input name="email" type="email" placeholder="email" />` +
           `<textarea name="notes" type="text" multiline placeholder="notes"></textarea>` +
           `<button id="contact-submit-button" type="submit">Submit!</textarea>` +

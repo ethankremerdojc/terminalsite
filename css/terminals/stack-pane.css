@@ -47,6 +47,9 @@
   }
 }
 
+.stack-item-name {
+  color: var(--primary-color);
+}
 
 .stack-item-info, .stack-item-name {
   padding: var(--half-spacing);
@@ -80,15 +83,7 @@
   fill: var(--terminal-background-color);
 }
 
-/* body:not(.lightmode) { */
-/*   .svg-fill-quaterniary { */
-/*       fill: var(--tertiary-color); */
-/*   } */
-/**/
-/*   .svg-fill-tertiary { */
-/*       fill: var(--quaterniary-color); */
-/*   } */
-/* } */
+/* MOBILE */
 
 @media screen and (max-width: 1100px) {
   .stack-nav-items {
