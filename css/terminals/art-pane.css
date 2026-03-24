@@ -37,16 +37,16 @@ pre {
 
   button, &:before, &:after {
     opacity: 0.5;
-    font-size: 28px;
+    font-size: 24px;
   }
 
-  &:before {
-    content: "(";
-  }
-
-  &:after {
-    content: ")";
-  }
+  /* &:before { */
+  /*   content: "("; */
+  /* } */
+  /**/
+  /* &:after { */
+  /*   content: ")"; */
+  /* } */
 
   button {
     border: none;
@@ -73,7 +73,7 @@ pre {
 
   .ascii-nav {
     button, &:before, &:after {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }

@@ -22,6 +22,10 @@
   -webkit-box-shadow: var(--pane-box-shadow-webkit);
 
   border-radius: var(--border-radius);
+
+  /* :last-child.pane-chunk { */
+  /*   . */
+  /* } */
 }
 
 
@@ -57,7 +61,7 @@
   }
 
   h1 {
-    background-color: rgb(from var(--prompt-background-color) r g b / 0.25);
+    background-color: var(--prompt-background-color-transp);
     padding: 8px 16px;
     border-bottom: var(--terminal-border);
   }
@@ -79,8 +83,12 @@
     border-top: var(--terminal-border);
   }
 
+  h1:has(#promptInput) {
+    border-bottom: none;
+  }
+
   /* the 'PS1' before the prompt */
-  
+
   .prompt-ps1 {
     font-size: 17px;
   }
@@ -88,7 +96,7 @@
   name { color: var(--primary-color); }
   at { color: var(--main-text-color); margin: 0 4px; }
   host { color: var(--tertiary-color); }
-  lambda { color: var(--main-text-color); margin: 0 4px; }
+  lambda { color: var(--main-text-color); margin: 0 4px; font-weight: 600; }
 }
 
 /* Specific Sizing */

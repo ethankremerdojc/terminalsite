@@ -2,10 +2,15 @@
   input {
     background: none;
     border: none;
-    border-bottom: solid var(--terminal-background-color-transp) 1px;
+    border-bottom: solid var(--prompt-background-color-transp) 1px;
     min-width: 80px;
     field-sizing: content;
     max-width: calc(100% - var(--half-spacing));
+
+    &::placeholder {
+      font-weight: 300;
+      color: var(--main-text-color);
+    }
 
     &:focus-visible, &:active {
       outline: none;

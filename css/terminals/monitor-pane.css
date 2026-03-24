@@ -2,6 +2,7 @@
 
   --height: 375px;
   --monitor-height: calc(var(--height) / 2);
+  min-width: min(380px, 80vw);
 
   .result {
     height: var(--height);
@@ -39,4 +40,8 @@
   }
 }
 
-
+@media screen and (max-width: 500px) {
+  .monitor-pane {
+    min-width: unset;
+  }
+}

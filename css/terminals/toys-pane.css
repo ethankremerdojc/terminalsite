@@ -12,7 +12,6 @@
     border-bottom: var(--terminal-border);
 
     li {
-
       transition: color 0.5s ease, text-shadow 0.5s ease !important;
 
       &:hover {
@@ -20,7 +19,7 @@
         color: var(--tertiary-color);
       }
 
-      font-weight: 400;
+      font-weight: 500;
 
       &.active {
         color: var(--tertiary-color);
