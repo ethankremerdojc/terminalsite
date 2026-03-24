@@ -67,7 +67,10 @@ function drawMonitorGrid(ctx, monitor) {
 function drawMonitor(monitor) {
   let monitorDiv = document.getElementById(monitor.id);
   let canvas = monitorDiv.querySelector("canvas");
+
+  const dpr = window.devicePixelRatio || 1;
   const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   // clear screen
   ctx.clearRect(0, 0, monitor.width, monitor.height);
@@ -112,12 +115,34 @@ var MONITORS = [
   },
 ]
 
+function initializeMonitor(monitor) {
+  let canvas = document.getElementById(monitor.id).querySelector("canvas");
+
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = Math.round(rect.width * dpr);
+  canvas.height = Math.round(rect.height * dpr);
+
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  monitor.width = canvas.width;
+  monitor.height = canvas.height;
+}
+
 export function initializeMonitors() {
   for (var monitor of MONITORS) {
-    let canvas = document.getElementById(monitor.id).querySelector("canvas");
-    monitor.width = canvas.width;
-    monitor.height = canvas.height;
+    initializeMonitor(monitor);
   }
+
+  window.addEventListener('resize', e => {
+    for (var monitor of MONITORS) {
+      initializeMonitor(monitor);
+    }
+  });
 
   setInterval(updateMonitorGraphs, 1000);
 }
+
+

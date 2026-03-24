@@ -48,11 +48,11 @@
 .pane-chunk {
 
   h1, p, input {
-    font-size: 17px;
+    font-size: 15px;
   }
 
   input {
-    height: 17px;
+    height: 15px;
     font-family: var(--font-family-monospace);
   }
 
@@ -80,6 +80,10 @@
   }
 
   /* the 'PS1' before the prompt */
+  
+  .prompt-ps1 {
+    font-size: 17px;
+  }
 
   name { color: var(--primary-color); }
   at { color: var(--main-text-color); margin: 0 4px; }

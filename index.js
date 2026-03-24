@@ -43,7 +43,7 @@ function loadPage() {
         }
       });
     }, {
-      threshold: 0.6 // once pane is 60% on screen, start loading
+      threshold: 0.5 // once pane is 50% on screen, start loading
     });
 
     Object.keys(visibilityMap).forEach(id => {
