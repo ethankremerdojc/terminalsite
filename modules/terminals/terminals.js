@@ -1,6 +1,7 @@
 import { loadTerminalPane } from "./generation.js";
 import { loadAsciiNav, initializeArtPane } from "./art-pane.js";
-import { loadStackNav } from "./stack-pane.js"
+import { initializeMonitors } from "./monitor.js";
+import { loadStackNav } from "./stack-pane.js";
 
 // toys
 import { runDonut } from "./toys/donut.js";
@@ -25,6 +26,11 @@ export async function loadMainPane() {
 export async function loadStackPane() {
   await loadTerminalPane("stack-pane", 'stackPaneContents', 5, "fade-in");
   loadStackNav();
+}
+
+export async function loadMonitorPane() {
+  await loadTerminalPane("monitor-pane", 'monitorPaneContents', 5);
+  initializeMonitors();
 }
 
 export async function loadToysPane() {

@@ -1,6 +1,7 @@
 import {
   loadMainPane,
   loadAsciiPane,
+  loadMonitorPane,
   loadStackPane,
   loadToysPane,
   loadOutroPane,
@@ -20,6 +21,7 @@ function loadPage() {
   const visibilityMap = {
     "main": loadMainPane,
     "art": loadAsciiPane,
+    "monitor": loadMonitorPane,
     "stack": loadStackPane,
     "toys": loadToysPane,
     "outro": loadOutroPane,

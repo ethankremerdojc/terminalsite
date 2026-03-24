@@ -36,6 +36,7 @@
   --quaterniary-color: rgb(255, 212, 0); /* Gold */
 
   --prompt-background-color: rgb(3, 57, 119); /* Dark blue */
+  --prompt-background-color-darker: rgb(11, 35, 61);
 
   --terminal-background-color: var(--black);
   --terminal-background-color-transp: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));
@@ -60,6 +61,7 @@
   --quaterniary-color-lighter: rgb(236, 233, 215);
 
   --prompt-background-color: var(--quaterniary-color);
+  --prompt-background-color-darker: rgb(247, 241, 197);
 
   --terminal-background-color: var(--white);
   --terminal-background-color-transp: rgb(from var(--terminal-background-color) r g b / var(--pane-opacity));

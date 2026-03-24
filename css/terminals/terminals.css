@@ -2,6 +2,7 @@
 @import "contact-pane.css";
 @import "linux-pane.css";
 @import "outro-pane.css";
+@import "monitor-pane.css";
 @import "stack-pane.css";
 @import "toys-pane.css";
 
@@ -23,16 +24,25 @@
   border-radius: var(--border-radius);
 }
 
-.last-third-pane {
-  grid-column: 3;
-}
 
 .first-two-thirds-pane {
   grid-column: 1 / span 2;
 }
 
-.all-three-panes, header {
+.last-two-thirds-pane {
+  grid-column: 2 / span 2;
+}
+
+.all-three-thirds-pane, header {
   grid-column: 1 / span 3;
+}
+
+.first-third-pane {
+  grid-column: 1;
+}
+
+.last-third-pane {
+  grid-column: 3;
 }
 
 .pane-chunk {

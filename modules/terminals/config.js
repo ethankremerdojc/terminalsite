@@ -55,6 +55,22 @@ export const PANES_CONTENT = {
       ]
     }
   ],
+  monitorPaneContents: [
+    {
+      promptText: "monitor",
+      resultTag: "rawhtml",
+      result: [
+        `<div class="monitor-outer" id="cpu-monitor">
+          <p></p>
+          <canvas></canvas>
+        </div>
+        <div class="monitor-outer" id="mem-monitor">
+          <p></p>
+          <canvas></canvas>
+        </div>`
+      ]
+    }
+  ],
   stackPaneContents: [
     {
       promptText: "stack",
