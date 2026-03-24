@@ -84,6 +84,7 @@
   name { color: var(--primary-color); }
   at { color: var(--main-text-color); margin: 0 4px; }
   host { color: var(--tertiary-color); }
+  lambda { color: var(--main-text-color); margin: 0 4px; }
 }
 
 /* Specific Sizing */

@@ -61,11 +61,11 @@ export const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         `<div class="monitor-outer" id="cpu-monitor">
-          <p></p>
+          <p>CPU:</p>
           <canvas></canvas>
         </div>
         <div class="monitor-outer" id="mem-monitor">
-          <p></p>
+          <p>MEM:</p>
           <canvas></canvas>
         </div>`
       ]

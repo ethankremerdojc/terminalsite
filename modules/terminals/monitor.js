@@ -21,30 +21,6 @@ function getInitialMonitorVals() {
 function drawMonitorLabel(label, monitor) {
   const latest = monitor.points[monitor.points.length - 1];
   label.innerHTML = `${monitor.label}: ${latest}%`;
-  return
-
-
-
-  // fill background for label
-  ctx.fillStyle = getCssVariable("--prompt-background-color-darker");
-  ctx.fillRect(0, 0, monitor.width, LABEL_SPACE);
-
-  ctx.fillStyle = getCssVariable(monitor.colorVar);
-  ctx.font = "12px sans-serif";
-  ctx.fillText(`${monitor.label}: ${latest}%`, 4, 16);
-
-  // borderline under
-  ctx.strokeStyle = getCssVariable("--main-text-color");
-  ctx.lineWidth = 1;
-
-  let borderYPositions = [LABEL_SPACE];
-
-  for (var y of borderYPositions) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(monitor.width, y);
-    ctx.stroke();
-  }
 }
 
 function drawMonitorGraph(ctx, monitor) {
@@ -55,10 +31,11 @@ function drawMonitorGraph(ctx, monitor) {
   monitor.points.forEach((value, i) => {
     const x = (i / (MAX_POINTS - 1)) * monitor.width;
 
-    // got to do the '- 2' and '+ 1' to make sure the 0 and 100 vals (basically makes position between 1 and 99)
+    // got to do the '- 4' and '+ 2' to make sure the 0 and 100 vals (basically makes position between 1 and 99)
     // do not look like they are off the canvas or overlapping with label
-    const availableSpace = monitor.height - 2; // 1 for both top and bottom
-    const y = availableSpace - (value / 100) * availableSpace + 1;
+    
+    const availableSpace = monitor.height - 4; // 1 for both top and bottom
+    const y = availableSpace - (value / 100) * availableSpace + 2;
 
     if (i === 0) {
       ctx.moveTo(x, y);
@@ -114,7 +91,7 @@ function updateMonitorGraphs() {
 const MAX_POINTS = 60;
 const MIN_VAL = 0;
 const MAX_VAL = 100;
-const AMOUNT_JITTER = 15;
+const AMOUNT_JITTER = 25;
 
 var MONITORS = [
   {
