@@ -46,9 +46,8 @@ export function showToy(name) {
 }
 
 const TOY_INFO_HTML = `
-<h2>TOYS:</h2>
+<h2>TOYS</h2>
 <h3>Tips, Info and more</h3>
-<br />
 <br />
 <b>SNAKE</b>
 <p>Snake can be controlled by pressing arrow keys, or by tapping the sides of the playfield with mouse or finger.</p>

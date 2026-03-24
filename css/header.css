@@ -62,16 +62,17 @@ header {
 
 #theme-toggler {
   border-radius: 50%;
-  height: 26px;
-  width: 26px;
+  height: 22px;
+  width: 22px;
   position: relative;
   display: block;
-  transition: outline 0.3s ease;
+  transition: outline 0.2s ease;
   outline: solid rgba(0, 0, 0, 0) 1px;
+  cursor: pointer;
 
   & svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     position: absolute;
     top: 2px;
     left: 2px;
@@ -96,8 +97,10 @@ body { /* Darkmode */
 
   #theme-toggler {
     background: var(--prompt-background-color);
+    outline: solid var(--secondary-color) 1px;
+
     &:hover {
-      outline: solid var(--secondary-color) 1px;
+      outline: solid var(--main-text-color) 1px;
     }
   }
 }
