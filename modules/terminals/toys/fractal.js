@@ -1,16 +1,9 @@
 import { ComplexNumber } from "./complex.js";
 import { getCssVariable } from "../../utils.js";
 
-`
-
-mandelbrot set:
-
-fc (z) = z^2 + c 
-
-c is all the points of the plane,
-z starts at 0, checking if it diverges
-
-`
+// =========================
+// fractal utls
+// =========================
 
 function getComplexNumFromCanvasCoirdinates(canvasWidth, canvasHeight, x, y, polarWidth=5, polarHeight=5) {
 
@@ -34,8 +27,6 @@ function getComplexNumFromCanvasCoirdinates(canvasWidth, canvasHeight, x, y, pol
 
   return new ComplexNumber(roundedX, roundedY);
 }
-
-const MAX_ITERATION_COUNT = 24;
 
 function getIterationsToDiverge(c, z, pow, iterationCount=1, maxIterationCount=MAX_ITERATION_COUNT) {
   // returns true for 'converges' and false for 'diverges'
@@ -77,16 +68,18 @@ function generateFractal(canvas, z=0, pow=2) {
 
   let points = [];
 
+  let polarWidth = 5;
+  let polarHeight = 5;
+
   for (let y=0; y<=height; y++) {
     for (let x=0; x<=width; x++) {
-      let complexNum = getComplexNumFromCanvasCoirdinates(width, height, x, y);
+      let complexNum = getComplexNumFromCanvasCoirdinates(width, height, x, y, polarWidth, polarHeight);
 
       let iterationCount = getIterationsToDiverge(complexNum, z, pow);
       points.push([x, y, iterationCount]);
     }
   };
 
-  console.log("rendered points: ", points.length);
   let skipped = 0;
 
   let rgb = getRGB();
@@ -108,13 +101,69 @@ function generateFractal(canvas, z=0, pow=2) {
     ctx.fillRect(x, y, 1, 1);
   }
 
-  console.log("skipped points: ", skipped);
+  ctx.strokeStyle = getCssVariable("--main-text-color");
+
+  // add a gridline for x and y axis
+  ctx.beginPath(); // Start a new path
+  ctx.moveTo(0, canvas.height / 2);
+  ctx.lineTo(canvas.width, canvas.height / 2); 
+  ctx.stroke();
+
+  // add a gridline
+  ctx.beginPath(); // Start a new path
+  ctx.moveTo(canvas.width / 2, 0);
+  ctx.lineTo(canvas.width / 2, canvas.height); 
+  ctx.stroke();
+
+  ctx.fillStyle = getCssVariable("--main-text-color");
+  ctx.font = `${getCssVariable("--font-family-monospace")} 10px`;
+
+  // horizontal markers
+  ctx.fillText(`-${polarWidth / 2}`, 5, height / 2 - 5);
+  ctx.fillText(`${polarWidth / 2}`, width - 18, height / 2 - 5);
+
+  // vertical markers
+  ctx.fillText(`-${polarHeight / 2}i`, width / 2 + 5, height - 10);
+  ctx.fillText(`${polarHeight / 2}i`, width / 2 + 5, 15);
 }
 
-export function initializeFractal() {
+// =========================
+// regular stuffs
+// =========================
+
+const MAX_ITERATION_COUNT = 24;
+
+function getUpdatedVals() {
+  let zInput = document.getElementById("z-fractal-input");
+  let powInput = document.getElementById("pow-fractal-input");
+
+  let zLabel = document.querySelector('label[for="z"]');
+  let powLabel = document.querySelector('label[for="pow"]');
+
+  let z = Math.round(zInput.value * 10000) / 10000;
+  let pow = powInput.value;
+
+  zLabel.querySelector("p").innerHTML = "Z: " + z;
+  powLabel.querySelector("p").innerHTML = "Power: " + pow;
+
+  return {z: z, pow: pow};
+}
+
+var INITIALIZING_FRACTAL = false;
+
+function initializeFractal() {
+  INITIALIZING_FRACTAL = true;
   let canvas = document.getElementById("fractal-canvas");
 
-  let width = 500;
+  let width;
+  if (window.innerWidth < 370) {
+    width = 200;
+  } else if (window.innerWidth < 500) {
+    width = 280;
+  }  else {
+    width = 400;
+  }
+
   let height = width;
 
   canvas.style.width = `${width}px`;
@@ -125,3 +174,40 @@ export function initializeFractal() {
 
   generateFractal(canvas);
 }
+
+export function initializeFractalPane() {
+  let zInput = document.getElementById("z-fractal-input");
+  let powInput = document.getElementById("pow-fractal-input");
+  let canvas = document.getElementById("fractal-canvas");
+
+  let onChange = () => {
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    let updatedVals = getUpdatedVals();
+    generateFractal(canvas, updatedVals.z, updatedVals.pow);
+  };
+
+  zInput.addEventListener('change', onChange);
+  powInput.addEventListener('change', onChange);
+
+  let zLabel = document.querySelector('label[for="z"]');
+  let powLabel = document.querySelector('label[for="pow"]');
+
+  let zButton = zLabel.querySelector('button');
+  let powButton = powLabel.querySelector('button');
+
+  zLabel.addEventListener("click", () => {
+    zInput.value = 0;
+    onChange(null, 0);
+  })
+
+  powLabel.addEventListener("click", () => {
+    powInput.value = 2;
+    onChange();
+  })
+
+  initializeFractal();
+  window.addEventListener("resize", initializeFractal);
+};
+

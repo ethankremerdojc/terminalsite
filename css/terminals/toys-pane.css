@@ -1,13 +1,13 @@
 @import "toys/snake.css";
 @import "toys/donut.css";
 @import "toys/hangman.css";
+@import "toys/fractal.css";
 
 .toys-pane {
   ul {
     display: flex;
     list-style: none;
-    justify-content: center;
-    gap: 60px;
+    justify-content: space-around;
     padding: var(--half-spacing);
     border-bottom: var(--terminal-border);
 
@@ -164,10 +164,8 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 770px) {
   .toys-pane ul {
-
-    gap: 20px;
 
     li {
       font-size: 13px;
@@ -176,13 +174,19 @@
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 530px) {
   .toys-pane ul {
-
-    gap: 12px;
-
     li {
       font-size: 10px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .toys-pane ul {
+    li {
+      font-size: 8px;
     }
 
   }

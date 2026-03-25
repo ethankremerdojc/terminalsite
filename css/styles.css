@@ -1,6 +1,7 @@
 @import "variables.css";
 @import "matrix-background.css";
 @import "header.css";
+@import "inputs.css";
 
 @import "terminals/terminals.css";
 
@@ -59,6 +60,7 @@ main {
   z-index: 1;
   top: 0;
 }
+
 
 h1 {
   font-weight: 500;

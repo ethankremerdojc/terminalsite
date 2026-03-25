@@ -92,10 +92,10 @@ export const PANES_CONTENT = {
       result: [
         '<ul id="toys-header-items">' +
           '<li id="nav-item-toys-info">[ TOYS INFO ]</li>' +
+          '<li id="nav-item-fractal">[ FRACTAL ]</li>' +
           '<li id="nav-item-snake">[ SNAKE ]</li>' +
           '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
-          '<li id="nav-item-fractal">[ FRACTAL ]</li>' +
         '</ul>' +
 
         `<div class="toys-container-outer">` +
@@ -114,8 +114,17 @@ export const PANES_CONTENT = {
             '</div>' + 
           '</div>' +
 
-          '<div id="toys-container-fractal" class="fractal toy-div"><canvas id="fractal-canvas"></canvas></div>' +
-
+          '<div id="toys-container-fractal" class="fractal toy-div">' +
+            '<div class="fractal-outer">' +
+              '<div class="fractal-controls">' +
+                '<label for="pow"><p>Power: 2</p><button>Set Default</button></label>' +
+                '<input type="range" min="1" max="10" name="pow" value="2" id="pow-fractal-input">' +
+                '<label for="z"><p>Z: 0</p><button>Set Default</button></label>' +
+                '<input type="range" min="-1.5" max="1.5" name="z" step="0.01" vale="0" id="z-fractal-input">' +
+              '</div>' +
+              '<canvas id="fractal-canvas"></canvas>' +
+            '</div>' +
+          '</div>' +
         '</div>'
       ]
     }

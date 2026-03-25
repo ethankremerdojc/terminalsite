@@ -1,0 +1,42 @@
+.fractal {
+  width: 100%; 
+}
+
+.fractal-outer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-top: var(--half-spacing);
+  gap: var(--half-spacing);
+
+  canvas {
+    border: var(--terminal-border);
+  }
+}
+
+.fractal-controls {
+  width: 400px;
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .fractal-controls {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .fractal-controls {
+    width: 200px;
+  }
+}
