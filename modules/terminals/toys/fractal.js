@@ -151,7 +151,7 @@ function getUpdatedVals() {
 
 var INITIALIZING_FRACTAL = false;
 
-function initializeFractal() {
+export function initializeFractal() {
   INITIALIZING_FRACTAL = true;
   let canvas = document.getElementById("fractal-canvas");
 

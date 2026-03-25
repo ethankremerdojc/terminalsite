@@ -1,5 +1,6 @@
 import { setMatrixColorsByCurrentTheme } from "./matrixBackground.js";
 import { getCssVariable } from "./utils.js";
+import { initializeFractal } from "./terminals/toys/fractal.js";
 
 const LOCAL_STORAGE_THEME_KEY = "modetheme";
 
@@ -12,6 +13,7 @@ export function toggleColorTheme() {
   document.body.classList.add("transitioning");
   setTimeout(() => {
     document.body.classList.remove("transitioning");
+    initializeFractal();
   }, 2000);
 
   document.body.classList.toggle("lightmode");
