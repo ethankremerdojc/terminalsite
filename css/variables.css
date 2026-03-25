@@ -28,7 +28,7 @@
 
 /* Darkmode default */
 :root {
-  --main-text-color: #D6FAFF; /* very light blue */
+  --main-text-color: rgb(214, 250, 255); /* very light blue | LEAVE AS RGB for fractal */ 
 
   --primary-color: #46FA14; /* Green */
   --secondary-color: #4A8FE7; /* Blue */
@@ -52,7 +52,7 @@
   --pane-box-shadow-webkit: 0px 4px 8px 0px rgba(0, 0, 0,0.35); 
   --pane-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.35);
 
-  --main-text-color:   #7d5824; /* 'graphite' */ 
+  --main-text-color:   rgb(125, 88, 36); /* 'graphite' */ 
 
   --primary-color:     #EE6C4d; /* red */
   --secondary-color:   #4A94FC; /* blue */

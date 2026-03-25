@@ -95,6 +95,7 @@ export const PANES_CONTENT = {
           '<li id="nav-item-snake">[ SNAKE ]</li>' +
           '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
+          '<li id="nav-item-fractal">[ FRACTAL ]</li>' +
         '</ul>' +
 
         `<div class="toys-container-outer">` +
@@ -112,6 +113,8 @@ export const PANES_CONTENT = {
               '<pre id="output" style="font-size: 7px; font-weight: bolder;"></pre>' +
             '</div>' + 
           '</div>' +
+
+          '<div id="toys-container-fractal" class="fractal toy-div"><canvas id="fractal-canvas"></canvas></div>' +
 
         '</div>'
       ]

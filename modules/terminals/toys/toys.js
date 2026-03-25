@@ -69,6 +69,7 @@ export function loadToysNav() {
 
   const setActive = (e) => {
     let newToyName = e.target.innerHTML.replace("[", "").replace("]", "").trim().toLowerCase();
+
     if (newToyName.includes(" ")) {
       newToyName = newToyName.replaceAll(" ", "-");
     }

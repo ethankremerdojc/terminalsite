@@ -5,6 +5,7 @@ import { loadStackNav } from "./stack-pane.js";
 
 // toys
 import { runDonut } from "./toys/donut.js";
+import { initializeFractal } from "./toys/fractal.js";
 import {
   loadToysNav,
   showToy,
@@ -36,6 +37,7 @@ export async function loadMonitorPane() {
 export async function loadToysPane() {
   await loadTerminalPane("toys-pane", 'toysPaneContents', 40, "fade-in");
   runDonut();
+  initializeFractal();
   await loadToysNav();
   showToy("toys-info");
   await initializeToysInfo();
