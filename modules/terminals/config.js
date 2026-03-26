@@ -117,12 +117,21 @@ export const PANES_CONTENT = {
           '<div id="toys-container-fractal" class="fractal toy-div">' +
             '<div class="fractal-outer">' +
               '<div class="fractal-controls">' +
+                '<label for="angle"><p>Angle: 40</p><button>Set Default</button></label>' +
+                '<input type="range" min="0" max="180" name="angle" step="1" value="40" id="angle-fractal-input">' +
+                '<label for="length"><p>Length Factor: 0.65</p><button>Set Default</button></label>' +
+                '<input type="range" min="0.1" max="1" name="length" step="0.01" value="0.65" id="length-fractal-input">' +
+              '</div>' +
+              '<canvas id="tree-fractal-canvas"></canvas>' +
+            '</div>' +
+            '<div class="fractal-outer">' +
+              '<div class="fractal-controls">' +
                 '<label for="pow"><p>Power: 2</p><button>Set Default</button></label>' +
                 '<input type="range" min="1" max="10" name="pow" value="2" id="pow-fractal-input">' +
                 '<label for="z"><p>Z: 0</p><button>Set Default</button></label>' +
-                '<input type="range" min="-1.5" max="1.5" name="z" step="0.01" vale="0" id="z-fractal-input">' +
+                '<input type="range" min="-1.5" max="1.5" name="z" step="0.01" value="0" id="z-fractal-input">' +
               '</div>' +
-              '<canvas id="fractal-canvas"></canvas>' +
+              '<canvas id="brot-fractal-canvas"></canvas>' +
             '</div>' +
           '</div>' +
         '</div>'

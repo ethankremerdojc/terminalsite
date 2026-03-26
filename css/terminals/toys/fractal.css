@@ -1,5 +1,6 @@
 .fractal {
   width: 100%; 
+  display: flex;
 }
 
 .fractal-outer {
@@ -26,6 +27,20 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    & p {
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid var(--main-text-color);
+    color: var(--secondary-color);
+    outline: none;
+    font-weight: 600;
+    border-radius: 3px;
   }
 }
 
@@ -38,5 +53,21 @@
 @media screen and (max-width: 370px) {
   .fractal-controls {
     width: 200px;
+  }
+}
+
+:root {
+  --fractal-width: 400;
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --fractal-width: 280;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  :root {
+    --fractal-width: 200;
   }
 }
