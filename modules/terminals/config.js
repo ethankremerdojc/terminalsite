@@ -113,7 +113,7 @@ export const PANES_CONTENT = {
             '</div>' + 
           '</div>' +
 
-          '<div id="toys-container-fractal" class="fractal toy-div">' +
+          '<div id="toys-container-fractals" class="fractal toy-div">' +
             '<div class="fractal-outer">' +
               '<div class="fractal-controls">' +
                 '<label for="angle"><p>Angle: 40</p><button>Set Default</button></label>' +
