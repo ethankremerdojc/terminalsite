@@ -18,7 +18,7 @@ function generateFractal(fractalType, genFunc, val1Name, val2Name) {
 
   let canvas = document.getElementById(fractalType + "-fractal-canvas");
 
-  let width = getCssVariable("--fractal-width");
+  let width = Number(getCssVariable("--fractal-width").replace("px", ""));
   let height = width;
 
   canvas.style.width = `${width}px`;

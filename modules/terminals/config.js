@@ -76,7 +76,6 @@ export const PANES_CONTENT = {
       promptText: "stack",
       resultTag: "rawhtml",
       result: [
-        '<p class="stack-tooltip">Click on the icons for details.</p>' +
         getStackNavStr() +
         '<div class="stack-item-details">' +
           '<h2 class="stack-item-name" id="stack-item-name"></h2>' +

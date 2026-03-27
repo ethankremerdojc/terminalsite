@@ -28,13 +28,15 @@ function drawMonitorGraph(ctx, monitor) {
   ctx.strokeStyle = getCssVariable(monitor.colorVar);
   ctx.lineWidth = 2;
 
+  const rect = monitor.canvas.getBoundingClientRect();
+
   monitor.points.forEach((value, i) => {
-    const x = (i / (MAX_POINTS - 1)) * monitor.width;
+    const x = (i / (MAX_POINTS - 1)) * rect.width;
 
     // got to do the '- 4' and '+ 2' to make sure the 0 and 100 vals (basically makes position between 1 and 99)
     // do not look like they are off the canvas or overlapping with label
     
-    const availableSpace = monitor.height - 4; // 1 for both top and bottom
+    const availableSpace = rect.height - 4; // 1 for both top and bottom
     const y = availableSpace - (value / 100) * availableSpace + 2;
 
     if (i === 0) {
@@ -51,6 +53,8 @@ function drawMonitorGrid(ctx, monitor) {
   ctx.strokeStyle = getCssVariable("--prompt-background-color-darker");
   ctx.lineWidth = 1;
 
+  const rect = monitor.canvas.getBoundingClientRect();
+
   // if we want more y poss here it is
   let yPositions = [
     monitor.height / 2, // fake center
@@ -59,27 +63,24 @@ function drawMonitorGrid(ctx, monitor) {
   for (var y of yPositions) {
     ctx.beginPath();
     ctx.moveTo(0, y);
-    ctx.lineTo(monitor.width, y);
+    ctx.lineTo(rect.width, y);
     ctx.stroke();
   }
 }
 
 function drawMonitor(monitor) {
   let monitorDiv = document.getElementById(monitor.id);
-  let canvas = monitorDiv.querySelector("canvas");
-
-  const dpr = window.devicePixelRatio || 1;
-  const ctx = canvas.getContext("2d");
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   // clear screen
-  ctx.clearRect(0, 0, monitor.width, monitor.height);
 
-  drawMonitorGrid(ctx, monitor);
-  drawMonitorGraph(ctx, monitor);
+  const rect = monitor.canvas.getBoundingClientRect();
+  monitor.ctx.clearRect(0, 0, rect.width, rect.height);
 
-  let label = monitorDiv.querySelector("p");
-  drawMonitorLabel(label, monitor)
+  // drawMonitorGrid(ctx, monitor);
+  drawMonitorGraph(monitor.ctx, monitor);
+
+  // let label = monitorDiv.querySelector("p");
+  // drawMonitorLabel(label, monitor)
 }
 
 function updateMonitorGraphs() {
@@ -87,6 +88,7 @@ function updateMonitorGraphs() {
     let lastPoint = monitor.points[monitor.points.length - 1];
     monitor.points.push(getNewMonitorVal(lastPoint));
     monitor.points.shift();
+    console.log(monitor.points.length)
     drawMonitor(monitor);
   }
 }
@@ -103,7 +105,9 @@ var MONITORS = [
     colorVar: "--secondary-color",
     points: getInitialMonitorVals(),
     width: null,
-    height: null
+    height: null,
+    canvas: null,
+    ctx: null,
   },
   {
     label: "MEM",
@@ -111,7 +115,9 @@ var MONITORS = [
     colorVar: "--tertiary-color",
     points: getInitialMonitorVals(),
     width: null,
-    height: null
+    height: null,
+    canvas: null,
+    ctx: null
   },
 ]
 
@@ -127,8 +133,8 @@ function initializeMonitor(monitor) {
   const ctx = canvas.getContext("2d");
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  monitor.width = canvas.width;
-  monitor.height = canvas.height;
+  monitor.canvas = canvas;
+  monitor.ctx = ctx;
 }
 
 export function initializeMonitors() {

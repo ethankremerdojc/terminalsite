@@ -1,5 +1,22 @@
-.stack-pane .result {
-  padding: var(--spacing) 0;
+.stack-pane {
+
+  .pane-chunk {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .result {
+    height: calc(100% - 38px); /*HACK */
+
+    rawhtml {
+      padding: var(--spacing) 0;
+      height: calc(100% - (2*var(--spacing)));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+  }
 }
 
 .stack-nav-items {

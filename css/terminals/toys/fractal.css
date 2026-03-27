@@ -1,3 +1,7 @@
+:root {
+  --fractal-width: 400px;
+}
+
 .fractal {
   width: 100%; 
   display: flex;
@@ -20,7 +24,10 @@
 }
 
 .fractal-controls {
-  width: 400px;
+  width: var(--fractal-width);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 
   label {
     display: flex;
@@ -41,33 +48,54 @@
     outline: none;
     font-weight: 600;
     border-radius: 3px;
+    margin-left: 10px;
+  }
+}
+
+
+
+@media screen and (max-width: 900px) {
+  :root {
+    --fractal-width: 350px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    --fractal-width: 300px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --fractal-width: 250px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  :root {
+    --fractal-width: 225px;
+  }
+
+  .fractal {
+    flex-direction: column;
+  }
+
+  .fractal-outer {
+    flex-direction: row-reverse;
+    justify-content: space-around
   }
 }
 
 @media screen and (max-width: 500px) {
-  .fractal-controls {
-    width: 280px;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .fractal-controls {
-    width: 200px;
-  }
-}
-
-:root {
-  --fractal-width: 400;
-}
-
-@media screen and (max-width: 500px) {
   :root {
-    --fractal-width: 280;
+    --fractal-width: 175px;
   }
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 400px) {
   :root {
-    --fractal-width: 200;
+    --fractal-width: 130px;
   }
 }

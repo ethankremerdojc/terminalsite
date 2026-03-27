@@ -54,7 +54,7 @@ main {
   width: min(calc(100% - ( 2 * var(--spacing))), 1300px);
   padding: var(--spacing);
   display: grid;
-  grid-template-columns: 1fr 1fr 450px;
+  grid-template-columns: 400px 1fr 400px;
   grid-gap: var(--spacing);
   position: absolute;
   z-index: 1;

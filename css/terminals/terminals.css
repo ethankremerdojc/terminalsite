@@ -101,12 +101,12 @@
 
 /* Specific Sizing */
 
-.linux-pane, .art-pane {
-  height: 560px;
+.art-pane {
+  min-height: 560px;
 }
 
-.stack-pane {
-  min-height: max(35vh, 420px);
+.monitor-pane, .linux-pane {
+  height: 420px;
 }
 
 .outro-pane, .contact-pane {

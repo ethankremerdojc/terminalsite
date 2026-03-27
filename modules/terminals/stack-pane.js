@@ -196,7 +196,7 @@ function getItemType(classes) {
 }
 
 export function getStackNavStr() {
-  let stackNavStr = `<ul class="stack-nav-items" id="stack-nav-items">`;
+  let stackNavStr = `<div><p class="stack-tooltip">Click on the icons for details.</p><ul class="stack-nav-items" id="stack-nav-items">`;
 
   for (var [itemName, itemDetails] of Object.entries(STACK_INFO)) {
     let activeStr = "";
@@ -206,7 +206,7 @@ export function getStackNavStr() {
     stackNavStr += `<li>${itemDetails.html}</li>`;
   }
 
-  stackNavStr += "</ul>"
+  stackNavStr += "</ul></div>"
   return stackNavStr
 }
 
