@@ -91,7 +91,7 @@ export const PANES_CONTENT = {
       result: [
         '<ul id="toys-header-items">' +
           '<li id="nav-item-toys-info">[ TOYS INFO ]</li>' +
-          '<li id="nav-item-fractal">[ FRACTALS ]</li>' +
+          '<li id="nav-item-fractals">[ FRACTALS ]</li>' +
           '<li id="nav-item-snake">[ SNAKE ]</li>' +
           '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
