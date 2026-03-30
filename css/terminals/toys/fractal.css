@@ -13,10 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-
-  margin-top: var(--half-spacing);
-  gap: var(--half-spacing);
+  justify-content: space-evenly;
 
   canvas {
     border: var(--terminal-border);
@@ -52,7 +49,9 @@
   }
 }
 
-
+.toys-container-outer {
+  height: 570px;
+}
 
 @media screen and (max-width: 900px) {
   :root {
@@ -74,8 +73,8 @@
 
 @media screen and (max-width: 600px) {
 
-  :root {
-    --fractal-width: 225px;
+  .toys-container-outer {
+    height: 630px;
   }
 
   .fractal {
@@ -83,19 +82,48 @@
   }
 
   .fractal-outer {
-    flex-direction: row-reverse;
-    justify-content: space-around
+    justify-content: space-around;
+
+    label {
+      display: none;
+    }
+
+    input {
+      &[name="a"]:before {
+        content: "Angle: ";
+        margin-right: 6px;
+      }
+
+      &[name="l"]:before {
+        content: "Length: ";
+        margin-right: 6px;
+      }
+
+      &[name="z"]:before {
+        content: "Z: ";
+        margin-right: 6px;
+      }
+
+      &[name="p"]:before {
+        content: "Power: ";
+        margin-right: 6px;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 500px) {
-  :root {
-    --fractal-width: 175px;
+  .fractal-outer {
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 340px) {
   :root {
-    --fractal-width: 130px;
+    --fractal-width: 200px;
+  }
+
+  .toys-container-outer {
+    height: 580px;
   }
 }

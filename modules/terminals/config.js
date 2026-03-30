@@ -116,19 +116,19 @@ export const PANES_CONTENT = {
           '<div id="toys-container-fractals" class="fractal toy-div">' +
             '<div class="fractal-outer">' +
               '<div class="fractal-controls">' +
-                '<label for="angle"><p>Angle: 40</p><button>Set Default</button></label>' +
-                '<input type="range" min="0" max="180" name="angle" step="1" value="40" id="angle-fractal-input">' +
-                '<label for="length"><p>Length Factor: 0.65</p><button>Set Default</button></label>' +
-                '<input type="range" min="0.1" max="1" name="length" step="0.01" value="0.65" id="length-fractal-input">' +
+                '<label for="a"><p>a: 40</p><button>Set Default</button></label>' +
+                '<input type="range" min="0" max="180" name="a" step="1" value="40" id="a-fractal-input" orientation="vertical">' +
+                '<label for="l"><p>l: 0.65</p><button>Set Default</button></label>' +
+                '<input type="range" min="0.1" max="1" name="l" step="0.01" value="0.65" id="l-fractal-input" orientation="vertical">' +
               '</div>' +
               '<canvas id="tree-fractal-canvas"></canvas>' +
             '</div>' +
             '<div class="fractal-outer">' +
               '<div class="fractal-controls">' +
-                '<label for="pow"><p>Power: 2</p><button>Set Default</button></label>' +
-                '<input type="range" min="1" max="10" name="pow" value="2" id="pow-fractal-input">' +
-                '<label for="z"><p>Z: 0</p><button>Set Default</button></label>' +
-                '<input type="range" min="-1.5" max="1.5" name="z" step="0.01" value="0" id="z-fractal-input">' +
+                '<label for="p"><p>p: 2</p><button>Set Default</button></label>' +
+                '<input type="range" min="1" max="10" name="p" value="2" id="p-fractal-input" orientation="vertical">' +
+                '<label for="z"><p>z: 0</p><button>Set Default</button></label>' +
+                '<input type="range" min="-1.5" max="1.5" name="z" step="0.01" value="0" id="z-fractal-input" orientation="vertical">' +
               '</div>' +
               '<canvas id="brot-fractal-canvas"></canvas>' +
             '</div>' +
@@ -145,18 +145,18 @@ export const PANES_CONTENT = {
       `<div class="outro-html">` +
         "<b>CREDITS: </b>" +
         "<p>Ascii Arts:</p>" +
-        `<i>Sourced from <a href="https://www.asciiart.eu/">https://www.asciiart.eu/</a></i>` +
+        `<i><a href="https://www.asciiart.eu/">https://www.asciiart.eu/</a></i>` +
         "<p>Ascii Donut:</p>" +
-        `<i>Sourced from <a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a> though that was also a recreation of another.</i>` +
+        `<i><a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a> though that was also a recreation of another.</i>` +
         "<p>Matrix Background</p>" +
-        `<i>Adapted from <a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
+        `<i><a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
         "<b>LINKS: </b>" +
         "<p>Code</p>" +
         `<i>Github: <a href="https://github.com/ethankremerdojc/terminalsite">https://github.com/ethankremerdojc/terminalsite</a></i>` +
         "<p>Resume</p>" +
         `<i>Google Docs: <a href="https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing">https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing</a></i>` +
         `<br/>` +
-        `<i>© 2026 Ethan Kremer</i>` +
+        `<i class="copywright">© 2026 Ethan Kremer</i>` +
       "</div>"
       ]
     },

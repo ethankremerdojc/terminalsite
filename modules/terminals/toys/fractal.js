@@ -39,19 +39,26 @@ function generateFractal(fractalType, genFunc, val1Name, val2Name) {
 
 const DEFAULT_FRACTAL_VALS = {
   "z": 0,
-  "pow": 2,
-  "angle": 40,
-  "length": 0.65
+  "p": 2,
+  "a": 40,
+  "l": 0.65
+}
+
+const FRACTAL_VAL_NAMES = {
+  "z": "Z",
+  "p": "Power",
+  "a": "Angle",
+  "l": "Length"
 }
 
 function getUpdatedFractalVals() {
   let result = {};
 
-  for (var key of ["z", "pow", "angle", "length"]) {
+  for (var key of ["z", "p", "a", "l"]) {
     let input = document.getElementById(key + "-fractal-input");
     let label = document.querySelector(`label[for="${key}"]`);
     let newVal = Math.round(input.value * 10000) / 10000;
-    label.querySelector("p").innerHTML = key + ": " + newVal;
+    label.querySelector("p").innerHTML = FRACTAL_VAL_NAMES[key] + ": " + newVal;
     result[key] = newVal;
   }
   
@@ -101,21 +108,21 @@ function initializeFractals() {
   initializeFractal(
     "brot",
     "z",
-    "pow",
+    "p",
     generateMultibrotFractal
   );
 
   initializeFractal(
     "tree",
-    "angle",
-    "length",
+    "a",
+    "l",
     generateTreeFractal
   );
 }
 
 export function generateFractals() {
-  generateFractal("brot", generateMultibrotFractal, "z", "pow");
-  generateFractal("tree", generateTreeFractal, "angle", "length");
+  generateFractal("brot", generateMultibrotFractal, "z", "p");
+  generateFractal("tree", generateTreeFractal, "a", "l");
 }
 
 export function initializeFractalPane() {

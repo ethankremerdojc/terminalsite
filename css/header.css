@@ -97,10 +97,10 @@ body { /* Darkmode */
 
   #theme-toggler {
     background: var(--prompt-background-color);
-    outline: solid var(--secondary-color) 1px;
+    outline: solid var(--main-text-color) 1px;
 
     &:hover {
-      outline: solid var(--main-text-color) 1px;
+      outline: solid var(--secondary-color) 1px;
     }
   }
 }

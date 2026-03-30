@@ -1,10 +1,10 @@
+@import "toys-pane.css";
 @import "art-pane.css";
 @import "contact-pane.css";
 @import "linux-pane.css";
 @import "outro-pane.css";
 @import "monitor-pane.css";
 @import "stack-pane.css";
-@import "toys-pane.css";
 
 
 /* All terminal panes */
@@ -26,6 +26,10 @@
   /* :last-child.pane-chunk { */
   /*   . */
   /* } */
+
+  .toys-container-outer {
+    transition: height 0.5s ease;
+  }
 }
 
 
@@ -129,7 +133,11 @@
   }
 
   .toys-pane {
-    min-height: 530px;
+    min-height: 660px;
+  }
+
+  .stack-pane {
+    min-height: 340px;
   }
 }
 
@@ -137,5 +145,11 @@
 @media screen and (max-width: 500px) {
   .art-pane {
     height: 480px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .stack-pane {
+    min-height: 400px;
   }
 }

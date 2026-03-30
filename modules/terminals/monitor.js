@@ -88,7 +88,6 @@ function updateMonitorGraphs() {
     let lastPoint = monitor.points[monitor.points.length - 1];
     monitor.points.push(getNewMonitorVal(lastPoint));
     monitor.points.shift();
-    console.log(monitor.points.length)
     drawMonitor(monitor);
   }
 }
