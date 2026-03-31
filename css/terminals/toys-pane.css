@@ -90,12 +90,18 @@
 
   .infotext {
     left: unset !important;
+    /* bottom: 20px !important; */
+    /* top: unset !important; */
 
     font-weight: 400;
     opacity: 0.6;
     font-size: 12px;
     width: 100% !important;
   }
+}
+
+.starttext {
+  color: var(--primary-color);
 }
 
 .toys-info {

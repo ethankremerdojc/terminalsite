@@ -24,11 +24,28 @@
   text-align: center;
 }
 
-pre {
+#ascii-art-div {
   transition: opacity 1.5s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  p {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+}
+
+pre {
   font-family: var(--font-family-monospace);
-  font-size: 17px;
-  line-height: 19px;
+  font-size: 15px;
+  line-height: 17px;
   font-weight: 400;
   width: fit-content;
 }
@@ -59,6 +76,10 @@ pre {
     transition: opacity 0.3s ease;
 
     &.active {
+      opacity: 1;
+    }
+
+    &:hover {
       opacity: 1;
     }
   }

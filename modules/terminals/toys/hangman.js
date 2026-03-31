@@ -99,11 +99,11 @@ function drawHangmanDude() {
     let x; let y;
 
     if (bodyPartName == "head") {
-      y = 0;
-    } else if (bodyPartName.includes("arm") || bodyPartName == "body") {
       y = 1;
-    } else {
+    } else if (bodyPartName.includes("arm") || bodyPartName == "body") {
       y = 2;
+    } else {
+      y = 3;
     }
 
     if (["head", "body"].includes(bodyPartName)) {
@@ -120,15 +120,15 @@ function drawHangmanDude() {
 
 function drawGallows() {
   let parts = [
-    [[0, 1], "|"],
-    [[0, 0], "_"],
-    [[1, 0], "_"],
-    [[2, 0], "_"],
-    [[2, 1], "|"],
+    [[0, 2], "|"],
+    [[0, 1], "_"],
+    [[1, 1], "_"],
+    [[2, 1], "_"],
     [[2, 2], "|"],
     [[2, 3], "|"],
     [[2, 4], "|"],
     [[2, 5], "|"],
+    [[2, 6], "|"],
   ];
 
   for (var part of parts) {
@@ -167,7 +167,7 @@ function drawCharsToGuess() {
       }
     }
 
-    placeElem([i + 1 + getCharsToGuessLeftOffset(), 7], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess` + extra, SQUARE_SIZE);
+    placeElem([i + 1 + getCharsToGuessLeftOffset(), 8], HANGMAN_FIELD_ELEM, charToPlace, `char-to-guess` + extra, SQUARE_SIZE);
   }
 }
 
@@ -181,11 +181,11 @@ function doesPlayerWin() {
 }
 
 function drawHangmanRestartButton() {
-  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You lose. Restart?", 'infobutton hangman-infobutton', SQUARE_SIZE, initializeHangman);
+  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You lose. Restart?", 'infobutton hangman-infobutton starttext', SQUARE_SIZE, initializeHangman);
 }
 
 function drawHangmanPlayAgainButton() {
-  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You win! Play again?", 'infobutton hangman-infobutton', SQUARE_SIZE, initializeHangman);
+  placeElem([0, 0], HANGMAN_FIELD_ELEM, "You win! Play again?", 'infobutton hangman-infobutton starttext', SQUARE_SIZE, initializeHangman);
 }
 
 function drawHangmanGame() {

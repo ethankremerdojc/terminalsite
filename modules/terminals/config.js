@@ -50,7 +50,7 @@ export const PANES_CONTENT = {
       promptText: "art",
       resultTag: "rawhtml",
       result: [
-        `<pre id="ascii-art-pre"></pre>` + //TODO add first ascii in here
+        `<div id="ascii-art-div"></div>` + //TODO add first ascii in here
         `<div class="ascii-nav" id="ascii-nav"></div>`
       ]
     }

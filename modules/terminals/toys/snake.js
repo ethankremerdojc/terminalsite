@@ -137,12 +137,12 @@ function placePauseText() {
 
 function placeStartText() {
   let startGameFunc = () => { SNAKE_RUNNING = true };
-  placeElem([0, 0], SNAKE_FIELD_ELEM, "Start Snake Game", "infobutton", SQUARE_SIZE, startGameFunc);
+  placeElem([0, 0], SNAKE_FIELD_ELEM, "Start Snake Game", "infobutton starttext", SQUARE_SIZE, startGameFunc);
   placeLoadingSnake(startGameFunc);
 }
 
 function placeDeadText() {
-  placeElem([0, 1], SNAKE_FIELD_ELEM, "Snake: YOU DIED", "infotext", SQUARE_SIZE)
+  placeElem([0, 8], SNAKE_FIELD_ELEM, "GAME OVER!", "infotext snakedeathtext", SQUARE_SIZE)
 }
 
 function placeGameDetails() {
@@ -272,7 +272,7 @@ function stopSnakeGameLoop() {
 }
 
 function startSnakeGameLoop() {
-  SNAKE_GAME_LOOP_INTERVAL = setInterval(gameLoop, 200/SNAKE_CURRENT_SPEED);
+  SNAKE_GAME_LOOP_INTERVAL = setInterval(gameLoop, 150/SNAKE_CURRENT_SPEED);
 }
 
 function resetSnakeGameLoop() {
@@ -436,7 +436,7 @@ function handleClick(e) {
 
 const SNAKE_SEGMENT_CHAR = "⊙";
 const SNAKE_HEAD_CHAR = "⊗";
-const FRUIT_CHAR = "●";
+const FRUIT_CHAR = "⬤";
 const STARTING_FRUIT = 3;
 
 var SNAKE_FIELD_ELEM = null;

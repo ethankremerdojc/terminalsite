@@ -105,8 +105,8 @@
 
 /* Specific Sizing */
 
-.art-pane {
-  min-height: 560px;
+.art-pane .pane-chunk .result {
+  height: 460px;
 }
 
 .monitor-pane, .linux-pane {
@@ -141,15 +141,15 @@
   }
 }
 
-
-@media screen and (max-width: 500px) {
-  .art-pane {
-    height: 480px;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .stack-pane {
-    min-height: 400px;
-  }
-}
+/**/
+/* @media screen and (max-width: 500px) { */
+/*   /* .art-pane { */ */
+/*   /*   height: 40px; */ */
+/*   /* } */ */
+/* } */
+/**/
+/* @media screen and (max-width: 370px) { */
+/*   /* .stack-pane { */ */
+/*   /*   min-height: 400px; */ */
+/*   /* } */ */
+/* } */

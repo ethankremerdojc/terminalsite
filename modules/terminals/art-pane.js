@@ -1,113 +1,146 @@
 function getAsciis() {
-
   let ascii_arrays = [
-    [
-      "              MANDELBROT",
-      "",
-      "                           ..",
-      "                          .:+:-.",
-      "                        ..::*=:..",
-      "                     ....::####:...",
-      "                  ...-=::--*##=-::::=.",
-      "                ....::##############=.",
-      "          ........::#@#############@:.",
-      "        ..:%::=::::-#################%",
-      "      ....::*#####=##################+",
-      "  ......:==%#########################.",
-      ":::#:===+##########################-:.",
-      "   .....:--%#########################:",
-      "       ...::*#####-##################+",
-      "         .:=::-::::=#################@",
-      "          .........:#+#############+:.",
-      "                ....::############%@+.",
-      "                   ..:-:::-###=:::..:.",
-      "                     ....::###%:...",
-      "                        ...:-=:..",
-      "                          .:%::."
-    ],
-    [
-      "       LINUX PENGUIN",
-      "",
-      "",
-      "",
-      "          _nnnn_",
-      "         dGGGGMM",
-      "        @p-qp--qM",
-      "        M|@||@) M",
-      "        @,----.JM|",
-      "       JS^\\__/  qKL",
-      "     dZP        qKRb",
-      "     dZP          qKKb",
-      "    fZP            SMMb",
-      "    HZM            MMMM",
-      "    FqM            MMMM",
-      "   __| \".        |\\dS\"qML",
-      "   |    `.       | `' \\Zq   \\",
-      "  _nnnn_)      \.___.,|     .'",
-      "  \\____)MMMMMP|   .'",
-      "    `-'       `--'",
-      "",
-      "",
-    ],
-    [
-      "                PYTHON",
-      "",
-      "",
-      "",
-      "             .::::::::::.",
-      "           .::``::::::::::.",
-      "           :::..:::::::::::",
-      "           ````````::::::::",
-      "   .::::::::::::::::::::::: iiiiiii,",
-      ".:::::::::::::::::::::::::: iiiiiiiii.",
-      "::::::::::::::::::::::::::: iiiiiiiiii",
-      "::::::::::::::::::::::::::: iiiiiiiiii",
-      ":::::::::: ,,,,,,,,,,,,,,,,,iiiiiiiiii",
-      ":::::::::: iiiiiiiiiiiiiiiiiiiiiiiiiii",
-      "`::::::::: iiiiiiiiiiiiiiiiiiiiiiiiii`",
-      "   `:::::: iiiiiiiiiiiiiiiiiiiiiii`",
-      "           iiiiiiii,,,,,,,,",
-      "           iiiiiiiiiii''iii",
-      "           `iiiiiiiiii..ii`",
-      "             `iiiiiiiiii`",
-      "",
-      "",
-    ],
-    [
-      "        SQUIDWARD",
-      "",
-      "",
-      "",
-      "     .--'''''''''--.",
-      "  .'      .---.      '.",
-      " /    .-----------.    \\",
-      "/        .-----.        \\",
-      "|       .-.   .-.       |",
-      "|      /   \\ /   \\      |",
-      " \\    | .-. | .-. |    /",
-      "  '-._| | | | | | |_.-'",
-      "      | '-' | '-' |",
-      "       \\___/ \\___/",
-      "    _.-'  /   \\  `-._",
-      "  .' _.--|     |--._ '.",
-      "  ' _...-|     |-..._ '",
-      "         |     |",
-      "         '.___.'",
-      "",
-    ]
+    {
+      title: "LINUX PENGUIN",
+      text: [
+        "        _nnnn_",
+        "       dGGGGMM",
+        "      @p-qp--qM",
+        "      M|@||@) M",
+        "      @,----.JM|",
+        "     JS^\\__/  qKL",
+        "   dZP        qKRb",
+        "   dZP          qKKb",
+        "  fZP            SMMb",
+        "  HZM            MMMM",
+        "  FqM            MMMM",
+        " __| \".        |\\dS\"qML",
+        " |    `.       | `' \\Zq",
+        "_)     \\.___.,|      .'",
+        "\\____   )MMMMMP|   .'",
+        "     `-'       `--'"
+      ]
+    },
+    {
+      title: "PYTHON",
+      text: [
+        "             .::::::::::.",
+        "           .::``::::::::::.",
+        "           :::..:::::::::::",
+        "           ````````::::::::",
+        "   .::::::::::::::::::::::: iiiiiii,",
+        ".:::::::::::::::::::::::::: iiiiiiiii.",
+        "::::::::::::::::::::::::::: iiiiiiiiii",
+        "::::::::::::::::::::::::::: iiiiiiiiii",
+        ":::::::::: ,,,,,,,,,,,,,,,,,iiiiiiiiii",
+        ":::::::::: iiiiiiiiiiiiiiiiiiiiiiiiiii",
+        "`::::::::: iiiiiiiiiiiiiiiiiiiiiiiiii`",
+        "   `:::::: iiiiiiiiiiiiiiiiiiiiiii`",
+        "           iiiiiiii,,,,,,,,",
+        "           iiiiiiiiiii''iii",
+        "           `iiiiiiiiii..ii`",
+        "             `iiiiiiiiii`"
+      ]
+    },
+    {
+      title: "SQUIDWARD",
+      text: [
+        "     .--'''''''''--.",
+        "  .'      .---.      '.",
+        " /    .-----------.    \\",
+        "/        .-----.        \\",
+        "|       .-.   .-.       |",
+        "|      /   \\ /   \\      |",
+        " \\    | .-. | .-. |    /",
+        "  '-._| | | | | | |_.-'",
+        "      | '-' | '-' |",
+        "       \\___/ \\___/",
+        "    _.-'  /   \\  `-._",
+        "  .' _.--|     |--._ '.",
+        "  ' _...-|     |-..._ '",
+        "         |     |",
+        "         '.___.'"
+      ]
+    },
+    {
+      title: "BONSAI",
+      text: [
+        `       ,.,`,
+        `      MMMM_    ,..,`,
+        `       "_ "__"MMMMM          ,...,,`,
+        `,..., __." --"    ,.,     _-"MMMMMMM`,
+        `MMMMM"___ "_._   MMM"_."" _ """"""`,
+        `"""""    "" , \\_.   "_. ."`,
+        `        ,., _"__ \\__./ ."`,
+        `       MMMMM_"  "_    ./`,
+        `        ''''      (    )`,
+        ` ._______________.-'____"---._.`,
+        `  \\                          /`,
+        `   \\________________________/`,
+        `  (_)                    (_)`
+      ]
+    },
+    {
+      title: "ARCH",
+      text: [
+        "                   -`",
+        "                 .o+`",
+        "                 `ooo/",
+        "               `+oooo:",
+        "               `+oooooo:",
+        "              -+oooooo+:",
+        "            `/:-:++oooo+:",
+        "            `/++++/+++++++:",
+        "          `/++++++++++++++:",
+        "          `/+++ooooooooooooo/`",
+        "         ./ooosssso++osssssso+`",
+        "       .oossssso-````/ossssss+`",
+        "       -osssssso.      :ssssssso.",
+        "      :osssssss/        osssso+++.",
+        "     /ossssssss/        +ssssooo/-",
+        "   `/ossssso+/:-        -:/+osssso+-",
+        " `+sso+:-`                 `.-/+oso:",
+        " `++:.                           `-/+/",
+        " .`                                  `"
+      ]
+    },
+    {
+      title: "MANDELBROT",
+      text: [
+        "                           ..",
+        "                          .:+:-.",
+        "                        ..::*=:..",
+        "                     ....::####:...",
+        "                  ...-=::--*##=-::::=.",
+        "                ....::##############=.",
+        "          ........::#@#############@:.",
+        "        ..:%::=::::-#################%",
+        "      ....::*#####=##################+",
+        "  ......:==%#########################.",
+        ":::#:===+##########################-:.",
+        "   .....:--%#########################:",
+        "       ...::*#####-##################+",
+        "         .:=::-::::=#################@",
+        "          .........:#+#############+:.",
+        "                ....::############%@+.",
+        "                   ..:-:::-###=:::..:.",
+        "                     ....::###%:...",
+        "                        ...:-=:..",
+        "                          .:%::."
+      ]
+    },
   ]
 
   let result = [];
 
-  const MAX_ASCII_CHAR_WIDTH = 40;
-  for (var ascii_array of ascii_arrays) {
-    for (var line of ascii_array) {
+  const MAX_ASCII_CHAR_WIDTH = 50;
+  for (var asciiObj of ascii_arrays) {
+    for (var line of asciiObj.text) {
       if (line.length > MAX_ASCII_CHAR_WIDTH) {
         throw "ASCII art provided is greater MAX_ASCII_CHAR_WIDTH: " + MAX_ASCII_CHAR_WIDTH
       }
     }
-
-    result.push(ascii_array.join("\n"));
+    result.push(`<p>${asciiObj.title}</p><pre>${asciiObj.text.join("\n")}</pre>`);
   }
 
   return result;
@@ -117,10 +150,20 @@ let _ASCII_ART_INTERVAL_ = null;
 
 function getCurrentArtIndex() {
   const asciiNavDiv = document.getElementById("ascii-nav");
-  let buttons = asciiNavDiv.querySelectorAll("button");
+  let buttons = asciiNavDiv.querySelectorAll(".navdot");
   let activeButton = asciiNavDiv.querySelector("button.active");
 
   return Array.from(buttons).indexOf(activeButton);
+}
+
+const prevArt = () => {
+  let currentIndex = getCurrentArtIndex();
+
+  if (currentIndex == 0) {
+    updateCurrentArt(ASCIIS.length - 1);
+  } else {
+    updateCurrentArt(currentIndex - 1);
+  }
 }
 
 const nextArt = () => {
@@ -142,17 +185,16 @@ function updateCurrentArt(index, firstTime=false) {
   if (!firstTime) {
     let currentActive = asciiNavDiv.querySelector('button.active');
     currentActive.classList.remove("active");
-    Array.from(asciiNavDiv.children)[index].classList.add("active");
+    Array.from(asciiNavDiv.querySelectorAll(".navdot"))[index].classList.add("active");
   }
 
   let newArt = ASCIIS[index];
-  const artPre = document.getElementById("ascii-art-pre");
-
-  artPre.style.opacity = 0;
+  const artDiv = document.getElementById("ascii-art-div");
+  artDiv.style.opacity = 0;
 
   setTimeout(() => {
-    artPre.innerHTML = newArt;
-    artPre.style.opacity = 1;
+    artDiv.innerHTML = newArt;
+    artDiv.style.opacity = 1;
     clearInterval(_ASCII_ART_INTERVAL_);
     _ASCII_ART_INTERVAL_ = setInterval(nextArt, 7000);
   }, 1000)
@@ -168,12 +210,19 @@ export function loadAsciiNav() {
   const asciiNavDiv = document.getElementById("ascii-nav");
 
   const setActive = (e) => {
-    const index = Array.from(asciiNavDiv.children).indexOf(e.target);
+    const index = Array.from(asciiNavDiv.querySelectorAll(".navdot")).indexOf(e.target);
     updateCurrentArt(index);
   }
+  
+  let prevButton = document.createElement("button");
+  prevButton.onclick = prevArt;
+  prevButton.innerHTML = "<";
 
+  asciiNavDiv.appendChild(prevButton);
+  
   for (let i=0; i<ASCIIS.length; i++) {
     let navButton = document.createElement("button");
+    navButton.classList.add("navdot");
     navButton.onclick = setActive;
     navButton.innerHTML = "●";
 
@@ -183,6 +232,12 @@ export function loadAsciiNav() {
 
     asciiNavDiv.appendChild(navButton);
   }
+
+  let nextButton = document.createElement("button");
+  nextButton.onclick = nextArt;
+  nextButton.innerHTML = ">";
+
+  asciiNavDiv.appendChild(nextButton);
 
   _ASCII_ART_INTERVAL_ = setInterval(nextArt, 7000);
 }
