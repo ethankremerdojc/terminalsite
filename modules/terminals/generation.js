@@ -96,7 +96,7 @@ async function populatePrompt(promptDiv, promptText, speed, method, isFirst=fals
   };
 }
 
-async function populateResult(resultDiv, resultLines, resultTag, method="type-out", speed) {
+async function populateResult(resultDiv, resultLines, resultTag, method="fade-in", speed) {
 
    for (var resultLine of resultLines) {
     let resultElem = document.createElement(resultTag);
@@ -105,7 +105,7 @@ async function populateResult(resultDiv, resultLines, resultTag, method="type-ou
   }
 }
 
-async function populatePaneChunk(chunk, paneContent, speed, method="type-out", isFirst=false) {
+async function populatePaneChunk(chunk, paneContent, speed, method="fade-in", isFirst=false) {
   const {promptText, result, resultTag} = paneContent;
 
   const promptDiv = getPromptDiv();
@@ -138,7 +138,7 @@ export async function handlePromptSubmit(e) {
 
   let response = getPromptResponse(userText);
   let resultDiv = paneChunk.querySelector(".result");
-  await populateResult(resultDiv, response, "p", "type-out", 2);
+  await populateResult(resultDiv, response, "p", "fade-in", 2);
 
   // add empty pane
   let chunk = document.createElement("div");
@@ -162,7 +162,7 @@ export async function handlePromptSubmit(e) {
 
 // END PROMPT STUFFS
 
-export async function loadTerminalPane(paneId, contentId, speed, method="type-out") {
+export async function loadTerminalPane(paneId, contentId, speed, method="fade-in") {
   const terminalPane = document.querySelector(`.${paneId}`);
 
   let paneContents = PANES_CONTENT[contentId];

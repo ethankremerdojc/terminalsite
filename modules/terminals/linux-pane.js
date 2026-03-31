@@ -1,93 +1,11 @@
-function isValidPath(path) {
-  let dirContents = getDirContents(path);
+import {
+  changeDir,
+  getPathContents,
+  readableContents,
+  getPrevDirPath,
+  CWD
 
-  if (dirContents) {
-    return true
-  } else {
-    return false
-  }
-}
-
-function changeDir(newDir) {
-  let newPath;
-  if (newDir.startsWith("/")) {
-    newPath = newDir;
-  } else {
-    newPath = CWD + "/" + newDir
-  }
-
-  if (isValidPath(newPath)) {
-    CWD = newPath;
-    return true
-  } else {
-    return false
-  }
-}
-
-function getDirContents(path=CWD) {
-  let pathItems = path.split("/").slice(1); // get rid of first slash
-
-  if (pathItems.length === 1 && pathItems[0] === '') {
-    return DRIVE
-  }
-
-  let currentDir = DRIVE;
-  let currentPath = [];
-
-  for (let i=0; i<pathItems.length; i++) {
-    var pathItem = pathItems[i];
-
-    if (i === pathItems.length - 1 && currentDir.length == 0) {
-      return []
-    }
-
-    let found = false;
-
-    for (var item of currentDir) {
-      if (typeof(item) === "object") {
-        if (item[0] === pathItem) {
-          currentDir = item[1];
-          currentPath.push(item[0]);
-          found = true;
-        }
-      }
-    }
-
-
-    if (!found) {
-      return false
-    }
-  }
-
-  return currentDir
-}
-
-function readableContents(currentDirContents) {
-
-  let result = [];
-
-  for (var item of currentDirContents) {
-    if (typeof(item) === "object") {
-      result.push(item[0] + "/");
-    } else {
-      result.push(item);
-    }
-  }
-
-  return result
-} 
-
-function getDirs(currentDirContents) {
-  let result = [];
-
-  for (var item of currentDirContents) {
-    if (typeof(item) === "object") {
-      result.push(item[0]);
-    }
-  }
-
-  return result;
-}
+} from "./driveUtils.js";
 
 function clearScreen() {
   document.getElementById("linux-pane").innerHTML = "";
@@ -117,25 +35,27 @@ function getResponses() {
         }
       },
       ls: (args) => {
-
         let contents;
         let path;
 
         if (args.length == 0) {
-          contents = getDirContents();
+          contents = getPathContents();
           path = CWD;
         } else {
           path = args[0];
 
           if (path.startsWith("/")) {
-            contents = getDirContents(path);
+            contents = getPathContents(path);
+          } else if (path.startsWith("..")) {
+            contents = getPathContents(getPrevDirPath(path))
+          } else {
+            contents = getPathContents(CWD + "/" + path);
           }
 
-          contents = getDirContents(CWD + "/" + path);
         }
-
+        
         if (contents) {
-          return readableContents(contents);
+          return readableContents(contents['children']);
         } else {
           return [`ls: cannot access '${path}': No such file or directory`]
         }
@@ -143,6 +63,21 @@ function getResponses() {
       clear: () => {
         clearScreen();
         return ["clearing screen"]
+      },
+      cat: (args) => {
+        let path = args[0];
+        if (!path) {
+          return [`Can't cat nothing.`]
+        }
+
+        let contents;
+        if (path.startsWith("/")) {
+          contents = getPathContents(path);
+        } else {
+          contents = getPathContents(CWD + "/" + path);
+        }
+        console.log(contents);
+        return contents['content'].trim().split("\n")
       },
       cls: () => {
         clearScreen();
@@ -210,34 +145,5 @@ export function focusLatestInput() {
   let newInput = document.getElementById("promptInput");
   newInput.focus();
 }
-
-let CWD = "/site";
-
-let DRIVE = [
-  [
-    "site", [
-      [
-        "icons", [
-          "bash.svg", 
-          "css.svg", 
-          "docker.svg",
-          "html.svg",
-          "js.svg",
-          "nginx.svg",
-          "python.svg",
-          "react.svg"
-        ]
-      ],
-      "README.md",
-      "index.html",
-      "index.js",
-      "main.css",
-      "variables.js"
-    ]
-  ],
-  [
-    "root", []
-  ]
-];
 
 const RESPONSES = getResponses();
