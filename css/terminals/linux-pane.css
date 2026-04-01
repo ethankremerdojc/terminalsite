@@ -15,7 +15,7 @@
     &:focus-visible, &:active {
       outline: none;
     }
-  }
+  }  
 
   .result {
     p {
@@ -28,4 +28,11 @@
       }
     }
   }
+
+  /* .pane-chunk:last-child:not(:first-child) { */
+  /*   .prompt { */
+  /*     border-bottom: none; */
+  /*   } */
+  /* } */
+
 }

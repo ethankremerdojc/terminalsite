@@ -78,10 +78,6 @@
     }
   }
 
-  &:has(#promptInput) {
-    border-bottom: none;
-  }
-
   .prompt-ps1 {
     font-size: 17px;
   }

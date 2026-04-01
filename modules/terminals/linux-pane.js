@@ -1,4 +1,8 @@
 import {
+  loadTerminalPane
+} from "./generation.js";
+
+import {
   changeDir,
   getPathContents,
   readableContents,
@@ -8,8 +12,9 @@ import {
 } from "./driveUtils.js";
 
 function clearScreen() {
-  document.getElementById("linux-pane").innerHTML = "";
-  loadTerminalPane("linux-pane", 'emptyPaneContents', 40).then(() => {
+  document.querySelector(".linux-pane").innerHTML = "";
+
+  loadTerminalPane("linux-pane", 'emptyPaneContents', 5).then(() => {
     focusLatestInput();
   });
 }

@@ -66,10 +66,11 @@ async function handleContentInjection(element, content, method, speed) {
   }
 }
 
-async function populatePrompt(promptDiv, promptText, speed, method, isFirst=false) {
+async function populatePrompt(promptDiv, promptText, speed, method, isFirst=false, cwd="/site") {
   let ps1 = document.createElement("span");
   ps1.classList.add("prompt-ps1");
-  ps1.innerHTML = `<name>ethan</name><at>@</at><host>${CWD}</host><lambda>&lambda;</lambda>`;
+
+  ps1.innerHTML = `<name>ethan</name><at>@</at><host>${cwd}</host><lambda>&lambda;</lambda>`;
   promptDiv.appendChild(ps1);
 
   let promptInputSpan = document.createElement("span");
@@ -106,12 +107,12 @@ async function populateResult(resultDiv, resultLines, resultTag, method="fade-in
   }
 }
 
-async function populatePaneChunk(chunk, paneContent, speed, method="fade-in", isFirst=false) {
+async function populatePaneChunk(chunk, paneContent, speed, method="fade-in", isFirst=false, cwd="/site") {
   const {promptText, result, resultTag} = paneContent;
 
   const promptDiv = getPromptDiv();
   chunk.appendChild(promptDiv);
-  await populatePrompt(promptDiv, promptText, speed, "type-out", isFirst);
+  await populatePrompt(promptDiv, promptText, speed, "type-out", isFirst, cwd);
 
   let pane = chunk.closest(".terminal-pane");
   pane.scrollTop = pane.scrollHeight;
@@ -145,7 +146,8 @@ export async function handlePromptSubmit(e) {
   paneChunk.appendChild(chunk);
 
   await populatePaneChunk(
-    chunk, EMPTY_PANE, 2
+    chunk, EMPTY_PANE, 2,
+    "fade-in", false, CWD
   );
 
   let isNavigating = false;

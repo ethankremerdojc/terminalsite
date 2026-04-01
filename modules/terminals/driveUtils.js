@@ -135,7 +135,12 @@ export function readableContents(currentDirContents) {
 }
 
 export function tree(path, indentCount=0) {
+  if (path.startsWith("..")) {
+    path = getPrevDirPath(path);
+  }
+
   let contents = getPathContents(path);
+
   let treeStr = "";
   for (var child of contents.children) {
     for (let i=0; i<indentCount + 1; i++) {
