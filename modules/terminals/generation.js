@@ -1,5 +1,6 @@
 import { PANES_CONTENT, EMPTY_PANE } from "./config.js";
 import { wait, getRandomInt } from "../utils.js";
+import { CWD } from "./driveUtils.js";
 import { getPromptResponse, focusLatestInput } from "./linux-pane.js";
 
 function getPromptDiv() {
@@ -68,7 +69,7 @@ async function handleContentInjection(element, content, method, speed) {
 async function populatePrompt(promptDiv, promptText, speed, method, isFirst=false) {
   let ps1 = document.createElement("span");
   ps1.classList.add("prompt-ps1");
-  ps1.innerHTML = "<name>ethan</name><at>@</at><host>site</host><lambda>&lambda;</lambda>";
+  ps1.innerHTML = `<name>ethan</name><at>@</at><host>${CWD}</host><lambda>&lambda;</lambda>`;
   promptDiv.appendChild(ps1);
 
   let promptInputSpan = document.createElement("span");

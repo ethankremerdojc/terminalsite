@@ -1,6 +1,6 @@
 import { DRIVE } from "./drive.js";
 
-export var CWD = "/root";
+export var CWD = "/site";
 
 //TODO
 //Create a 'getAbsPath' func that factors in .. and such
@@ -14,11 +14,11 @@ export function getPathContents(path=CWD) {
   let pathItems = path.split("/").slice(1); // get rid of first slash
   console.log(pathItems);
 
-  if (pathItems.length === 1 && pathItems[0] === 'root') {
+  if (pathItems.length === 1 && pathItems[0] === 'site') {
     return DRIVE
   }
 
-  if (pathItems[0] == "root") {
+  if (pathItems[0] == "site") {
     pathItems.shift();
   };
 

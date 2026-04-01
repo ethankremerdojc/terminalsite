@@ -6,7 +6,7 @@ IGNORE_FILES_AND_DIRS = [
 
 def build_tree(path):
     tree = {
-        "name": os.path.basename(path),
+        "name": os.path.basename(path) if path != "./" else "site",
         "type": "directory",
         "children": []
     }
