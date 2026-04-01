@@ -40,6 +40,13 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .monitor-pane .monitor-outer p {
+    line-height: 14px;
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .monitor-pane {
     min-width: unset;

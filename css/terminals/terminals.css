@@ -53,25 +53,20 @@
   grid-column: 3;
 }
 
-.pane-chunk {
+.prompt {
+  font-weight: 500;
+  background-color: var(--prompt-background-color-transp);
+  padding: 8px 16px;
+  margin: 0;
+  border-bottom: var(--terminal-border);
 
-  h1, p, input {
+  input, span {
     font-size: 15px;
   }
 
   input {
     height: 15px;
     font-family: var(--font-family-monospace);
-  }
-
-  h1 {
-    background-color: var(--prompt-background-color-transp);
-    padding: 8px 16px;
-    border-bottom: var(--terminal-border);
-  }
-
-  .prompt {
-    font-weight: 500;
   }
 
   .prompt-input-span {
@@ -83,43 +78,49 @@
     }
   }
 
-  &:not(:first-child) h1 {
-    border-top: var(--terminal-border);
-  }
-
-  h1:has(#promptInput) {
+  &:has(#promptInput) {
     border-bottom: none;
   }
-
-  /* the 'PS1' before the prompt */
 
   .prompt-ps1 {
     font-size: 17px;
   }
 
+  /* the 'PS1' before the prompt */
   name { color: var(--primary-color); }
   at { color: var(--main-text-color); margin: 0 4px; }
   host { color: var(--tertiary-color); }
   lambda { color: var(--main-text-color); margin: 0 4px; font-weight: 600; }
 }
 
+.pane-chunk {
+  p {
+    font-size: 15px;
+  }
+
+  &:not(:first-child) .prompt {
+    border-top: var(--terminal-border);
+  }
+}
+
 /* Specific Sizing */
 
-.art-pane .pane-chunk .result {
-  height: 460px;
+.art-pane, .stack-pane {
+  height: 430px;
 }
 
 .monitor-pane, .linux-pane {
   height: 420px;
 }
 
-.outro-pane, .contact-pane {
-  min-height: 470px;
+.outro-html, .contact-form {
+  min-height: 400px;
 }
 
 @media screen and (max-width: 940px) {
-  .pane-chunk {
-    h1, p, input {
+  .prompt {
+    font-size: 14px;
+    p, input {
       font-size: 14px;
     }
   }
@@ -127,29 +128,29 @@
 
 @media screen and (max-width: 600px) {
   .pane-chunk {
-    h1, p, input {
+    font-size: 12px;
+    p, input {
       font-size: 12px;
     }
   }
 
+  .prompt .prompt-ps1, .prompt .prompt-input-span {
+    font-size: 14px;
+  }
+
   .toys-pane {
-    min-height: 660px;
+    min-height: 530px;
   }
 
   .stack-pane {
     min-height: 340px;
   }
-}
 
-/**/
-/* @media screen and (max-width: 500px) { */
-/*   /* .art-pane { */ */
-/*   /*   height: 40px; */ */
-/*   /* } */ */
-/* } */
-/**/
-/* @media screen and (max-width: 370px) { */
-/*   /* .stack-pane { */ */
-/*   /*   min-height: 400px; */ */
-/*   /* } */ */
-/* } */
+  .outro-html {
+    min-height: 330px;
+  }
+
+  .contact-form {
+    min-height: 330px;
+  }
+}

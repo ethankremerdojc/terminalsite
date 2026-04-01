@@ -1,15 +1,16 @@
-import { typeOutTextContent } from "./generation.js";
+import { wait } from "../utils.js";
+import { typeOutTextContent, fadeInContent } from "./generation.js";
 
 const STACK_INFO = {
   "python": {
     title: "Python",
+    experience: "6",
     details: [
-      "Experience: 6 years",
       "My favorite programming language! I've made endless automation scripts, games, webservers, tui's and more. ", 
       "I love it's readability, and how easy it is to get up and running with it.", 
       "If I was ever stranted on a desert island, I would want Python on the island with me. "
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="active python-svg">
     <g clip-path="url(#clip0_1_160)">
     <path d="M59.3717 0.000984936C54.4164 0.0238042 49.6842 0.442647 45.5203 1.17286C33.2541 3.32054 31.0271 7.81583 31.0271 16.1059V27.0546H60.0136V30.7041H31.0271H20.1487C11.7244 30.7041 4.34787 35.7224 2.04058 45.2688C-0.620848 56.2113 -0.738897 63.0396 2.04058 74.4653C4.10104 82.9701 9.02171 89.03 17.446 89.03H27.4122V75.905C27.4122 66.423 35.6902 58.059 45.5203 58.059H74.473C82.5324 58.059 88.9663 51.4824 88.9663 43.4608V16.1059C88.9663 8.32053 82.3393 2.47221 74.473 1.17286C69.4936 0.351369 64.327 -0.0218347 59.3717 0.000984936ZM43.696 8.80679C46.6901 8.80679 49.1352 11.2696 49.1352 14.2979C49.1352 17.3154 46.6901 19.7554 43.696 19.7554C40.6911 19.7554 38.2568 17.3154 38.2568 14.2979C38.2568 11.2696 40.6911 8.80679 43.696 8.80679Z" class="svg-fill-quaterniary"/>
@@ -25,12 +26,12 @@ const STACK_INFO = {
   },
   "bash": {
     title: "Scripting",
+    experience: "6",
     details: [
-      "Experience: 6 years",
       "I have made many a script. For anything a computer might do. I have plenty of automation scripts running now that automate much of my workflow day to day.",
       "I am fluent in bash, and comfortable with both Powershell and *cough* batch.",
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="bash-svg">
     <path d="M104.582 24.4508L66.7432 2.00953C62.246 -0.669842 56.6401 -0.669842 52.1428 2.00953L14.2968 24.4508C9.74447 27.1942 6.97281 32.1279 7.0002 37.4388V82.3139C6.97548 87.622 9.7468 92.5522 14.2968 95.2942L52.1352 117.728C56.6329 120.406 62.238 120.406 66.7357 117.728L104.574 95.2942C109.129 92.5527 111.904 87.6187 111.878 82.3063V37.4388C111.906 32.1279 109.134 27.1942 104.582 24.4508Z" class="svg-fill-primary" />
     <path d="M104.797 24.5047L66.8748 2.01395C62.3677 -0.671318 56.7494 -0.671318 52.2422 2.01395L14.3129 24.5047C9.75052 27.2541 6.97275 32.1987 7.0002 37.5213V82.4952C6.97543 87.815 9.75285 92.7561 14.3129 95.5041L52.2346 117.987C56.7423 120.671 62.3596 120.671 66.8672 117.987L104.789 95.5041C109.354 92.7566 112.135 87.8117 112.109 82.4876V37.5213C112.137 32.1987 109.359 27.2541 104.797 24.5047ZM53.5635 115.689L15.6418 93.2058C11.8943 90.9373 9.61177 86.8723 9.62764 82.4952V37.5213C9.61025 33.1437 11.8932 29.078 15.6418 26.8107L53.5635 4.31992C57.2542 2.12043 61.8553 2.12043 65.546 4.31992L103.437 26.8107C106.561 28.7006 108.692 31.8698 109.262 35.4732C108.001 32.7955 105.169 32.0598 101.866 33.9561L66.0168 56.1359C61.5442 58.7377 58.2487 61.6732 58.2411 67.0588V111.221C58.2411 114.445 59.5396 116.531 61.5442 117.145C60.8878 117.265 60.2221 117.329 59.5547 117.335C57.446 117.333 55.3765 116.765 53.5635 115.689Z" class="svg-fill-secondary"/>
@@ -41,13 +42,13 @@ const STACK_INFO = {
   },
   "js": {
     title: "JavaScript",
+    experience: "6",
     details: [
-      "Experinence: 6 years",
       "Ahh, one of the most intuitive and perfect programming languages, why else would it be in every single browser? ",
       "Joking aside, I have coded many websites with javascript. I've made carousells and reactive tables, and coded simple forms and complex business workflows.",
       "I am very comfortable working with javascript, and have wide experience in many areas."
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="js-svg">
     <g clip-path="url(#clip0_1_164)">
     <path d="M120 0H0V120H120V0Z" class="svg-fill-quaterniary"/>
@@ -64,13 +65,13 @@ const STACK_INFO = {
   },
   "css": {
     title: "CSS",
+    experience: "7",
     details: [
-      "Experience: 7+ years",
       "I am quite expierenced with all areas of frontend styling, and am currently in a mode of trying to use CSS for all kinds of things" +
       "that people don't think it should be used for. Animations, togglable menus, and form validation stuffs.", 
       "I think it's quite fun, and only mildy annoying."
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="css-svg">
     <g clip-path="url(#clip0_1_174)">
     <path d="M0 0H100.8C105.892 0 110.776 2.02285 114.376 5.62355C117.977 9.22425 120 14.1078 120 19.2V100.8C120 105.892 117.977 110.776 114.376 114.376C110.776 117.977 105.892 120 100.8 120H19.2C14.1078 120 9.22425 117.977 5.62355 114.376C2.02285 110.776 0 105.892 0 100.8L0 0Z" class="svg-fill-tertiary"/>
@@ -86,14 +87,14 @@ const STACK_INFO = {
   },
   "html": {
     title: "HTML",
+    experience: "7",
     details: [
-      "Experience: 7+ years",
       "HTML! The perfect language. So simple, so concise, so un-compromising.",
       "I'm not sure I need to say anything here... but yes, I do know my way around html...",
       "...",
       "...HTML is the best!"
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="html-svg">
     <path d="M7 0.0353342C7.05742 0.605099 7.10159 1.1307 7.14575 1.65629C7.60068 6.74884 8.04236 11.8458 8.5017 16.9339C9.08472 23.4045 9.67215 29.8883 10.2463 36.3545C10.7322 41.796 11.2136 47.2507 11.695 52.6966C12.2427 58.8315 12.7948 64.962 13.3425 71.1013C13.8239 76.5383 14.3054 81.9975 14.7912 87.4434C15.383 94.0774 15.9837 100.703 16.5491 107.337C16.5844 107.765 16.7213 107.946 17.1453 108.061C31.1774 112.018 45.2007 115.98 59.2151 119.929C59.5685 120.026 59.9925 120.022 60.3458 119.929C74.4221 115.98 88.494 112.027 102.57 108.083C103.052 107.946 103.202 107.738 103.233 107.266C103.533 103.569 103.878 99.8766 104.2 96.1842C104.562 92.1119 104.933 88.0308 105.295 83.9497C105.622 80.3014 105.94 76.662 106.272 73.0093C106.643 68.9282 107.005 64.8471 107.367 60.7705C107.685 57.1266 108.012 53.4872 108.343 49.8345C108.705 45.7711 109.067 41.7076 109.429 37.6442C109.756 33.9871 110.074 30.33 110.414 26.6641C110.777 22.6007 111.139 18.5372 111.501 14.4738C111.828 10.7725 112.155 7.06243 112.504 3.35675C112.596 2.25256 112.689 1.13953 112.795 0C77.5006 0.0353342 42.2945 0.0353342 7 0.0353342ZM91.8993 35.1796C75.0272 35.1796 58.164 35.1796 41.2389 35.1796C41.6364 39.7422 42.0295 44.2605 42.4181 48.7921C58.535 48.7921 74.6032 48.7921 90.7289 48.7921C90.6096 49.7506 90.4594 50.656 90.3755 51.5703C90.1503 53.8714 89.9338 56.177 89.7307 58.4693C89.3597 62.6343 88.9975 66.8259 88.6353 70.9909C88.3173 74.7363 87.9949 78.4596 87.6592 82.2051C87.4516 84.568 87.2175 86.931 87.0188 89.2896C86.9834 89.6606 86.7449 89.6694 86.5285 89.7357C80.8176 91.3081 75.1155 92.8848 69.4047 94.4484C66.2732 95.3185 63.1461 96.1974 60.0102 97.0587C59.8688 97.1029 59.6745 97.0764 59.5243 97.0278C50.6643 94.5941 41.8086 92.1517 32.9574 89.7269C32.5511 89.6253 32.5422 89.3735 32.5157 89.082C32.2905 86.2376 32.0652 83.4153 31.8532 80.5709C31.5573 76.7548 31.2569 72.9343 30.9566 69.1137C30.9478 69.0166 30.9478 68.8973 30.9389 68.7604C35.3115 68.7604 39.6753 68.7604 44.0612 68.7604C44.1716 70.0015 44.2909 71.2426 44.3969 72.4617C44.5912 74.6259 44.7855 76.7857 44.971 78.9632C44.9887 79.2105 45.0638 79.3077 45.3023 79.3783C50.0548 80.646 54.7984 81.9312 59.5597 83.2077C59.7275 83.2563 59.9307 83.2342 60.1029 83.19C64.7935 81.9312 69.4797 80.6548 74.1792 79.4093C74.4619 79.3253 74.5855 79.1972 74.612 78.9102C75.1288 73.3715 75.6544 67.824 76.1888 62.2898C76.1888 62.2722 76.18 62.2501 76.1712 62.1882C60.8759 62.1882 45.5717 62.1882 30.2323 62.1882C29.0265 48.801 27.8339 35.4623 26.637 22.0839C48.8313 22.0839 70.9284 22.0839 93.1404 22.0839C92.7385 26.4477 92.3145 30.7894 91.8993 35.1796Z" class="svg-fill-primary"/>
     </svg>
@@ -102,12 +103,12 @@ const STACK_INFO = {
 
   "docker": {
     title: "Docker",
+    experience: "3",
     details: [
-      "Experience: 3 years",
       "One of my favorite tools. I use containers a lot in my day job, managing different dev servers and QOL applications.", 
       "I also love to find tools that run in docker so that my servers can get the most out of their cpus."
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="docker-svg">
     <path d="M118.048 51.6212C115.105 49.6549 107.375 48.8157 101.756 50.3188C101.454 44.7635 98.5652 40.0814 93.2856 35.9958L91.3315 34.6943L90.0287 36.6478C87.4686 40.5044 86.3886 45.6453 86.7709 50.3188C87.0726 53.1987 88.0806 56.434 90.0287 58.7823C82.7152 62.9935 75.9717 62.0372 46.1118 62.0372H0.0101885C-0.123516 68.73 0.959845 81.6012 9.20669 92.0796C10.1186 93.2375 11.1163 94.357 12.2013 95.4354C18.9071 102.1 29.0387 106.987 44.1885 107C67.3014 107.021 87.1026 94.621 99.1489 64.6427C103.112 64.706 113.576 65.3477 118.697 55.5273C118.822 55.3624 120 52.9244 120 52.9244L118.048 51.6229V51.6212ZM30.0972 45.5018H17.133V58.3678H30.0972V45.5018ZM46.8429 45.5018H33.8795V58.3678H46.8429V45.5018ZM63.5911 45.5018H50.6278V58.3678H63.5911V45.5018ZM80.3402 45.5018H67.376V58.3678H80.3402V45.5018ZM13.3481 45.5018H0.384743V58.3678H13.3481V45.5018ZM30.0972 29.2517H17.133V42.1178H30.0972V29.2517ZM46.8429 29.2517H33.8795V42.1178H46.8429V29.2517ZM63.5911 29.2517H50.6278V42.1178H63.5911V29.2517ZM63.5911 13H50.6278V25.866H63.5911V13Z" class="svg-fill-secondary"/>
     </svg>
@@ -115,12 +116,12 @@ const STACK_INFO = {
   },
   "react": {
     title: "React",
+    experience: "4",
     details: [
-      "Experience: 4 years",
       "I have been using React to build out all the pages on my current companies site. I am confident in both the older class " +
       "based components as well as function based. I have experience using redux to manage the applications data as well."
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="react-svg">
     <g clip-path="url(#clip0_1_85)">
     <path d="M59.6957 71.4532C65.6027 71.4532 70.3913 66.4269 70.3913 60.2266C70.3913 54.0263 65.6027 49 59.6957 49C53.7886 49 49 54.0263 49 60.2266C49 66.4269 53.7886 71.4532 59.6957 71.4532Z" class="svg-fill-primary"/>
@@ -138,13 +139,13 @@ const STACK_INFO = {
   },
   "linux": {
     title: "Linux",
+    experience: "5",
     details: [
-      "Experience: 5 years",
       "I use Arch btw.",
       "However, I do have extended experience in Ubuntu + Ubuntu server, linux in docker, and linux mint.",
       "Still use Windows for gaming, but that's about it. Linux FTW"
     ],
-    html: `
+    svgHtml: `
     <svg viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg" class="linux-svg">
     <g>
       <path d="m127.98 12.07c-10.316 25.309-16.543 41.855-28.031 66.41 7.043 7.4609 15.691 16.156 29.734 25.977-15.098-6.207-25.395-12.445-33.094-18.918-14.703 30.68-37.742 74.391-84.492 158.39 36.746-21.219 65.23-34.293 91.773-39.289-1.1406-4.8945-1.7852-10.195-1.7422-15.734l0.042969-1.1719c0.58203-23.551 12.828-41.645 27.336-40.418 14.508 1.2266 25.781 21.316 25.199 44.867-0.10938 4.4219-0.60938 8.6914-1.4805 12.641 26.258 5.1328 54.438 18.18 90.684 39.105-7.1484-13.156-13.527-25.016-19.621-36.316-9.5938-7.4336-19.605-17.117-40.023-27.594 14.035 3.6406 24.082 7.8516 31.914 12.555-61.941-115.32-66.957-130.66-88.199-180.5z" class="svg-fill-secondary"/>
@@ -156,30 +157,39 @@ const STACK_INFO = {
   },
 }
 
-function getDetailsHtml(details) {
-  let result = '';
-  for (var detail of details) {
-    result = result + `${detail}\n`;
-  }
+function getDetailsHtml(stackInfo) {
+  let result = '<p>';
+  result += `<div class="stack-info-head"><h1>${stackInfo.title}</h1><b>Experience: ${stackInfo.experience} years</b></div>`
+  result += stackInfo.details.join(" ");
+  result += '</p>'
   return result
 }
 
 
 var UPDATING_STACK_INFO = false;
 
-async function updateStackInfo(itemType) {
+async function fadeOutOldStackDetails(stackDetails, transitionSeconds) {
+  stackDetails.style.opacity = "0";
+  await wait(transitionSeconds * 1000);
+}
 
-  if (UPDATING_STACK_INFO) { return }
+async function updateStackInfo(itemType) {
 
   UPDATING_STACK_INFO = true;
 
-  let stackItemName = document.getElementById("stack-item-name");
-  let stackDetails = document.getElementById("stack-item-info");
+  let stackDetails = document.getElementById("stack-item-details");
+
+  let transitionSeconds = 0.5;
+
+  stackDetails.style.transition = `opacity ${transitionSeconds}s ease-in-out`;
 
   let stackInfo = STACK_INFO[itemType];
 
-  await typeOutTextContent(stackItemName, stackInfo.title, [10, 60]);
-  await typeOutTextContent(stackDetails, stackInfo.details.join("<br />"), [2, 8]);
+  let stackHtml = getDetailsHtml(stackInfo);
+
+  await fadeOutOldStackDetails(stackDetails, transitionSeconds);
+  //await typeOutTextContent(stackItemName, stackInfo.title, [10, 60]);
+  await fadeInContent(stackDetails, stackHtml, transitionSeconds);
 
   UPDATING_STACK_INFO = false;
 }
@@ -196,17 +206,18 @@ function getItemType(classes) {
 }
 
 export function getStackNavStr() {
-  let stackNavStr = `<div><p class="stack-tooltip">Click on the icons for details.</p><ul class="stack-nav-items" id="stack-nav-items">`;
+  let stackNavStr = `<div class="stack-nav"><ul class="stack-nav-items" id="stack-nav-items">`;
 
   for (var [itemName, itemDetails] of Object.entries(STACK_INFO)) {
     let activeStr = "";
     if (itemName == "python") {
       activeStr = `class="active"`;
     }
-    stackNavStr += `<li>${itemDetails.html}</li>`;
+    stackNavStr += `<li>${itemDetails.svgHtml}</li>`;
   }
 
-  stackNavStr += "</ul></div>"
+  let toolTip = `<p class="stack-tooltip">Tap on the icons for details.</p>`;
+  stackNavStr += `</ul>${toolTip}</div>`
   return stackNavStr
 }
 

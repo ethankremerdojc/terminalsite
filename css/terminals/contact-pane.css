@@ -3,18 +3,20 @@
 
   display: flex;
   flex-direction: column;
-  gap: 20px;
 
-  & p {
-    font-size: 14px !important;
+  gap: 12px;
+  justify-content: space-between;
+
+  p {
+    font-size: 14px;
   }
 
-  & textarea {
+  textarea {
     resize: none;
     height: 130px;
   }
 
-  & input, & textarea {
+  input, textarea {
     background: none;
     outline: none;
     padding: var(--quarter-spacing);
@@ -29,7 +31,7 @@
     }
   }
 
-  & button {
+  button {
     background: rgb(from var(--main-text-color) r g b / 0.1);
     font-weight: 700;
     font-size: 24px;
@@ -48,6 +50,14 @@
 
     &.failed {
       color: red;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact-form {
+    p, input, textarea {
+      font-size: 14px;
     }
   }
 }

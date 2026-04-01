@@ -3,8 +3,8 @@ import {
   getPathContents,
   readableContents,
   getPrevDirPath,
+  tree,
   CWD
-
 } from "./driveUtils.js";
 
 function clearScreen() {
@@ -76,12 +76,17 @@ function getResponses() {
         } else {
           contents = getPathContents(CWD + "/" + path);
         }
-        console.log(contents);
-        return contents['content'].trim().split("\n")
+        return [contents['content'].replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;")]
       },
       cls: () => {
-        clearScreen();
         return ["clearing screen"]
+      },
+      tree: (args) => {
+        let path = args[0];
+        if (!path) {
+          path = CWD
+        };
+        return [`${CWD}\n${tree(path)}`.replaceAll("\n", "<br/>").replaceAll(" ", "&nbsp;")]
       },
       intro: () => {
         return INTRO_TEXT_ARRAY;

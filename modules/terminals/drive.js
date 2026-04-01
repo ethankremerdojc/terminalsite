@@ -1,5 +1,5 @@
 export const DRIVE = {
-  "name": "",
+  "name": "/root",
   "type": "directory",
   "children": [
     {

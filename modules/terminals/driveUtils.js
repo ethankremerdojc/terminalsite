@@ -1,6 +1,6 @@
 import { DRIVE } from "./drive.js";
 
-export var CWD = "";
+export var CWD = "/root";
 
 //TODO
 //Create a 'getAbsPath' func that factors in .. and such
@@ -12,16 +12,23 @@ export function getPathContents(path=CWD) {
   }
 
   let pathItems = path.split("/").slice(1); // get rid of first slash
+  console.log(pathItems);
 
-  if (pathItems.length === 1 && pathItems[0] === '') {
-    return DRIVE['children']
+  if (pathItems.length === 1 && pathItems[0] === 'root') {
+    return DRIVE
   }
+
+  if (pathItems[0] == "root") {
+    pathItems.shift();
+  };
 
   let currentItem = DRIVE;
   let currentPath = [];
 
   for (let i=0; i<pathItems.length; i++) {
     var pathItem = pathItems[i];
+
+    console.log(pathItem);
 
     if (i === pathItems.length - 1 && currentItem['children'].length == 0 && curentItem['type'] == "directory") {
       return []
@@ -97,10 +104,12 @@ export function changeDir(newDir) {
   let newPath;
   if (newDir.startsWith("/")) {
     newPath = newDir;
-  } else if (newDir.startsWith("..")) {
-
   } else {
     newPath = CWD + "/" + newDir
+  }
+
+  if (newPath.endsWith("/")) {
+    newPath = newPath.slice(0, -1);
   }
 
   if (isValidPath(newPath)) {
@@ -123,4 +132,25 @@ export function readableContents(currentDirContents) {
   }
 
   return result
+}
+
+export function tree(path, indentCount=0) {
+  let contents = getPathContents(path);
+  let treeStr = "";
+  for (var child of contents.children) {
+    for (let i=0; i<indentCount + 1; i++) {
+      treeStr += "--";
+    }
+    if (child.type == "directory") {
+      treeStr += " " + child.name + "/\n";
+    } else {
+      treeStr += " " + child.name + "\n";
+    }
+
+    if (child.type == "directory") {
+      treeStr += tree(path + "/" + child.name, indentCount+1);
+    }
+  }
+
+  return treeStr
 }

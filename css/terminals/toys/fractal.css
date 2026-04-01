@@ -72,9 +72,12 @@
 }
 
 @media screen and (max-width: 600px) {
+  :root {
+    --fractal-width: 210px;
+  }
 
   .toys-container-outer {
-    height: 630px;
+    height: 500px;
   }
 
   .fractal {
@@ -116,14 +119,22 @@
   .fractal-outer {
     flex-direction: column;
   }
+
+  .toys-container-outer {
+    height: 450px;
+  }
+
+  :root {
+    --fractal-width: 170px;
+  }
 }
 
 @media screen and (max-width: 340px) {
   :root {
-    --fractal-width: 200px;
+    --fractal-width: 160px;
   }
 
-  .toys-container-outer {
-    height: 580px;
-  }
+  /* .toys-container-outer { */
+  /*   height: 580px; */
+  /* } */
 }

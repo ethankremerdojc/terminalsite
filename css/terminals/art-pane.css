@@ -20,10 +20,6 @@
   }
 }
 
-.stack-tooltip {
-  text-align: center;
-}
-
 #ascii-art-div {
   transition: opacity 1.5s ease;
   height: 100%;
@@ -44,26 +40,18 @@
 
 pre {
   font-family: var(--font-family-monospace);
-  font-size: 15px;
-  line-height: 17px;
+  font-size: 13px;
+  line-height: 15px;
   font-weight: 400;
   width: fit-content;
 }
 
 .ascii-nav {
 
-  button, &:before, &:after {
+  button {
     opacity: 0.5;
     font-size: 24px;
   }
-
-  /* &:before { */
-  /*   content: "("; */
-  /* } */
-  /**/
-  /* &:after { */
-  /*   content: ")"; */
-  /* } */
 
   button {
     border: none;
@@ -73,14 +61,20 @@ pre {
 
     opacity: 0.6;
 
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, color 0.3s ease;
 
     &.active {
       opacity: 1;
+      color: var(--secondary-color);
     }
 
     &:hover {
       opacity: 1;
+      color: var(--secondary-color);
+    }
+
+    &:not(.navdot) {
+      color: var(--primary-color);
     }
   }
 }
@@ -93,7 +87,7 @@ pre {
 
 
   .ascii-nav {
-    button, &:before, &:after {
+    button {
       font-size: 16px;
     }
   }

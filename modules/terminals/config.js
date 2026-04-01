@@ -11,9 +11,6 @@ export const INTRO_TEXT_ARRAY = [
   "I am passionate about creating well-designed, maintainable software that solves real problems, but I also love " + 
   "building fun and 'useless' things that make people smile and laugh.",
 
-  "Although this is a portfolio which is useful, it is also useless because it is solving a problem that doesn't exist, having fake terminals " +
-  "in my website. This makes me smile, and I hope it makes you smile as well. ",
-
   "I will come back and add more commands to this terminal as time goes on, to see how far this browser can go!"
 ]
 
@@ -77,10 +74,7 @@ export const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         getStackNavStr() +
-        '<div class="stack-item-details">' +
-          '<h2 class="stack-item-name" id="stack-item-name"></h2>' +
-          '<div class="stack-item-info" id="stack-item-info"></div>' +
-        '</div>'
+        '<div class="stack-item-details" id="stack-item-details"></div>'
       ]
     }
   ],

@@ -216,7 +216,7 @@ export function loadAsciiNav() {
   
   let prevButton = document.createElement("button");
   prevButton.onclick = prevArt;
-  prevButton.innerHTML = "<";
+  prevButton.innerHTML = "◂";
 
   asciiNavDiv.appendChild(prevButton);
   
@@ -235,7 +235,7 @@ export function loadAsciiNav() {
 
   let nextButton = document.createElement("button");
   nextButton.onclick = nextArt;
-  nextButton.innerHTML = ">";
+  nextButton.innerHTML = "▸";
 
   asciiNavDiv.appendChild(nextButton);
 

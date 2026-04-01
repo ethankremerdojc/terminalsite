@@ -3,7 +3,7 @@ import { wait, getRandomInt } from "../utils.js";
 import { getPromptResponse, focusLatestInput } from "./linux-pane.js";
 
 function getPromptDiv() {
-  let promptDiv = document.createElement("h1");
+  let promptDiv = document.createElement("div");
   promptDiv.classList.add("prompt");
 
   return promptDiv
@@ -45,7 +45,7 @@ export async function typeOutTextContent(element, content, delayRange) {
   })
 }
 
-async function fadeInContent(element, content, transitionTime) {
+export async function fadeInContent(element, content, transitionTime) {
   let pane = element.closest(".terminal-pane");
   element.style.opacity = "0";
   element.innerHTML = content;
@@ -53,7 +53,7 @@ async function fadeInContent(element, content, transitionTime) {
 
   element.style.transition = `opacity ${transitionTime}s ease-in-out`;
   element.style.opacity = "1";
-  await wait(transitionTime)
+  await wait(transitionTime * 1000)
 }
 
 async function handleContentInjection(element, content, method, speed) {
@@ -101,7 +101,7 @@ async function populateResult(resultDiv, resultLines, resultTag, method="fade-in
    for (var resultLine of resultLines) {
     let resultElem = document.createElement(resultTag);
     resultDiv.appendChild(resultElem);
-    await handleContentInjection(resultElem, resultLine, method, speed*8);
+    await handleContentInjection(resultElem, resultLine, method, speed);
   }
 }
 
@@ -119,14 +119,11 @@ async function populatePaneChunk(chunk, paneContent, speed, method="fade-in", is
   
   let resultDiv = getResultDiv();
   chunk.appendChild(resultDiv);
-  await populateResult(resultDiv, result, resultTag, method, speed);
+  await populateResult(resultDiv, result, resultTag, method, speed*15);
 }
 
 export async function handlePromptSubmit(e) {
   if (e.key != "Enter") { return };
-
-  // check if there is any content
-  // replace the input with the text in the input, and then populateResult
 
   let inputElem = e.target;
   let paneChunk = inputElem.closest(".pane-chunk");
@@ -138,7 +135,7 @@ export async function handlePromptSubmit(e) {
 
   let response = getPromptResponse(userText);
   let resultDiv = paneChunk.querySelector(".result");
-  await populateResult(resultDiv, response, "p", "fade-in", 2);
+  await populateResult(resultDiv, response, "p", "fade-in", 1200);
 
   // add empty pane
   let chunk = document.createElement("div");

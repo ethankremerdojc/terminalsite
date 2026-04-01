@@ -179,17 +179,6 @@
   }
 }
 
-/* @media screen and (max-width: 640px) { */
-/*   .toys-info { */
-/*     b, p, h3 { */
-/*       font-size: 12px !important; */
-/*       margin-bottom: 6px; */
-/*     } */
-/*   } */
-/* } */
-
-
-
 @media screen and (max-width: 530px) {
   .toys-pane ul {
     li {
