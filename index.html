@@ -52,7 +52,7 @@
             <path d="M264 480A232 232 0 0 1 32 248c0-94 54-178.28 137.61-214.67a16 16 0 0 1 21.06 21.06C181.07 76.43 176 104.66 176 136c0 110.28 89.72 200 200 200c31.34 0 59.57-5.07 81.61-14.67a16 16 0 0 1 21.06 21.06C442.28 426 358 480 264 480"></path>
           </svg>
         </span>
-        <a href="#contact">Contact</a>
+        <p id="contact-button">Contact</p>
       </div>
     </header>
 
@@ -74,5 +74,13 @@
     </outermain>
 
     <script src="index.js" type="module"></script>
+    <script>
+      let contactButton = document.getElementById("contact-button");
+
+      contactButton.addEventListener('click', () => {
+        console.log("yeet")
+        window.scrollTo(0, document.body.scrollHeight);
+      })
+    </script>
   </body>
 </html>

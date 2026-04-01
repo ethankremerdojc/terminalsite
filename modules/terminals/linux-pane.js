@@ -17,7 +17,9 @@ function clearScreen() {
   loadTerminalPane("linux-pane", 'emptyPaneContents', 5).then(() => {
     focusLatestInput();
   });
-}
+};
+
+
 
 function getResponses() {
   var responses = {
