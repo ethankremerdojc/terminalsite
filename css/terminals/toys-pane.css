@@ -184,11 +184,8 @@
     li {
       font-size: 10px;
     }
-
   }
-}
-
-@media screen and (max-width: 400px) {
+  
   .toys-info {
     b, p, h3 {
       font-size: 10px !important;
