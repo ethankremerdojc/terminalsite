@@ -11,6 +11,10 @@ import {
   CWD
 } from "./driveUtils.js";
 
+import {
+navigateToPane
+} from "../utils.js";
+
 function clearScreen() {
   document.querySelector(".linux-pane").innerHTML = "";
 
@@ -18,8 +22,6 @@ function clearScreen() {
     focusLatestInput();
   });
 };
-
-
 
 function getResponses() {
   var responses = {

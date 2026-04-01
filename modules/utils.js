@@ -89,3 +89,11 @@ export function getCssVariable(varName) {
   const value = styles.getPropertyValue(varName).trim();
   return value
 }
+
+export function navigateToPane(paneStr) {
+  let el = document.querySelector(`.${paneStr}-pane`);
+  el.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  })
+}

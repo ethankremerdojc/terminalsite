@@ -25,8 +25,10 @@ function loadPage() {
     "stack": loadStackPane,
     "toys": loadToysPane,
     "outro": loadOutroPane,
-    "contact": loadContactPane
   };
+
+  // always load contact pane so the contact button works
+  loadContactPane();
 
   function initObservers() {
     const observer = new IntersectionObserver((entries) => {

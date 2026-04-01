@@ -1,5 +1,5 @@
 import { setMatrixColorsByCurrentTheme } from "./matrixBackground.js";
-import { getCssVariable } from "./utils.js";
+import { getCssVariable, navigateToPane } from "./utils.js";
 import { generateFractals } from "./terminals/toys/fractal.js";
 
 const LOCAL_STORAGE_THEME_KEY = "modetheme";
@@ -65,6 +65,11 @@ export function initializeHeader() {
       document.body.classList.add("darkmode");
     }
   }
+
+  let contactButton = document.getElementById("contact-button");
+  contactButton.addEventListener('click', () => {
+    navigateToPane("contact");
+  })
 
   updateHeaderTime();
 
