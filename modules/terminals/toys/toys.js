@@ -57,7 +57,7 @@ const TOY_INFO_HTML = `
 <p>Snake can be controlled by pressing arrow keys, or by tapping the sides of the playfield with mouse or finger.</p>
 <p>The playfield is responsive and the width and height in 'cells' is dependent on the user's screen size. The downside that the game is harder the smaller the screen.</p>
 <b>HANGMAN</b>
-<p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory. Stole a wordlist from some github post haha.</p>
+<p>One of the first programs I write in every new programming language I learn. I wrote it in rust once. Should be self explanatory. Stole a wordlist from some github post.</p>
 <b>DONUT</b>
 <p>I actually just stole this from a source (in outro) just because I ain't spending hours rewriting the C code of the 'cdonut' program when multiple people have already done that.</p>
 `

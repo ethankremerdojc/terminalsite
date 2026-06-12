@@ -84,11 +84,11 @@ export const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
         '<ul id="toys-header-items">' +
-          '<li id="nav-item-toys-info">[ TOYS INFO ]</li>' +
           '<li id="nav-item-fractals">[ FRACTALS ]</li>' +
           '<li id="nav-item-snake">[ SNAKE ]</li>' +
-          '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
           '<li id="nav-item-donut">[ DONUT ]</li>' +
+          '<li id="nav-item-hangman">[ HANGMAN ]</li>' +
+          '<li id="nav-item-toys-info">[ TOYS INFO ]</li>' +
         '</ul>' +
 
         `<div class="toys-container-outer">` +
@@ -137,6 +137,14 @@ export const PANES_CONTENT = {
       resultTag: "rawhtml",
       result: [
       `<div class="outro-html">` +
+
+        "<b>LINKS: </b>" +
+        `<i><a href="https://github.com/ethankremerdojc/terminalsite" target="_blank">Github</a></i>` +
+        `<i><a href="/ethan_kremer_resume.pdf" target="_blank">Resume | PDF Download</a></i>` +
+        `<i><a href="https://www.linkedin.com/in/ethan-kremer-b046a61b9/" target="_blank">LinkedIn</a></i>` +
+
+        `<br/>` +
+
         "<b>CREDITS: </b>" +
         "<p>Ascii Arts:</p>" +
         `<i><a href="https://www.asciiart.eu/">https://www.asciiart.eu/</a></i>` +
@@ -144,12 +152,7 @@ export const PANES_CONTENT = {
         `<i><a href="https://surenenfiajyan.github.io/3d-ascii-donut-js/">https://surenenfiajyan.github.io/3d-ascii-donut-js/</a> though that was also a recreation of another.</i>` +
         "<p>Matrix Background</p>" +
         `<i><a href="https://codepen.io/jcubic/pen/rNeNwgB">https://codepen.io/jcubic/pen/rNeNwgB</a></i>` +
-        "<b>LINKS: </b>" +
-        "<p>Code</p>" +
-        `<i>Github: <a href="https://github.com/ethankremerdojc/terminalsite">https://github.com/ethankremerdojc/terminalsite</a></i>` +
-        "<p>Resume</p>" +
-        `<i>Google Docs: <a href="https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing">https://docs.google.com/document/d/1c4t0_1SMbfnYEcgHNYh32T2vofQSwTRCMQ5s4ejmH8M/edit?usp=sharing</a></i>` +
-        `<br/>` +
+
         `<i class="copywright">© 2026 Ethan Kremer</i>` +
       "</div>"
       ]

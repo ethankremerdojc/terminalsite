@@ -39,7 +39,7 @@ export async function loadToysPane() {
   runDonut();
   initializeFractalPane();
   await loadToysNav();
-  showToy("toys-info");
+  showToy("fractals");
   await initializeToysInfo();
 }
 
