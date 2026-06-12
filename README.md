@@ -8,3 +8,5 @@ I am a software developer with over five years of experience building reliable w
 
 This is a portfolio page I designed and coded myself, to be a place that can showcase some of my work.
 ![fractals](https://github.com/ethankremerdojc/terminalsite/blob/master/images/github_view/light_fractal.png "Fractals")
+
+The top left section is a semi-functioning terminal that accepts basic linux commands.
